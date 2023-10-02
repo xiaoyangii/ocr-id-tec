@@ -160,6 +160,19 @@ const routes = [
     path: '/personalcenter',
     name: 'personalCenter',
     component: () => import('@/views/layout/personalCenter/personalCenter.vue'),
+    redirect: '/personalcenter/personaldata',
+    children: [
+      {
+        path: '/personalcenter/personaldata',
+        name: 'personalData',
+        component: () => import('@/views/layout/personalCenter/personalData.vue'),
+      },
+      {
+        path: '/personalcenter/homedata',
+        name: 'homeData',
+        component: () => import('@/views/layout/personalCenter/homeData.vue'),
+      }
+    ]
   },
   // 设置
   {

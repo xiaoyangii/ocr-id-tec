@@ -47,14 +47,14 @@
   </div>
 </template>
 <script>
-import avatarurl from "@/assets/logo.png"
+import avatarUrl from "@/assets/images/Intersect.png"
 export default {
   name: "navbar",
   data() {
     return {
       loginId: localStorage.getItem("loginId"),
       state: true,
-      avatarUrl: null,
+      avatarUrl,
       option: [
         {
           value: 'personalcenter',
