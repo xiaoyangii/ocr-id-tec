@@ -80,7 +80,11 @@ export default {
   },
   computed: {},
   watch: {},
-  methods: {},
+  methods: {
+    pickerOptions() {
+      
+    }
+  },
   created () {},
 }
 </script>

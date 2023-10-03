@@ -68,6 +68,9 @@ export default {
   margin-top: 65px;
   background-color: #fff !important;
 }
+::v-deep .el-menu {
+  border-right: none;
+}
 ::v-deep .el-menu-item {
   height: 93px;
   line-height: 93px;
