@@ -38,7 +38,6 @@ export default {
 .concernCard {
   width: 570px;
   height: 100px;
-  background-color: blue;
 }
 .card_left {
   float: left;

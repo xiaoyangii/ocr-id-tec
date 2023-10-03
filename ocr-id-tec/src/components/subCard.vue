@@ -34,7 +34,6 @@ export default {
 .subscription_card {
   width: 570px;
   height: 155px;
-  background-color: blue;
 }
 .card_left {
   float: left;

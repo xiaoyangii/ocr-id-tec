@@ -41,7 +41,6 @@ export default {
 .collectionCard {
   width: 570px;
   height: 155px;
-  background-color: blue;
 }
 
 .card_left {
