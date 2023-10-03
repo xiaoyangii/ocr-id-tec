@@ -44,8 +44,9 @@ export default {
         },
         {
           id: 1,
-          name: "口腔医学",
-          desc: "《中国防治慢性病中长期规划（2017-2025年）》规划指出慢性病主要包括心脑血管疾病、肿瘤、慢性..."
+          name: "叶晓滨",
+          affiliatedInstitution: "厦门市思明区筼筜街道社区卫生服务中心",
+          researchField: "中药学;中医学;药学"
         },
         {
           id: 1,
@@ -162,7 +163,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 20px 220px;
+  gap: 42px 220px;
   width: 100%;
   height: calc(100vh - 266px);
   padding: 0 110px;
