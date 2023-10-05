@@ -20,8 +20,8 @@ export default {
       // 个人信息要重置
       context.commit('setUserInfo', {})
 
-      // 购物车信息要重置 (跨模块调用 mutation)  cart/setCartList
-      context.commit('cart/setCartList', [], { root: true })
+      // 历史信息信息要重置 (跨模块调用 mutation)
+      context.commit('myhistory/setHistoryList', [], { root: true })
     }
   },
   getters: {}

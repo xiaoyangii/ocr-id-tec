@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { codeForgetPassword, getMsgCode } from "@/api/login.js"
 export default {
   name: "forgetPassword",
   data() {
@@ -89,65 +90,74 @@ export default {
     };
   },
   methods: {
-    async doRegister() {
-      // if (this.form.userPassword !== this.form.userPassword1) {
-      //   this.$message({
-      //     message: "两次输入的密码不一致",
-      //     type: "error"
-      //   });
-      //   return false;
-      // }
-      // let params = {
-      //   userId: this.form.userId,
-      //   userName: this.form.userName,
-      //   userPassword: this.form.userPassword1,
-      //   userContactInformation: this.form.userContactInformation.toString(),
-      //   userRight: this.form.userRight,
-      //   email: this.form.userEmail
-      // };
-      // await request
-      //   .post("/user/enroll", params)
-      //   .then(res => {
-      //     if (res.data.code == 1) {
-      //       this.$message({
-      //         message: res.data.msg,
-      //         type: "success"
-      //       });
-      //       this.$router.push("/user");
-      //     } else {
-      //       this.$message({
-      //         message: res.data.msg,
-      //         type: "error"
-      //       });
-      //     }
-      //   })
-      //   .catch(err => {
-      //     this.$message({
-      //       message: "注册失败 " + err,
-      //       type: "error"
-      //     });
-      //   });
+    validFn () {
+      if (!/^1[3-9]\d{9}$/.test(this.registerForm.userId)) {
+        this.$message({
+          message: "请输入正确手机号",
+          type: "error"
+        });
+        return false
+      }
+      return true
+    },
+    async bindforgetSendCode() {
+      if (!this.validFn()) {
+        // 如果没通过校验，没必要往下走了
+        return
+      }
       // 当前目前没有定时器开着，且 totalSecond 和 second 一致 (秒数归位) 才可以倒计时
       if (!this.timer && this.second === this.totalSecond) {
         // 发送请求
         // 预期：希望如果响应的status非200，最好抛出一个promise错误，await只会等待成功的promise
-        // await getMsgCode(this.picCode, this.picKey, this.mobile)
-        // 开启倒计时
-        this.timer = setInterval(() => {
-          this.second--
+        await getMsgCode(this.registerForm.userId).then(res => {
+          this.$message({
+            message: "发送短信验证码成功",
+            type: "success"
+          });
+          // 开启倒计时
+          this.timer = setInterval(() => {
+            this.second--
 
-          if (this.second <= 0) {
-            clearInterval(this.timer)
-            this.timer = null // 重置定时器 id
-            this.second = this.totalSecond // 归位
-          }
-        }, 1000)
+            if (this.second <= 0) {
+              clearInterval(this.timer)
+              this.timer = null // 重置定时器 id
+              this.second = this.totalSecond // 归位
+            }
+          }, 1000)
+        })
       }
+    },
+    async doRegister() {
+      if (this.registerForm.userPassword == '' || this.registerForm.userCode == '' || this.registerForm.userId == '') {
+        this.$message({
+          message: "所填信息不完整",
+          type: "error"
+        });
+        return ;
+      }
+      await codeForgetPassword(this.registerForm.userId, this.registerForm.userCode,this.registerForm.userPassword)
+      .then(res => {
+        this.$message({
+          message: "修改密码成功",
+          type: "success"
+        })
+        this.$router.push("/passwordlogin")
+      })
+      .catch(err => {
+        this.$message({
+          message: "修改失败 " + err,
+          type: "error"
+        });
+      });
     },
     toLogin() {
       this.$router.push("/login");
     },
   },
+  // 离开页面清除定时器
+  destroyed () {
+    clearInterval(this.timer)
+  }
 };
 </script>
 <style scoped lang="less">

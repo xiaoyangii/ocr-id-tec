@@ -242,7 +242,6 @@ export default {
     },
   },
   watch: {
-    // 文字清空时调用
     keyWord() {
       if (this.keyWord === "") {
         this.matchList = this.hisList;
@@ -267,15 +266,19 @@ export default {
     // 清空历史记录
     clearAll() {
       // 利用elementUI弹出消息确认框询问是否确定删除,如果确定，清空hisList,并发起请求，删除后台数据
-      this.$confirm('此操作将永久删除全部历史记录, 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除全部历史记录, 是否继续?', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-          this.hisList = [];
-          setHistoryList([]);
-          // 发起axios请求，删除所有历史记录，后台数据也要删除
-          /////////////////////////////////////////////////
+        this.hisList = [];
+        setHistoryList([]);
+        // 发起axios请求，删除所有历史记录，后台数据也要删除
+        /////////////////////////////////////////////////
+        this.$message({
+          type: 'info',
+          message: '删除成功'
+        });
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -291,7 +294,7 @@ export default {
     },
     deleteRecord() {
       // 利用elementUI弹出消息确认框询问是否确定删除,如果确定，清空hisList,并发起请求，删除后台数据
-      this.$confirm('此操作将永久删除选中的历史记录, 是否继续?', '提示', {
+      this.$confirm('此操作将永久删除选中的历史记录, 是否继续?', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -311,13 +314,23 @@ export default {
     },
     // 该组件的子组件historicalCard通过点击事件触发deleteThis()，调用d父组件eleteByIcon()该方法删除该组件内hisList中的该条数据，并重新渲染
     deleteByIcon(id) {
-      console.log(id);
-      this.hisList = this.hisList.filter((item) => {
-        return item.id !== id;
+      this.$confirm('此操作将永久删除该条的历史记录, 是否继续?', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.hisList = this.hisList.filter((item) => {
+          return item.id !== id;
+        });
+        this.matchList = this.hisList;
+        // 发起axios请求，删除所有历史记录，后台数据也要删除，通过id发出请求 删除后台数据
+        /////////////////////////////////////////////////
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });          
       });
-      this.matchList = this.hisList;
-      // 通过id发出请求 删除后台数据
-      /////////////////////////////////////////////////
     },
     
   },

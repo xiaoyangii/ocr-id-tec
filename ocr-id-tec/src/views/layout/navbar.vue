@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       loginId: localStorage.getItem("loginId"),
-      state: true,
+      state: false,
       avatarUrl,
       option: [
         {
@@ -92,7 +92,7 @@ export default {
       // 1. 清空 token
       localStorage.removeItem("satoken");
       localStorage.removeItem("loginId");
-      localStorage.removeItem("tag");
+      this.$store.dispatch('user/logout')
       // 2. 跳转到主页面
       this.state = false;
     },

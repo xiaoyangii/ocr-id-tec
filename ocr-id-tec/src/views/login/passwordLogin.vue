@@ -51,6 +51,7 @@
 
 <script>
 import qs from "qs";
+import { passwordLogin } from "@/api/login.js"
 export default {
   name: "passwordLogin",
   data() {
@@ -73,46 +74,31 @@ export default {
   },
   methods: {
     async doLogin() {
-    //   let userId = this.userId;
-    //   let userPassword = this.userPassword;
-    //   let params = {
-    //     userId: userId,
-    //     userPassword: userPassword
-    //   };
-    //   let str = qs.stringify(params);
-    //   await request
-    //     .post("/user/login", str)
-    //     .then(res => {
-    //       console.log(res);
-    //       if (res.data.code == 200) {
-    //         localStorage.setItem("tag", res.data.data.tag.toString());
-    //         localStorage.setItem("satoken", res.data.data.tokenValue);
-    //         localStorage.setItem("loginId", res.data.data.loginId);
-    //         localStorage.setItem("isLogin", true);
-    //         this.$message({
-    //           message: "登陆成功",
-    //           type: "success"
-    //         });
-    //         if (res.data.data.tag === "0") {
-    //           this.$router.push({
-    //             path: "/"
-    //           });
-    //         } else {
-    //           this.$router.push("/admin");
-    //         }
-    //       } else {
-    //         this.$message({
-    //           message: res.data.msg,
-    //           type: "error"
-    //         });
-    //       }
-    //     })
-    //     .catch(err => {
-    //       this.$message({
-    //         message: "登陆失败 " + err,
-    //         type: "error"
-    //       });
-    //     });
+      if (this.loginForm.userPassword == '' || this.loginForm.userId == '') {
+        this.$message({
+          message: "所填信息不完整",
+          type: "error"
+        });
+        return ;
+      }
+      await passwordLogin(this.loginForm.userId, this.loginForm.userPassword)
+      .then(res => {
+        localStorage.setItem("satoken", res.data.tokenValue)
+        localStorage.setItem("loginId", res.data.loginId)
+        localStorage.setItem("isLogin", true)
+        this.$store.commit('user/setUserInfo', { "satoken": res.data.tokenValue, "loginId": res.data.loginId, "isLogin": true })
+        this.$router.push("/")
+        this.$message({
+          message: "登录成功",
+          type: "success"
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: "登陆失败 " + err,
+          type: "error"
+        });
+      });
     },
     toRegister() {
       this.$router.push("/registered");

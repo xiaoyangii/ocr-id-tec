@@ -1,18 +1,21 @@
 <template>
-  <div class="historyCard" v-if="item" :class="bordercolor(item.isSlected)">
-    <div class="historyCard_slect"><el-checkbox v-model="item.isSlected"></el-checkbox></div>
-    <div class="historyCard_title">{{ item.title }}</div>
-    <div class="historyCard_deleteicon"><i class="el-icon-close" @click="deleteThis(item)"></i></div>
-    <div class="historyCard_date">
-      <div class="historyCard_date_time">{{ item.date }}</div>
-      <div class="historyCard_date_time">{{ item.time }}</div>
+  <div class="downCard" v-if="item" :class="bgc(item.isSlected)">
+    <div class="downCard_slect"><el-checkbox v-model="item.isSlected"></el-checkbox></div>
+    <div class="boxxx">
+      <div class="downCard_title">{{ item.title }}</div>
+      <div class="downCard_link" @click="openFile()">在文件夹中显示</div>
+    </div>
+    <div class="downCard_deleteicon"><i class="el-icon-close" @click="deleteThis(item)"></i></div>
+    <div class="downCard_date">
+      <div class="downCard_date_time">{{ item.date }}</div>
+      <div class="downCard_date_time">{{ item.time }}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'historicalCard',
+  name: 'downCard',
   components: {},
   data () {
     return {
@@ -33,9 +36,12 @@ export default {
     deleteThis(item) {
       this.fatherDeleteMethod(item.id);
     },
-    bordercolor(slected) {
-      if (slected) {
-        return "border_color"
+    openFile() {
+      console.log('打开文件')
+    },
+    bgc() {
+      if (this.item.isSlected) {
+        return 'slected'
       }
     }
   },
@@ -43,12 +49,11 @@ export default {
 }
 </script>
 <style scoped lang='less'>
-.historyCard {
-  height: 55px;
+.downCard {
+  height: 83px;
   width: 95%;
   margin-bottom: 16px;
   border-radius: 6px;
-  border: 2px solid #fff;
   &_slect {
     float: left;
     width: 5%;
@@ -79,14 +84,20 @@ export default {
   }
   &_title {
     float: left;
-    width: 63%;
-    height: 100%;
+    width: 100%;
+    height: 60%;
     line-height: 51px;
-    padding-left: 30px;
     text-align: left;
     color: #3C3C3C;
     font-size: 20px;
     letter-spacing: 0.9px;
+  }
+  &_link {
+    float: left;
+    height: 40%;
+    color: #1559DD;
+    font-size: 16px;
+    letter-spacing: 0.72px;
   }
   &_date {
     float: right;
@@ -117,7 +128,14 @@ export default {
     }
   }
 }
-.border_color {
-  border-color: #013480;
+.boxxx {
+  float: left;
+  width: 63%;
+  height: 100%;
+  padding-left: 30px;
+}
+.slected {
+  border-radius: 6px;
+  background: #EBF5FF;
 }
 </style>

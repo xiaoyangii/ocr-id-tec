@@ -230,25 +230,25 @@ export default {
     // 文字清空时调用
     keyWord() {
       if (this.keyWord === "") {
-        this.getMachlist();
+        this.getMachlist()
       }
     },
     checked(value) {
       if(value === true) {
-        this.getMachlist();
+        this.getMachlist()
       }
     }
   },
   methods: {
     textorimgList(e) {
-      var left = document.getElementsByClassName('content_list_box_bar_box_leftbutton');
-      var right = document.getElementsByClassName('content_list_box_bar_box_rightbutton');
-      left[0].style.backgroundColor = '#EBF5FF';
-      right[0].style.backgroundColor = '#EBF5FF';
-      left[0].style.color = '#013480';
-      right[0].style.color = '#013480';
-      e.target.style.color = '#FFF';
-      e.target.style.backgroundColor = '#013480';
+      var left = document.getElementsByClassName('content_list_box_bar_box_leftbutton')
+      var right = document.getElementsByClassName('content_list_box_bar_box_rightbutton')
+      left[0].style.backgroundColor = '#EBF5FF'
+      right[0].style.backgroundColor = '#EBF5FF'
+      left[0].style.color = '#013480'
+      right[0].style.color = '#013480'
+      e.target.style.color = '#FFF'
+      e.target.style.backgroundColor = '#013480'
     },
     handleTabClick() {
 
@@ -264,13 +264,13 @@ export default {
       this.matchlist = [];
       this.articleList = this.articleList1;// 获取一次数据
       // 去除恶意输入代码片段的可能
-      let value = this.keyWord.replace(/<.*?>/gi, "");
+      let value = this.keyWord.replace(/<.*?>/gi, "")
       if(this.keyWord === '') {
-        this.articleList = this.articleList1;
-        return ;
+        this.articleList = this.articleList1
+        return 
       }
       // 模糊查询 只保留符合条件的数据
-      let resultList = [];
+      let resultList = []
       this.articleList.forEach((item) => {
         if (
           //  英文大小写数据进行判断 toUpperCase 大写  toLowerCase 小写
@@ -283,7 +283,7 @@ export default {
           item.name.indexOf(value.toUpperCase()) > -1 ||
           item.name.indexOf(value.toLowerCase()) > -1
         ) {
-          resultList.push(item);
+          resultList.push(item)
         }
       });
       
@@ -296,7 +296,7 @@ export default {
         this.articleList.forEach((item) => {
           if(!(item.details.match(reg) || item.title.match(reg) || item.author.match(reg) || item.name.match(reg)))
           {
-            return;
+            return
           }
           let obj = {
             id: item.id,
@@ -325,20 +325,20 @@ export default {
           if(this.keyWord === '') {
             obj.details = item.details
           }
-          dataList.push(obj);
+          dataList.push(obj)
         });
       } else {
         this.articleList.forEach((item) => {
           if(!(item.details.match(reg) || item.title.match(reg) || item.author.match(reg) || item.name.match(reg)))
           {
-            return;
+            return
           }
-          dataList.push(item);
+          dataList.push(item)
         });
       }
       // 赋值
-      this.matchlist = dataList;
-      this.articleList = this.matchlist;
+      this.matchlist = dataList
+      this.articleList = this.matchlist
     },
   },
   created () {

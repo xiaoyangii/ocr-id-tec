@@ -2,51 +2,51 @@
 import request from '@/utils/request'
 
 // 1. 获取短信验证码
-export const getMsgCode = (captchaKey, mobile) => {
-  return request.post('', {
-    form: {
-      captchaKey,
-      mobile
+export const getMsgCode = (telephone) => {
+  return request.get('/User/SendMsg', {
+    params: {
+      telephone
     }
   })
 }
 
 // 2. 验证码登录接口
-export const codeLogin = (mobile, smsCode) => {
-  return request.post('', {
-    form: {
-      mobile,
-      smsCode
+export const codeLogin = (telephone, code) => {
+  return request.get('/User/LoginByCode', {
+    params: {
+      telephone,
+      code
     }
   })
 }
 
 // 3. 密码登录接口
-export const passwordLogin = (mobile, password) => {
-  return request.post('', {
-    form: {
-      mobile,
+export const passwordLogin = (telephone, password) => {
+  return request.get('/User/LoginByPassword', {
+    params: {
+      telephone,
       password
     }
   })
 }
 
 // 4. 注册接口
-export const codeRegistered = (mobile, smsCode) => {
-  return request.post('', {
-    form: {
-      mobile,
-      smsCode
+export const codeRegistered = (telephone, code, password) => {
+  return request.get('/User/Enroll', {
+    params: {
+      telephone,
+      code,
+      password
     }
   })
 }
 
 // 5. 忘记密码接口
-export const codeForgetPassword = (mobile, smsCode, password) => {
-  return request.post('', {
-    form: {
-      mobile,
-      smsCode,
+export const codeForgetPassword = (telephone, code, password) => {
+  return request.get('/User/ChangePassword', {
+    params: {
+      telephone,
+      code,
       password
     }
   })

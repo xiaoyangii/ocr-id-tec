@@ -3,6 +3,7 @@ import App from './App.vue'
 // 全局默认样式
 import '@/assets/style/reset.css'
 import '@/assets/style/global.css'
+import '@/assets/style/confirm.css'
 import '@/assets/style/variable.less'
 import "@/assets/font/font.css"
 

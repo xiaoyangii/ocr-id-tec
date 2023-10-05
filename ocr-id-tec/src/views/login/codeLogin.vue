@@ -56,7 +56,8 @@
 </template>
 
 <script>
-import qs from "qs";
+import qs from "qs"
+import { codeLogin, getMsgCode } from "@/api/login.js"
 export default {
   name: "codeLogin",
   data() {
@@ -82,65 +83,69 @@ export default {
     };
   },
   methods: {
-    bindforgetSendCode() {
+    validFn () {
+      if (!/^1[3-9]\d{9}$/.test(this.loginForm.userId)) {
+        this.$message({
+          message: "请输入正确手机号",
+          type: "error"
+        });
+        return false
+      }
+      return true
+    },
+    async bindforgetSendCode() {
+      if (!this.validFn()) {
+        // 如果没通过校验，没必要往下走了
+        return
+      }
       // 当前目前没有定时器开着，且 totalSecond 和 second 一致 (秒数归位) 才可以倒计时
       if (!this.timer && this.second === this.totalSecond) {
         // 发送请求
         // 预期：希望如果响应的status非200，最好抛出一个promise错误，await只会等待成功的promise
-        // await getMsgCode(this.picCode, this.picKey, this.mobile)
-        // 开启倒计时
-        this.timer = setInterval(() => {
-          this.second--
+        await getMsgCode(this.loginForm.userId).then(res => {
+          this.$message({
+            message: "发送短信验证码成功",
+            type: "success"
+          });
+          // 开启倒计时
+          this.timer = setInterval(() => {
+            this.second--
 
-          if (this.second <= 0) {
-            clearInterval(this.timer)
-            this.timer = null // 重置定时器 id
-            this.second = this.totalSecond // 归位
-          }
-        }, 1000)
+            if (this.second <= 0) {
+              clearInterval(this.timer)
+              this.timer = null // 重置定时器 id
+              this.second = this.totalSecond // 归位
+            }
+          }, 1000)
+        })
       }
     },
     async doLogin() {
-      // let userId = this.userId;
-      // let userCode = this.userCode;
-      // let params = {
-      //   userId: userId,
-      //   userCode: userCode
-      // };
-      // let str = qs.stringify(params);
-      // await request
-      //   .post("/user/login", str)
-      //   .then(res => {
-      //     console.log(res);
-      //     if (res.data.code == 200) {
-      //       localStorage.setItem("tag", res.data.data.tag.toString());
-      //       localStorage.setItem("satoken", res.data.data.tokenValue);
-      //       localStorage.setItem("loginId", res.data.data.loginId);
-      //       localStorage.setItem("isLogin", true);
-      //       this.$message({
-      //         message: "登陆成功",
-      //         type: "success"
-      //       });
-      //       if (res.data.data.tag === "0") {
-      //         this.$router.push({
-      //           path: "/"
-      //         });
-      //       } else {
-      //         this.$router.push("/admin");
-      //       }
-      //     } else {
-      //       this.$message({
-      //         message: res.data.msg,
-      //         type: "error"
-      //       });
-      //     }
-      //   })
-      //   .catch(err => {
-      //     this.$message({
-      //       message: "登陆失败 " + err,
-      //       type: "error"
-      //     });
-      //   });
+      if (this.loginForm.userCode == '' || this.loginForm.userId == '') {
+        this.$message({
+          message: "所填信息不完整",
+          type: "error"
+        });
+        return ;
+      }
+      await codeLogin(this.loginForm.userId, this.loginForm.userCode)
+      .then(res => {
+        localStorage.setItem("satoken", res.data.tokenValue)
+        localStorage.setItem("loginId", res.data.loginId)
+        localStorage.setItem("isLogin", true)
+        this.$store.commit('user/setUserInfo', { "satoken": res.data.tokenValue, "loginId": res.data.loginId, "isLogin": true })
+        this.$router.push("/")
+        this.$message({
+          message: "登录成功",
+          type: "success"
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: "登陆失败 " + err,
+          type: "error"
+        });
+      });
     },
     toRegister() {
       this.$router.push("/registered");
@@ -149,6 +154,10 @@ export default {
       this.$router.push("/passwordlogin");
     },
   },
+  // 离开页面清除定时器
+  destroyed () {
+    clearInterval(this.timer)
+  }
 };
 </script>
 <style scoped lang="less">
