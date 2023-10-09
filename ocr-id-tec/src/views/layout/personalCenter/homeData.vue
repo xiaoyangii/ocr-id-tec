@@ -46,7 +46,7 @@
           <el-col :span="22">
             <el-input
               type="text"
-              v-model="userInfo.realAuthentication"
+              v-model="userInfo.realName"
               :disabled="isInput"
               autocomplete="off"
             ></el-input>
@@ -56,7 +56,7 @@
           <el-col :span="22">
             <el-input
               type="text"
-              v-model.number="userInfo.userPhone"
+              v-model.number="userInfo.telephone"
               :disabled="isInput"
               autocomplete="off"
             ></el-input>
@@ -66,7 +66,7 @@
           <el-col :span="22">
             <el-input
               type="text"
-              v-model="userInfo.userEmail"
+              v-model="userInfo.email"
               :disabled="isInput"
               autocomplete="off"
             ></el-input>
@@ -119,6 +119,7 @@
 
 <script>
 import avatarUrl from '@/assets/images/Intersect.png'
+import { homeDetail, getUserDetail } from '@/api/personal.js'
 export default {
   name: 'homeData',
   data () {
@@ -143,14 +144,6 @@ export default {
     return {
       avatarUrl,
       userInfo: {
-        name: "吃萝卜的卷心菜",
-        email: "",
-        telephone: "446464",
-        realName: "",
-        profession: "学生",
-        affiliatedInstitution: "福州大学",
-        researchField: "计算机",
-        birthDay: "1999-01-01",
       },
       editRules: {
         telephone: [
@@ -197,13 +190,8 @@ export default {
       for(var i = 0; i < input__inner.length; i++) {
         input__inner[i].style.color = "#053593";
       }
-      var button_inner = document.getElementsByClassName("bind_code_gain");
-      button_inner[0].style.color = "#053593";
     },
-    bindforgetSendCode() {
-
-    },
-    saveEdit() {
+    async saveEdit() {
       this.showButton = true;
       this.disabled = true;
       this.isInput = true;
@@ -212,10 +200,40 @@ export default {
       for(var i = 0; i < input__inner.length; i++) {
         input__inner[i].style.color = "#C1C1C1";
       }
-      var button_inner = document.getElementsByClassName("bind_code_gain");
-      button_inner[0].style.color = "#C1C1C1";
+      await homeDetail(this.userInfo.name, this.userInfo.realName, this.userInfo.telephone, this.userInfo.email, this.userInfo.profession, this.userInfo.affiliatedInstitution, this.userInfo.researchField, this.userInfo.introduce)
+      .then(res => {
+        this.$message({
+          message: res.msg,
+          type: 'success'
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: "修改主页信息失败" + err,
+          type: 'error'
+        })
+      })
+    },
+    async getUserDetail() {
+      await getUserDetail(localStorage.getItem("loginId"))
+      .then(res => {
+        this.userInfo = res.User
+        this.$message({
+          message: "获取主页信息成功",
+          type: 'success'
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: "获取主页信息失败" + err,
+          type: 'error'
+        })
+      })
     }
   },
+  created() {
+    this.getUserDetail();
+  }
 }
 </script>
 <style scoped lang='less'>

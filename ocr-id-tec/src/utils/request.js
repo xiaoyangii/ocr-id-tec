@@ -5,7 +5,7 @@ import { showFullScreenLoading , tryHideFullScreenLoading } from '@/utils/loadin
 // 创建 axios 实例，将来对创建出来的实例，进行自定义配置
 const instance = axios.create({
   baseURL: 'http://orcsystem.v2.idcfengye.com/',
-  timeout: 8000,
+  timeout: 14000,
   // withCredentials: true, // 跨域请求时是否需要使用凭证
   crossDomain: true,
   headers: {

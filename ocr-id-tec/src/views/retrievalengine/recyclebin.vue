@@ -41,6 +41,7 @@
 
 <script>
 import downCard from '@/components/downCard.vue';
+import '@/assets/style/confirm.less'
 import { getrecyclebinList, setrecyclebinList } from '@/utils/storage'
 export default {
   name: 'recyclebin',

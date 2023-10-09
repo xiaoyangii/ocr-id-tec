@@ -56,6 +56,11 @@ const routes = [
             name: 'bulkImport',
             component: () => import('@/views/retrievalengine/bulkImport.vue')
           },
+          {
+            path: '/home/retrievalengine/bulkImportImg',
+            name: 'bulkImportImg',
+            component: () => import('@/views/retrievalengine/bulkImportImg.vue')
+          },
           // 检索引擎的历史记录
           {
             path: '/home/retrievalengine/historicalBrowsing',

@@ -3,9 +3,16 @@
     <div class="personaldata">
       <div class="personaldata_avatar">
         <el-avatar :size="87" :src="avatarUrl"></el-avatar>
-        <el-link type="primary" @click="editAvatar" class="personaldata_avatar_edit"
-          >更换头像
-        </el-link>
+        <el-upload
+          class="upload-demo"
+          action=""
+          :limit="1"
+          :http-request="uploadFile"
+          :auto-upload="false"
+          accept=".png,.jpg,.jpeg"
+          >
+          <el-link type="primary" @click="editAvatar" class="personaldata_avatar_edit">更换头像</el-link>
+        </el-upload>
       </div>
       <div class="personaldata_username">
         {{ userInfo.userName }}
@@ -118,6 +125,7 @@
 
 <script>
 import avatarUrl from '@/assets/images/Intersect.png'
+import { userDetail, getUserDetail } from "@/api/personal.js"
 export default {
   name: 'personalData',
   data () {
@@ -142,14 +150,6 @@ export default {
     return {
       avatarUrl,
       userInfo: {
-        name: "吃萝卜的卷心菜",
-        email: "",
-        telephone: "15116165111",
-        realName: "dsada",
-        profession: "学生",
-        race: "汉族",
-        areaOfInterest: "计算机",
-        birthDay: "1999-01-01",
       },
       editRules: {
         userPhone: [
@@ -200,6 +200,12 @@ export default {
     editAvatar() {
 
     },
+    uploadFile() {
+      console.log("uploadfile");
+      console.log(file)
+      //参数file文件就是传入的文件流，添加进formDate中
+      this.formDate.append("files", file.file)
+    },
     edit() {
       this.showButton = false;
       this.disabled = false;
@@ -208,13 +214,8 @@ export default {
       for(var i = 0; i < input__inner.length; i++) {
         input__inner[i].style.color = "#053593";
       }
-      var button_inner = document.getElementsByClassName("bind_code_gain");
-      button_inner[0].style.color = "#053593";
     },
-    bindforgetSendCode() {
-
-    },
-    saveEdit() {
+    async saveEdit() {
       this.showButton = true;
       this.disabled = true;
       this.isInput = true;
@@ -223,9 +224,39 @@ export default {
       for(var i = 0; i < input__inner.length; i++) {
         input__inner[i].style.color = "#C1C1C1";
       }
-      var button_inner = document.getElementsByClassName("bind_code_gain");
-      button_inner[0].style.color = "#C1C1C1";
+      await userDetail(this.userInfo.name, this.userInfo.realName, this.userInfo.telephone, this.userInfo.email, this.userInfo.profession, this.userInfo.race, this.userInfo.birthDay, this.userInfo.areaOfInterest)
+      .then(res => {
+        this.$message({
+          message: res.msg,
+          type: 'success'
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: "修改个人信息失败" + err,
+          type: 'error'
+        })
+      })
+    },
+    async getUserDetail() {
+      await getUserDetail(localStorage.getItem("loginId"))
+      .then(res => {
+        this.userInfo = res.User
+        this.$message({
+          message: "获取个人信息成功",
+          type: 'success'
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: "获取个人信息失败" + err,
+          type: 'error'
+        })
+      })
     }
+  },
+  created() {
+    this.getUserDetail()
   },
 }
 </script>

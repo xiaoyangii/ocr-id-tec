@@ -39,6 +39,7 @@
 
 <script>
 import historicalCard from '@/components/historicalCard.vue';
+import '@/assets/style/confirm.less'
 import { getHistoryList, setHistoryList } from '@/utils/storage'
 export default {
   name: 'historicalBrowsing',
@@ -489,6 +490,7 @@ export default {
     margin-top: 120px;
   }
 }
+
 
 </style>
   

@@ -38,6 +38,7 @@
 
 <script>
 import downCard from '@/components/downCard.vue';
+import '@/assets/style/confirm.less'
 import { getDownloadList, setDownloadList } from '@/utils/storage'
 export default {
   name: 'myDownload',

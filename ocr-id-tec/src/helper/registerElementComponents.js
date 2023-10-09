@@ -22,6 +22,7 @@ import {
   Tree,
   PageHeader,
   Progress,
+  Upload,
   Container,
   Header,
   Aside,
@@ -56,6 +57,7 @@ Vue.use(Tabs)
 Vue.use(TabPane)
 Vue.use(Tree)
 Vue.use(Row)
+Vue.use(Upload)
 
 Vue.prototype.$message = Message
 Vue.prototype.$messageBox = MessageBox
