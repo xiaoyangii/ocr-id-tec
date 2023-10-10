@@ -6,7 +6,7 @@
     <div class="card_right">
       <div class="card_right_title">{{ item.title }}</div>
       <div class="card_right_desc">{{ item.desc }}</div>
-      <button class="card_right_subs">取消订阅</button>
+      <button class="card_right_subs" @click="deleteSubs(item)">取消订阅</button>
     </div>
   </div>
 </template>
@@ -26,7 +26,12 @@ export default {
       }
     }
   },
-  methods: {},
+  inject: ["fatherDeleteMethod"],
+  methods: {
+    deleteSubs(item) {
+      this.fatherDeleteMethod(item.title)
+    },
+  },
   created () {},
 }
 </script>
@@ -66,6 +71,7 @@ export default {
     border: none;
     color: #013480;
     font-size: 11px;
+    cursor: pointer;
   }
 }
 </style>

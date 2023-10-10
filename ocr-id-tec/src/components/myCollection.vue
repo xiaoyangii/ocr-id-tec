@@ -6,8 +6,8 @@
     <div class="card_right">
       <div class="card_right_head">
         <div class="card_right_head_author">{{ item.author }}</div>
-        <div class="card_right_head_colle">收藏</div>
-        <i class="el-icon-star-on"></i>
+        <div class="card_right_head_colle" @click="deleteCollection(item)">收藏</div>
+        <i class="el-icon-star-on" @click="deleteCollection(item)"></i>
       </div>
       <div class="card_right_title">{{ item.title }}</div>
       <div class="card_right_desc">{{ item.desc }}</div>
@@ -33,7 +33,12 @@ export default {
       }
     }
   },
-  methods: {},
+  inject: ["fatherDeleteMethod"],
+  methods: {
+    deleteCollection(item) {
+      this.fatherDeleteMethod(item.id)
+    }
+  },
   created () {},
 }
 </script>
@@ -69,6 +74,7 @@ export default {
       float: right;
       font-size: 30px;
       color: yellow;
+      cursor: pointer;
     }
     &_colle {
       float: right;
@@ -77,6 +83,7 @@ export default {
       color: #BAABAB;
       font-size: 18px;
       text-align: right;
+      cursor: pointer;
     }
   }
   &_title {

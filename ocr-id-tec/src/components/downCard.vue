@@ -34,7 +34,7 @@ export default {
   methods: {
     // 触发点击事件deleteThis($event),将当前点击的对象的id值传递给父组件，调用父组件的deleteByIcon(id)方法
     deleteThis(item) {
-      this.fatherDeleteMethod(item.id);
+      this.fatherDeleteMethod(item.article)
     },
     openFile() {
       console.log('打开文件')

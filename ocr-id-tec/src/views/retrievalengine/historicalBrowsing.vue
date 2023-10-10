@@ -40,7 +40,7 @@
 <script>
 import historicalCard from '@/components/historicalCard.vue';
 import '@/assets/style/confirm.less'
-import { getHistoryList, setHistoryList } from '@/utils/storage'
+import { getHisList, deleteAllHistory, deleteOneHistory, deleteMultiHistory } from '@/api/history.js'
 export default {
   name: 'historicalBrowsing',
   components: {
@@ -53,77 +53,77 @@ export default {
       hisList: [
         {
           isSlected: false,
-          id: 1,
+          articleId: 1,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 2,
+          articleId: 2,
           title: '新医科背景下的康复医学教育改革思考',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 3,
+          articleId: 3,
           title: '临床医学专业新发传染病防控课程设置的思考',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 4,
+          articleId: 4,
           title: '基础与临床整合医学人工智能实训案例平台的开发与应用',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 5,
+          articleId: 5,
           title: '医学技术的人文价值',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 6,
+          articleId: 6,
           title: '医学生物化学与分子生物学实验教学的改革与实践 ',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 7,
+          articleId: 7,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 8,
+          articleId: 8,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 9,
+          articleId: 9,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 10,
+          articleId: 10,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 11,
+          articleId: 11,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
@@ -132,77 +132,77 @@ export default {
       hisListCopy: [
         {
           isSlected: false,
-          id: 1,
+          articleId: 1,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 2,
+          articleId: 2,
           title: '新医科背景下的康复医学教育改革思考',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 3,
+          articleId: 3,
           title: '临床医学专业新发传染病防控课程设置的思考',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 4,
+          articleId: 4,
           title: '基础与临床整合医学人工智能实训案例平台的开发与应用',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 5,
+          articleId: 5,
           title: '医学技术的人文价值',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 6,
+          articleId: 6,
           title: '医学生物化学与分子生物学实验教学的改革与实践 ',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 7,
+          articleId: 7,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 8,
+          articleId: 8,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 9,
+          articleId: 9,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 10,
+          articleId: 10,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 11,
+          articleId: 11,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
@@ -241,6 +241,22 @@ export default {
       }
       return true;
     },
+    listId() {
+      let arr = []
+      this.hisList.forEach((item) => {
+        if(item.isSlected === true) {
+          arr.push(item.articleId)
+        }
+      })
+      return arr
+    },
+    AllId() {
+      let arr = []
+      this.hisList.forEach((item) => {
+          arr.push(item.articleId)
+      })
+      return arr
+    }
   },
   watch: {
     keyWord() {
@@ -264,6 +280,27 @@ export default {
         }
       });
     },
+    async getHistory() {
+      await getHisList(localStorage.getItem('loginId'))
+      .then(res => {
+        // this.hisList = res
+        // 给每个对象添加isSlected属性，用于判断是否选中
+        // this.hisList.forEach((item) => {
+        //   item.isSlected = false;
+        // })
+        // this.$store.commit('myhistory/setHistory', this.hisList)
+        this.$message({
+          message: '获取历史记录成功',
+          type: "success"
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: '获取历史记录失败' + err,
+          type: "error"
+        });
+      })
+    },
     // 清空历史记录
     clearAll() {
       // 利用elementUI弹出消息确认框询问是否确定删除,如果确定，清空hisList,并发起请求，删除后台数据
@@ -271,21 +308,30 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        this.hisList = [];
-        setHistoryList([]);
+      }).then(async () => {
         // 发起axios请求，删除所有历史记录，后台数据也要删除
-        /////////////////////////////////////////////////
-        this.$message({
-          type: 'info',
-          message: '删除成功'
-        });
+        await deleteAllHistory(localStorage.getItem('loginId'), this.AllId)
+        .then((res) => {
+          console.log(res)
+          this.$message({
+            type: 'success',
+            message: '删除全部历史记录成功'
+          })
+          this.hisList = []
+          this.$store.commit('myhistory/setHistory', [])
+        })
+        .catch((err) => {
+          this.$message({
+            type: 'error',
+            message: '删除全部历史记录失败' + err
+          })
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
           message: '已取消删除'
-        });          
-      });
+        })       
+      })
     },
     cancel() {
       // 取消选中的历史记录
@@ -299,13 +345,25 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        // 删除选中的历史记录,并且重新渲染
-        this.hisList = this.hisList.filter((item) => {
-          return item.isSlected === false;
-        });
-        // 发起axios请求，删除所有历史记录，后台数据也要删除
-        /////////////////////////////////////////////////
+      }).then(async () => {
+        await deleteMultiHistory(localStorage.getItem('loginId') ,this.listId)
+        .then((res) => {
+          console.log(res)
+          this.$message({
+            type: 'success',
+            message: '删除选中的历史记录成功'
+          })
+          this.hisList = this.hisList.filter((item) => {
+            return item.isSlected === false;
+          });
+          this.$store.commit('myhistory/setHistory', this.hisList)
+        })
+        .catch((err) => {
+          this.$message({
+            type: 'error',
+            message: '删除选中的历史记录失败' + err
+          })
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -314,18 +372,31 @@ export default {
       });
     },
     // 该组件的子组件historicalCard通过点击事件触发deleteThis()，调用d父组件eleteByIcon()该方法删除该组件内hisList中的该条数据，并重新渲染
-    deleteByIcon(id) {
+    deleteByIcon(articleId) {
       this.$confirm('此操作将永久删除该条的历史记录, 是否继续?', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        this.hisList = this.hisList.filter((item) => {
-          return item.id !== id;
-        });
-        this.matchList = this.hisList;
-        // 发起axios请求，删除所有历史记录，后台数据也要删除，通过id发出请求 删除后台数据
-        /////////////////////////////////////////////////
+      }).then(async () => {
+        await deleteOneHistory(localStorage.getItem('loginId'), articleId)
+        .then((res) => {
+          console.log(res)
+          this.$message({
+            type: 'success',
+            message: '删除该条的历史记录成功'
+          })
+          this.hisList = this.hisList.filter((item) => {
+            return item.articleId !== articleId
+          })
+          this.matchList = this.hisList
+          this.$store.commit('myhistory/setHistory', this.hisList)
+        })
+        .catch((err) => {
+          this.$message({
+            type: 'error',
+            message: '删除该条的历史记录失败' + err
+          })
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -342,6 +413,7 @@ export default {
   },
   created () {
     this.matchList = this.hisList;
+    this.getHistory()
   },
 }
 </script>

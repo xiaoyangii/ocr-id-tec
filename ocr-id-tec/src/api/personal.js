@@ -33,9 +33,28 @@ export const homeDetail = (name, realName, telephone, email, profession, affilia
   })
 }
 
-// 2. 获取个人资料
+// 2. 修改个人资料
+export const editAva = (data) => {
+  return request.post('/User/ChangeDetail', {
+    data,
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+}
+
+// 3. 获取个人资料
 export const getUserDetail = (telephone) => {
   return request.get('/User/SelectOneDetail', {
+    params: {
+      telephone
+    }
+  })
+}
+
+// 4. 获取头像
+export const getUserAva = (telephone) => {
+  return request.get('/User/SelectOnePicture', {
     params: {
       telephone
     }

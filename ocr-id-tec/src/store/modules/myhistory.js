@@ -1,15 +1,16 @@
-//import { changeCount, delSelect, getCartList } from '@/api/history'
+import { getHistoryList, setHistoryList } from '@/utils/storage'
 
 export default {
   namespaced: true,
   state () {
     return {
-      historyList: []
+      historyList: getHistoryList()
     }
   },
   mutations: {
-    setHistoryList (state, newList) {
+    setHistory (state, newList) {
       state.historyList = newList
+      setHistoryList(newList)
     },
   },
   actions: {

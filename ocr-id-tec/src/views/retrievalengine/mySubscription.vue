@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import subCard from '@/components/subCard.vue';
+import subCard from '@/components/subCard.vue'
+import { getSubs, deleteSubs } from '@/api/mySubscribe.js' 
 export default {
   name: 'mySubscription',
   components: { subCard },
@@ -83,9 +84,57 @@ export default {
   methods: {
     pickerOptions() {
       
+    },
+    async getSubList() {
+      await getSubs(localStorage.getItem('loginId'))
+      .then(res => {
+        console.log(res)
+        // this.subList = res
+        this.$message({
+          message: '获取订阅列表成功',
+          type: "success"
+        })
+        // this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+      })
+      .catch(err => {
+        console.log(err)
+        this.$message({
+          message: '获取订阅列表失败' + err,
+          type: "error"
+        })
+      })
+    },
+    async deleteSubs(title) {
+      // 删除subList中的对应title数据
+      this.subList = this.subList.filter(item => item.title !== title)
+      this.$message({
+        type: 'success',
+        message: '取消订阅成功'
+      })
+      // await deleteSubs(title, localStorage.getItem('loginId'))
+      // .then(res => {
+      //   console.log(res)
+      //   this.$message({
+      //     type: 'success',
+      //     message: '取消订阅成功'
+      //   })
+      // })
+      // .catch(err => {
+      //   this.$message({
+      //     type: 'error',
+      //     message: '取消订阅失败' + err
+      //   })
+      // })
     }
   },
-  created () {},
+  provide() {
+    return {
+      fatherDeleteMethod: this.deleteSubs
+    };
+  },
+  created () {
+    this.getSubList()
+  },
 }
 </script>
 <style scoped lang='less'>

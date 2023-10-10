@@ -2,9 +2,19 @@ import request from '@/utils/request'
 
 // 1. 获取收藏列表
 export const getColle = (telephone) => {
-  return request.post('/CollectLink/SelectAllByTelephone', {
-    form: {
+  return request.get('/CollectLink/SelectAllByTelephone', {
+    params: {
       telephone
+    }
+  })
+}
+
+// 2. 取消收藏
+export const deleteColle = (telephone, articleId) => {
+  return request.delete('/CollectLink/DeleteCollectLink', {
+    params: {
+      telephone,
+      articleId
     }
   })
 }

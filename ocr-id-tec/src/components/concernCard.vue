@@ -9,7 +9,7 @@
       <div class="card_middle_decs">{{ item.researchField }}</div>
     </div>
     <div class="card_right">
-      <button class="card_right_concern">取消关注</button>
+      <button class="card_right_concern" @click="deleteConcern(item)">取消关注</button>
     </div>
   </div>
 </template>
@@ -30,7 +30,12 @@ export default {
       default: () => {}
     }
   },
-  methods: {},
+  inject: ["fatherDeleteMethod"],
+  methods: {
+    deleteConcern(item) {
+      this.fatherDeleteMethod(item.id)
+    }
+  },
   created () {},
 }
 </script>
@@ -80,6 +85,7 @@ export default {
     color: #013480;
     font-size: 18px;
     font-weight: 700;
+    cursor: pointer;
   }
 }
 </style>

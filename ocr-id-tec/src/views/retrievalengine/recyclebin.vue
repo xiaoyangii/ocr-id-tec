@@ -40,9 +40,9 @@
 </template>
 
 <script>
-import downCard from '@/components/downCard.vue';
+import downCard from '@/components/downCard.vue'
 import '@/assets/style/confirm.less'
-import { getrecyclebinList, setrecyclebinList } from '@/utils/storage'
+import { getRecyclebin, deleteAllRecyclebin, deleteMultiRecyclebin, deleteOneRecyclebin } from '@/api/recyclebin.js'
 export default {
   name: 'recyclebin',
   components: { downCard },
@@ -54,55 +54,56 @@ export default {
       recycleList: [
       {
           isSlected: false,
-          id: 1,
+          articleId: 1,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 2,
+          articleId: 2,
           title: '新医科背景下的康复医学教育改革思考',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 3,
+          articleId: 3,
           title: '实验动物智能化综合管理系统开发及应用',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 4,
+          articleId: 4,
           title: '医学人文视域下医学史的学科价值和发展路径探析',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 5,
+          articleId: 5,
           title: '医学生物化学与分子生物学实验教学的改革与实践',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 6,
+          articleId: 6,
           title: 'SWOT视角下医学出版的数字化转型研究',
           date: '2021-01-01',
           time: '13:14',
         },
         {
           isSlected: false,
-          id: 7,
+          articleId: 7,
           title: '临床医学专业新发传染病防控课程设置的思考 ',
           date: '2021-01-01',
           time: '13:14',
         },
       ],
       recycleListCopy: [],
+      recycleListId: []
     }
   },
   computed: {
@@ -134,6 +135,22 @@ export default {
       }
       return true;
     },
+    listId() {
+      let arr = []
+      this.recycleList.forEach((item) => {
+        if(item.isSlected === true) {
+          arr.push(item.articleId)
+        }
+      })
+      return arr
+    },
+    AllId() {
+      let arr = []
+      this.recycleList.forEach((item) => {
+          arr.push(item.articleId)
+      })
+      return arr
+    }
   },
   watch: {
     // 文字清空时调用
@@ -158,6 +175,27 @@ export default {
         }
       });
     },
+    async getRecyclebin() {
+      await getRecyclebin(localStorage.getItem('loginId'))
+      .then(res => {
+        // this.recycleList = res
+        // 给每个对象添加isSlected属性，用于判断是否选中
+        // this.recycleList.forEach((item) => {
+        //   item.isSlected = false;
+        // });
+        // this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        this.$message({
+          message: '获取回收站记录成功',
+          type: "success"
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: err.msg,
+          type: "error"
+        });
+      })
+    },
     // 清空回收站记录
     clearAll() {
       // 利用elementUI弹出消息确认框询问是否确定删除,如果确定，清空recycleList,并发起请求，删除后台数据
@@ -165,15 +203,23 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        this.recycleList = [];
-        setrecyclebinList([]);
-        // 发起axios请求，删除所有历史记录，后台数据也要删除
-        /////////////////////////////////////////////////
-        this.$message({
-          type: 'info',
-          message: '删除成功'
-        });
+      }).then(async () => {
+        await deleteAllRecyclebin(localStorage.getItem('loginId'), this.AllId)
+        .then(res => {
+          console.log(res)
+          this.$message({
+            message: "删除全部回收站记录成功",
+            type: "success"
+          });
+          // this.recycleList = []
+          // this.$store.commit('myrecyclebin/setRecyclebin', [])
+        })
+        .catch(err => {
+          this.$message({
+            message: "删除全部回收站记录失败" + err,
+            type: "error"
+          });
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -193,13 +239,26 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        // 删除选中的历史记录,并且重新渲染
-        this.recycleList = this.recycleList.filter((item) => {
-          return item.isSlected === false;
-        });
+      }).then(async () => {
         // 发起axios请求，删除所有历史记录，后台数据也要删除
-        /////////////////////////////////////////////////
+        await deleteMultiRecyclebin(localStorage.getItem('loginId'), this.listId)
+        .then(res => {
+          console.log(res)
+          this.$message({
+            message: "删除选中的回收站记录成功",
+            type: "success"
+          })
+          // 删除选中的历史记录,并且重新渲染
+          // his.recycleList = this.recycleList.filter((item) => {
+          // return item.isSlected === false;
+          // this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        })
+        .catch(err => {
+          this.$message({
+            message: "删除选中的回收站记录失败" + err,
+            type: "error"
+          });
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -208,18 +267,31 @@ export default {
       });
     },
     // 该组件的子组件historicalCard通过点击事件触发deleteThis()，调用d父组件eleteByIcon()该方法删除该组件内recycleList中的该条数据，并重新渲染
-    deleteByIcon(id) {
+    deleteByIcon(articleId) {
       this.$confirm('此操作将永久删除该条的回收站记录, 是否继续?', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        this.recycleList = this.recycleList.filter((item) => {
-          return item.id !== id;
-        });
-        this.matchList = this.recycleList;
-        // 发起axios请求，删除所有历史记录，后台数据也要删除，通过id发出请求 删除后台数据
-        /////////////////////////////////////////////////
+      }).then(async () => {
+        await deleteOneRecyclebin(localStorage.getItem('loginId'), articleId)
+        .then(res => {
+          console.log(res)
+          this.$message({
+            message: "删除该条回收站记录成功",
+            type: "success"
+          })
+          this.recycleList = this.recycleList.filter((item) => {
+            return item.articleId !== articleId;
+          })
+          this.matchList = this.recycleList;
+          this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        })
+        .catch(err => {
+          this.$message({
+            message: "删除该条回收站记录失败" + err,
+            type: "error"
+          })
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -234,7 +306,8 @@ export default {
     };
   },
   created () {
-    this.matchList = this.recycleList;
+    this.matchList = this.recycleList
+    this.getRecyclebin()
   },
 }
 </script>

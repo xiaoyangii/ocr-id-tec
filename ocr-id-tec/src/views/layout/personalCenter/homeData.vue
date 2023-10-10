@@ -3,12 +3,21 @@
     <div class="personaldata">
       <div class="personaldata_avatar">
         <el-avatar :size="87" :src="avatarUrl"></el-avatar>
-        <el-link type="primary" @click="editAvatar" class="personaldata_avatar_edit"
-          >更换头像
-        </el-link>
+        <el-upload
+          class="upload-demo"
+          ref="upload"
+          action="http://orcsystem.v2.idcfengye.com/User/ChangeDetail"
+          :limit="1"
+          :http-request="uploadFile"
+          :on-change="onChange"
+          :auto-upload="false"
+          accept=".png,.jpg,.jpeg"
+          >
+          <el-link type="primary" class="personaldata_avatar_edit">更换头像</el-link>
+        </el-upload>
       </div>
       <div class="personaldata_username">
-        {{ userInfo.userName }}
+        {{ userInfo.name }}
       </div>
       <div class="personaldata_authentication">
         已手机认证
@@ -119,7 +128,7 @@
 
 <script>
 import avatarUrl from '@/assets/images/Intersect.png'
-import { homeDetail, getUserDetail } from '@/api/personal.js'
+import { homeDetail, getUserDetail, editAva, getUserAva } from '@/api/personal.js'
 export default {
   name: 'homeData',
   data () {
@@ -174,13 +183,41 @@ export default {
       },
       isInput: true,
       showButton: true,
+      formDate: new FormData(),
+      imgList: []
     }
   },
   computed: {},
   watch: {},
   methods: {
-    editAvatar() {
-
+    async editAvatar() {
+      this.$refs.upload.submit()
+      this.formDate.append('telephone', localStorage.getItem('loginId'))
+      await editAva(this.formDate)
+      .then(res => {
+        this.$message({
+          message: "更换头像成功",
+          type: "success"
+        });
+      })
+      .catch(err => {
+        this.$message({
+          message: "更换头像失败" + err,
+          type: "error"
+        });
+      })
+    },
+    onChange(file, fileList) {
+      console.log("onchange")
+      this.imgList.push(file)
+      console.log(fileList)
+      this.editAvatar()
+    },
+    uploadFile(file) {
+      console.log("uploadfile");
+      console.log(file)
+      //参数file文件就是传入的文件流，添加进formDate中
+      this.formDate.append("files", file.file)
     },
     edit() {
       this.showButton = false;
@@ -226,6 +263,18 @@ export default {
       .catch(err => {
         this.$message({
           message: "获取主页信息失败" + err,
+          type: 'error'
+        })
+      })
+    },
+    async getUserAvatar() {
+      await getUserAva(localStorage.getItem("loginId"))
+      .then(res => {
+        console.log(res.Picture)
+      })
+      .catch(err => {
+        this.$message({
+          message: "获取头像失败" + err,
           type: 'error'
         })
       })

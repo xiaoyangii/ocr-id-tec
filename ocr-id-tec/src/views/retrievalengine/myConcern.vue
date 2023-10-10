@@ -29,6 +29,7 @@
 
 <script>
 import concernCard from '@/components/concernCard.vue';
+import { getConcern, deleteConcern } from '@/api/myConcern.js';
 export default {
   name: 'myConcern',
   components: { concernCard },
@@ -39,43 +40,76 @@ export default {
       concernList: [
         {
           id: 1,
-          title: "中医药学研究",
-          desc: "中药学是研究中药的基本理论和临床应用的学科，是中医药各专业的基础学科之一。内容包括中药、中药学的概念..."
+          name: "蒋建东",
+          affiliatedInstitution: "中国医学科学院医药生物技术研究所",
+          researchField: "新降血脂信号通路、抗病毒机理、抗肿瘤药物..."
         },
         {
-          id: 1,
+          id: 2,
           name: "叶晓滨",
           affiliatedInstitution: "厦门市思明区筼筜街道社区卫生服务中心",
           researchField: "中药学;中医学;药学"
         },
         {
-          id: 1,
+          id: 3,
+          name: "田金洲",
+          affiliatedInstitution: "北京中医药大学东直门医院",
+          researchField: "中医学;精神病学;中药学"
         },
         {
-          id: 1,
+          id: 4,
+          name: "朱兆云",
+          affiliatedInstitution: "云南白药集团股份有限公司",
+          researchField: "中药研发"
         },
         {
-          id: 1,
+          id: 5,
+          name: "肖伟",
+          affiliatedInstitution: "江苏康缘药业股份有限公司",
+          researchField: "中成药智能制造"
         },
         {
-          id: 1,
+          id: 6,
+          name: "邬堂春",
+          affiliatedInstitution: "华中科技大学公共卫生学院",
+          researchField: "环境病因、防控策略"
         },
         {
-          id: 1,
+          id: 7,
+          name: "高鸿魁",
+          affiliatedInstitution: "中山大学眼科中心",
+          researchField: "眼科、视觉科学、眼底新生血管疾病"
         },
         {
-          id: 1,
+          id: 8,
+          name: "高峰",
+          affiliatedInstitution: "四川大学华西口腔医院",
+          researchField: "口腔颌面外科、口腔颌面肿瘤、口腔种植..."
         },
         {
-          id: 1,
+          id: 9,
+          name: "赵玉沛",
+          affiliatedInstitution: "天津医科大学总医院创伤骨科中心",
+          researchField: "创伤骨科、骨与软骨修复再生"
         },
         {
-          id: 1,
+          id: 10,
+          name: "陈万青",
+          affiliatedInstitution: "上海交通大学附属瑞金医院肿瘤研究所",
+          researchField: "肿瘤、肿瘤免疫、肿瘤转移"
         },
         {
-          id: 1,
+          id: 11,
+          name: "肖伟",
+          affiliatedInstitution: "江苏康缘药业股份有限公司",
+          researchField: "中成药智能制造"
         },
-
+        {
+          id: 12,
+          name: "蒋建东",
+          affiliatedInstitution: "中国医学科学院医药生物技术研究所",
+          researchField: "新降血脂信号通路、抗病毒机理、抗肿瘤药物..."
+        },
       ]
     }
   },
@@ -84,9 +118,55 @@ export default {
   methods: {
     pickerOptions() {
       
+    },
+    async deleteConcern(id) {
+      // 删除concernList中的对应id数据
+      this.concernList = this.concernList.filter(item => item.id !== id)
+      this.$message({
+        type: 'success',
+        message: '取消关注成功'
+      })
+      // await deleteConcern(id, localStorage.getItem('loginId'))
+      // .then(res => {
+      //   console.log(res)
+      //   this.$message({
+      //     type: 'success',
+      //     message: '取消关注成功'
+      //   })
+      // })
+      // .catch(err => {
+      //   this.$message({
+      //     type: 'error',
+      //     message: '取消关注失败' + err
+      //   })
+      // })
+    },
+    async getConcern() {
+      await getConcern(localStorage.getItem('loginId'))
+      .then(res => {
+        console.log(res)
+        // this.concernList = res
+        this.$message({
+          type: 'success',
+          message: '获取关注列表成功'
+        })
+      })
+      .catch(err => {
+        this.$message({
+          type: 'error',
+          message: '获取关注列表失败' + err
+        })
+      })
     }
   },
-  created () {},
+  provide() {
+    return {
+      fatherDeleteMethod: this.deleteConcern
+    };
+  },
+  created () {
+    this.getConcern()
+  },
 }
 </script>
 <style scoped lang='less'>
