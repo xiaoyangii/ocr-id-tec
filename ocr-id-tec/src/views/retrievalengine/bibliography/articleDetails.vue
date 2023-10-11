@@ -312,6 +312,7 @@ export default {
       font-size: 35px;
       line-height: 2;
       margin-left: 10px;
+      cursor: pointer;
     }
 
     &_iconbox {
@@ -326,6 +327,7 @@ export default {
         width: 30px;
         scale: 1.1;
         background: url('@/assets/images/引用.png') no-repeat;
+        cursor: pointer;
       }
       &_share {
         float: right;
@@ -335,6 +337,7 @@ export default {
         width: 30px;
         scale: 1.1;
         background: url('@/assets/images/分享.png') no-repeat;
+        cursor: pointer;
       }
       &_collect {
         float: right;
@@ -344,6 +347,7 @@ export default {
         width: 30px;
         scale: 1.1;
         background: url('@/assets/images/收藏.png') no-repeat;
+        cursor: pointer;
       }
       &_tag {
         float: right;
@@ -353,6 +357,7 @@ export default {
         width: 30px;
         scale: 1.1;
         background: url('@/assets/images/tag.png') no-repeat;
+        cursor: pointer;
       }
     }
   }
@@ -387,6 +392,7 @@ export default {
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
+    cursor: pointer;
   }
   &_title {
     padding: 10px auto;
@@ -446,15 +452,18 @@ export default {
     &_online {
       background: #013480;
       color: #FFF;
+      cursor: pointer;
     }
     &_download {
       background: #BDDFFF;
       color: #000;
+      cursor: pointer;
     }
     &_pigeonhole {
       background: #DCE3ED;
       color: #000;
       margin-right: 0;
+      cursor: pointer;
     }
   }
   &_data {

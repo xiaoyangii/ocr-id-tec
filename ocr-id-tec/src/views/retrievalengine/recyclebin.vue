@@ -112,28 +112,28 @@ export default {
       let count = 0;
       this.recycleList.forEach((item) => {
         if(item.isSlected === true) {
-          count++;
+          count++
         }
       });
       return count;
     },
     // 监视recycleList每个对象的isSlected是否为true，如果有一个为true，hasSlected为true
     hasSlected() {
-      let flag = false;
+      let flag = false
       this.recycleList.forEach((item) => {
         if(item.isSlected === true) {
-          flag = true;
-          return;
+          flag = true
+          return
         }
-      });
-      return flag;
+      })
+      return flag
     },
     // 监视recycleList是否为空，如果为空，isempty为false
     isempty() {
       if(this.recycleList.length == 0) {
-        return false;
+        return false
       }
-      return true;
+      return true
     },
     listId() {
       let arr = []
@@ -156,9 +156,9 @@ export default {
     // 文字清空时调用
     keyWord() {
       if (this.keyWord === "") {
-        this.matchList = this.recycleList;
+        this.matchList = this.recycleList
       } else {
-        this.getMachlist();
+        this.getMachlist()
       }
     },
   },
@@ -166,14 +166,14 @@ export default {
     pickerOptions() {
 
     },
-    // 文字匹配，先清空hisLis，数据暂存recycleListCopy，通过keyword和dateValue进行匹配，筛选出与keyword匹配的数据，再筛选出在dateValue之前的数据，再将筛选出的数据push到recycleList中
+    // 文字匹配，先清空recycleList，数据暂存Copy，通过keyword和dateValue进行匹配，筛选出与keyword匹配的数据，再筛选出在dateValue之前的数据，再将筛选出的数据push到List中
     getMachlist() {
       this.matchList = [];
       this.recycleList.forEach((item) => {
         if(item.title.indexOf(this.keyWord) > -1) {
-          this.matchList.push(item);
+          this.matchList.push(item)
         }
-      });
+      })
     },
     async getRecyclebin() {
       await getRecyclebin(localStorage.getItem('loginId'))
@@ -183,7 +183,7 @@ export default {
         // this.recycleList.forEach((item) => {
         //   item.isSlected = false;
         // });
-        // this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
         this.$message({
           message: '获取回收站记录成功',
           type: "success"
@@ -191,7 +191,7 @@ export default {
       })
       .catch(err => {
         this.$message({
-          message: err.msg,
+          message: '获取回收站记录失败' + err.msg,
           type: "error"
         });
       })
@@ -204,28 +204,35 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(async () => {
-        await deleteAllRecyclebin(localStorage.getItem('loginId'), this.AllId)
-        .then(res => {
-          console.log(res)
-          this.$message({
-            message: "删除全部回收站记录成功",
-            type: "success"
-          });
-          // this.recycleList = []
-          // this.$store.commit('myrecyclebin/setRecyclebin', [])
+        this.recycleList = []
+        this.matchList = []
+        this.$store.commit('myrecyclebin/setRecyclebin', [])
+        this.$message({
+          message: "删除全部回收站记录成功",
+          type: "success"
         })
-        .catch(err => {
-          this.$message({
-            message: "删除全部回收站记录失败" + err,
-            type: "error"
-          });
-        })
+        // await deleteAllRecyclebin(localStorage.getItem('loginId'), this.AllId)
+        // .then(res => {
+        //   console.log(res)
+        //   this.$message({
+        //     message: "删除全部回收站记录成功",
+        //     type: "success"
+        //   })
+        //   this.recycleList = []
+        //   this.$store.commit('myrecyclebin/setRecyclebin', [])
+        // })
+        // .catch(err => {
+        //   this.$message({
+        //     message: "删除全部回收站记录失败" + err,
+        //     type: "error"
+        //   })
+        // })
       }).catch(() => {
         this.$message({
           type: 'info',
           message: '已取消删除'
-        });          
-      });
+        })   
+      })
     },
     cancel() {
       // 取消选中的回收站记录
@@ -240,25 +247,34 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(async () => {
+        this.recycleList = this.recycleList.filter((item) => {
+          return item.isSlected === false
+        })
+        this.matchList = this.recycleList
+        this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        this.$message({
+          message: "删除选中的回收站记录成功",
+          type: "success"
+        })
         // 发起axios请求，删除所有历史记录，后台数据也要删除
-        await deleteMultiRecyclebin(localStorage.getItem('loginId'), this.listId)
-        .then(res => {
-          console.log(res)
-          this.$message({
-            message: "删除选中的回收站记录成功",
-            type: "success"
-          })
-          // 删除选中的历史记录,并且重新渲染
-          // his.recycleList = this.recycleList.filter((item) => {
-          // return item.isSlected === false;
-          // this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
-        })
-        .catch(err => {
-          this.$message({
-            message: "删除选中的回收站记录失败" + err,
-            type: "error"
-          });
-        })
+        // await deleteMultiRecyclebin(localStorage.getItem('loginId'), this.listId)
+        // .then(res => {
+        //   console.log(res)
+        //   this.$message({
+        //     message: "删除选中的回收站记录成功",
+        //     type: "success"
+        //   })
+        //   // 删除选中的历史记录,并且重新渲染
+        //   this.recycleList = this.recycleList.filter((item) => {
+        //     return item.isSlected === false;
+        //   })
+        //   this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        // .catch(err => {
+        //   this.$message({
+        //     message: "删除选中的回收站记录失败" + err,
+        //     type: "error"
+        //   })
+        // })
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -273,37 +289,46 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(async () => {
-        await deleteOneRecyclebin(localStorage.getItem('loginId'), articleId)
-        .then(res => {
-          console.log(res)
-          this.$message({
-            message: "删除该条回收站记录成功",
-            type: "success"
-          })
-          this.recycleList = this.recycleList.filter((item) => {
-            return item.articleId !== articleId;
-          })
-          this.matchList = this.recycleList;
-          this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        this.recycleList = this.recycleList.filter((item) => {
+          return item.articleId !== articleId
         })
-        .catch(err => {
-          this.$message({
-            message: "删除该条回收站记录失败" + err,
-            type: "error"
-          })
+        this.matchList = this.recycleList
+        this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        this.$message({
+          message: "删除该条回收站记录成功",
+          type: "success"
         })
+        // await deleteOneRecyclebin(localStorage.getItem('loginId'), articleId)
+        // .then(res => {
+        //   console.log(res)
+        //   this.$message({
+        //     message: "删除该条回收站记录成功",
+        //     type: "success"
+        //   })
+        //   this.recycleList = this.recycleList.filter((item) => {
+        //     return item.articleId !== articleId
+        //   })
+        //   this.matchList = this.recycleList
+        //   this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
+        // })
+        // .catch(err => {
+        //   this.$message({
+        //     message: "删除该条回收站记录失败" + err,
+        //     type: "error"
+        //   })
+        // })
       }).catch(() => {
         this.$message({
           type: 'info',
           message: '已取消删除'
-        });          
-      });
+        })       
+      })
     },
   },
   provide() {
     return {
       fatherDeleteMethod: this.deleteByIcon
-    };
+    }
   },
   created () {
     this.matchList = this.recycleList

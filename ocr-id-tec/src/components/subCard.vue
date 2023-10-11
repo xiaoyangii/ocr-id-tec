@@ -1,7 +1,7 @@
 <template>
   <div class="subscription_card" v-if="item">
     <div class="card_left">
-      <img src="" alt="">
+      <img :src="item.img" alt="">
     </div>
     <div class="card_right">
       <div class="card_right_title">{{ item.title }}</div>
@@ -44,6 +44,11 @@ export default {
   float: left;
   width: 250px;
   height: 100%;
+  img {
+    width: 254px;
+    height: 148px;
+    border-radius: 20px;
+  }
 }
 .card_right {
   float: right;

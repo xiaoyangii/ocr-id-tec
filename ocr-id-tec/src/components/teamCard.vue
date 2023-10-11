@@ -65,6 +65,7 @@ export default {
       color: #000;
       font-size: 16px;
       font-weight: 700;
+      cursor: pointer;
     }
     &_desc {
       float: left;

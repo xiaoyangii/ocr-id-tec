@@ -8,7 +8,7 @@ export default {
     }
   },
   mutations: {
-    getDownloadList(state, newList) {
+    setDownList(state, newList) {
       state.downloadList = newList
       setDownloadList(newList)
     },

@@ -36,12 +36,15 @@
               <button class="content_list_box_bar_box_leftbutton" @click="textorimgList($event)" >文本</button>
               <button class="content_list_box_bar_box_rightbutton" @click="textorimgList($event)" >图片</button>
             </div>
-            <el-tabs v-model="activeName" @tab-click="handleTabClick" >
+            <el-tabs v-model="activeName" @tab-click="handleTabClick">
               <el-tab-pane label="推荐文献" name="first">
-                <articleCard v-for="(item, index) in articleList" :key="index" :item="item"></articleCard>
+                <articleCard v-for="(item, index) in articleList" :key="'a'+index" :item="item" v-show="!isImg"></articleCard>
+                <div class="colrow">
+                  <imgCard v-for="(item, index) in imgList" :key="index" :item="item" v-show="isImg"></imgCard>
+                </div>
               </el-tab-pane>
               <el-tab-pane label="关注" name="second">
-                <!-- <articleCard v-for="(item) in concernList" :key="item.id" :item="item" ></articleCard> -->
+                <articleCard v-for="(item, index) in concernList" :key="'b'+index" :item="item" ></articleCard>
               </el-tab-pane>
             </el-tabs>
           </div>
@@ -73,27 +76,29 @@
 </template>
 
 <script>
-import classifyBar from '@/views/retrievalengine/bibliography/classifyBar.vue';
-import articleCard from '@/components/articleCard.vue';
-import teamCard from '@/components/teamCard.vue';
-import poeCard from '@/components/poeCard.vue';
-
-import a1 from '@/assets/images/avatar1.png';
-import a2 from '@/assets/images/avatar2.png';
-import a3 from '@/assets/images/avatar3.png';
-import a4 from '@/assets/images/avatar4.png';
-import a5 from '@/assets/images/avatar5.png';
-import a6 from '@/assets/images/avatar6.png';
-import a7 from '@/assets/images/avatar7.png';
-import a8 from '@/assets/images/avatar8.png';
-
+import classifyBar from '@/views/retrievalengine/bibliography/classifyBar.vue'
+import articleCard from '@/components/articleCard.vue'
+import imgCard from '@/components/imgCard.vue'
+import teamCard from '@/components/teamCard.vue'
+import poeCard from '@/components/poeCard.vue'
+import a1 from '@/assets/images/avatar1.png'
+import a2 from '@/assets/images/avatar2.png'
+import a3 from '@/assets/images/avatar3.png'
+import a4 from '@/assets/images/avatar4.png'
+import a5 from '@/assets/images/avatar5.png'
+import a6 from '@/assets/images/avatar6.png'
+import a7 from '@/assets/images/avatar7.png'
+import a8 from '@/assets/images/avatar8.png'
+import { getArticle } from '@/api/article.js'
+import { getImg } from '@/api/img.js'
 export default {
   name: 'Bibliography',
   components: {
     classifyBar,
     articleCard,
     teamCard,
-    poeCard
+    poeCard,
+    imgCard
   },
   data () {
     return {
@@ -102,7 +107,10 @@ export default {
       activeName: 'first',
       keyWord: "", //搜索框输入的值
       dateValue: "",
+      isImg: false,
       articleList: [
+      ],
+      copyList: [
         {
           id: "1",
           title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "基于UNet的医学图像分割综述",
@@ -194,9 +202,37 @@ export default {
         }
       ],
       concernList: [
-        {
+      {
           id: "1",
-          title: "ggddgg"
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "基于UNet的医学图像分割综述",
+          author: "作者： " + "叶晓滨",
+          details: "源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
+          date: "2021",
+          name: "刊名： " + "中医研究"
+        },
+        {
+          id: "2",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄在肾脏病中的应用研究进展",
+          author: "作者： " + "叶晓滨",
+          details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
+          date: "2021",
+          name: "刊名： " + "实用临床医药杂志"
+        },
+        {
+          id: "3",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄研究简史",
+          author: "作者： " + "焦科兴; 董美佳; 李艺清; 侯胜田",
+          details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
+          date: "2021",
+          name: "刊名： " + "实用临床医药杂志"
+        },
+        {
+          id: "4",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄类药对组成规律的基础研究—麻黄石膏药对血药动力学",
+          author: "作者： " + "叶晓滨",
+          details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
+          date: "2021",
+          name: "刊名： " + "中医研究"
         }
       ],
       peoList: [
@@ -223,6 +259,48 @@ export default {
         },
       ],
       matchlist: [], // 匹配列表
+      imgList: [
+        {
+          id: 1,
+          title: "木麻黄人工林树高结构分布图",
+          img: require('@/assets/images/img1.png')
+        },
+        {
+          id: 2,
+          title: "不同海岸线距离木麻黄净光合速率的日变化",
+          img: require('@/assets/images/img2.png')
+        },
+        {
+          id: 3,
+          title: "不同海岸线距离木麻黄净光合速率的光响应曲线",
+          img: require('@/assets/images/img3.png')
+        },
+        {
+          id: 4,
+          title: "底物浓度对d-伪麻黄碱产量的影响",
+          img: require('@/assets/images/img4.png')
+        },
+        {
+          id: 5,
+          title: "12名志愿者单次口服受试制剂后伪麻黄碱平均血药浓度-时间曲线",
+          img: require('@/assets/images/img5.png')
+        },
+        {
+          id: 6,
+          title: "温度对转化d-伪麻黄碱产量的影响",
+          img: require('@/assets/images/img6.png')
+        },
+        {
+          id: 7,
+          title: "木麻黄小枝蒸腾速率日变化",
+          img: require('@/assets/images/img7.png')
+        },
+        {
+          id: 8,
+          title: "短枝木麻黄DRIS营养诊断图",
+          img: require('@/assets/images/img8.png')
+        }
+      ]
     }
   },
   computed: {},
@@ -240,6 +318,43 @@ export default {
     }
   },
   methods: {
+    async getArticleList() {
+      await getArticle()
+      .then(res => {
+        console.log(res)
+        this.articleList = this.copyList
+        this.$message({
+          message: "获取文章列表成功",
+          type: "success"
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        this.$message({
+          message: "获取文章列表失败" + err,
+          type: "error"
+        })
+      })
+      // this.articleList = res.data
+    },
+    async getImgList() {
+      await getImg()
+      .then(res => {
+        console.log(res)
+        this.$message({
+          message: "获取图片列表成功",
+          type: "success"
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        this.$message({
+          message: "获取图片列表失败" + err,
+          type: "error"
+        })
+      })
+      // this.articleList = res.data
+    },
     textorimgList(e) {
       var left = document.getElementsByClassName('content_list_box_bar_box_leftbutton')
       var right = document.getElementsByClassName('content_list_box_bar_box_rightbutton')
@@ -249,6 +364,13 @@ export default {
       right[0].style.color = '#013480'
       e.target.style.color = '#FFF'
       e.target.style.backgroundColor = '#013480'
+      if(e.target.innerText == "文本") {
+        this.isImg = false
+        this.articleList = this.articleList1
+      } else if(e.target.innerText == "图片") {
+        this.isImg = true
+        this.getImgList()
+      }
     },
     handleTabClick() {
 
@@ -343,6 +465,7 @@ export default {
   },
   created () {
     this.getMachlist()
+    this.getArticleList()
   },
   mounted() {
   },
@@ -416,6 +539,7 @@ export default {
       border: 1px solid #013480;
       color: #FFF;
       font-size: 22px;
+      cursor: pointer;
     }
     &_right {
       float: right;
@@ -517,6 +641,7 @@ export default {
           float: left;
           margin-left: 150px;
           margin-top: 14px;
+          cursor: pointer;
         }
         &_change {
           float: left;
@@ -525,6 +650,7 @@ export default {
           color: #9B9595;
           font-size: 16px;
           letter-spacing: 1.12px;
+          cursor: pointer;
         }
       }
       &_bottom {
@@ -545,6 +671,7 @@ export default {
           float: left;
           margin-left: 150px;
           margin-top: 14px;
+          cursor: pointer;
         }
         &_change {
           float: left;
@@ -553,6 +680,7 @@ export default {
           color: #9B9595;
           font-size: 16px;
           letter-spacing: 1.12px;
+          cursor: pointer;
         }
       }
     }
@@ -628,5 +756,14 @@ export default {
     cursor: pointer;
     z-index: 1000;
   }
+}
+.colrow {
+  column-count: 3; /* 调整列数 */
+  column-gap: 20px; /* 调整列间距 */
+  column-fill: balance; /* 平衡填充 */
+  // display: flex;
+  // align-items: baseline;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
 }
 </style>

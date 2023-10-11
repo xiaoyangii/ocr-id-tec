@@ -22,7 +22,7 @@
       <div class="concern_head_title">我的关注</div>
     </div>
     <div class="concern_content">
-      <concernCard v-for="(item, index) in concernList" :key="index" :item="item"></concernCard>
+      <concernCard v-for="(item, index) in matchList" :key="index" :item="item"></concernCard>
     </div>
   </div>
 </template>
@@ -110,14 +110,36 @@ export default {
           affiliatedInstitution: "中国医学科学院医药生物技术研究所",
           researchField: "新降血脂信号通路、抗病毒机理、抗肿瘤药物..."
         },
-      ]
+      ],
+      matchList: []
     }
   },
   computed: {},
-  watch: {},
+  watch: {
+    // 文字清空时调用
+    keyWord() {
+      if (this.keyWord === "") {
+        this.matchList = this.concernList
+      } else {
+        this.getMachlist()
+      }
+    },
+  },
   methods: {
     pickerOptions() {
       
+    },
+    getMachlist() {
+      this.matchList = []
+      this.concernList.forEach((item) => {
+        if(item.researchField.indexOf(this.keyWord) > -1) {
+          this.matchList.push(item)
+        } else if(item.name.indexOf(this.keyWord) > -1) {
+          this.matchList.push(item)
+        } else if(item.affiliatedInstitution.indexOf(this.keyWord) > -1) {
+          this.matchList.push(item)
+        }
+      })
     },
     async deleteConcern(id) {
       // 删除concernList中的对应id数据
@@ -166,6 +188,7 @@ export default {
   },
   created () {
     this.getConcern()
+    this.matchList = this.concernList
   },
 }
 </script>
@@ -242,6 +265,7 @@ export default {
 .concern_content {
   display: flex;
   flex-direction: row;
+  align-content: flex-start;
   flex-wrap: wrap;
   gap: 42px 220px;
   width: 100%;

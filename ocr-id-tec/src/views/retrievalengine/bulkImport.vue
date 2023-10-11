@@ -54,7 +54,7 @@ export default {
   watch: {},
   methods: {
     toImg() {
-      this.$router.push('/home/retrievalengine/bulkImportImg')
+      this.$router.push('/home/retrievalengine/bulkimportimg')
     },
     toDoc() {
       this.$router.push('/home/retrievalengine/myFile')
@@ -65,15 +65,15 @@ export default {
       await uploadPdfFile(this.formDate)
       .then(res => {
         this.$message({
-          message: res.msg,
+          message: "上传成功",
           type: "success"
-        });
+        })
       })
       .catch(err => {
         this.$message({
           message: err.msg,
           type: "error"
-        });
+        })
       })
     },
     beforeUpload(file) {
@@ -127,6 +127,7 @@ export default {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 2.42px;
+    cursor: pointer;
   }
   &_img {
     float: left;
@@ -135,6 +136,7 @@ export default {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 2.42px;
+    cursor: pointer;
   }
   &_doc {
     float: right;
@@ -143,6 +145,7 @@ export default {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 2.42px;
+    cursor: pointer;
   }
 }
 .bulkimport_body {

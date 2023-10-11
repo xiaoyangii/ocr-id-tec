@@ -67,7 +67,7 @@ export default {
   watch: {},
   methods: {
     toPdf() {
-      this.$router.push('/home/retrievalengine/bulkImport')
+      this.$router.push('/home/retrievalengine/bulkimport')
     },
     toDoc() {
       this.$router.push('/home/retrievalengine/myFile')
@@ -79,13 +79,13 @@ export default {
       .then(res => {
         this.text = res.Detail
         this.$message({
-          message: res.msg,
+          message: "上传成功",
           type: "success"
         });
       })
       .catch(err => {
         this.$message({
-          message: err.msg,
+          message: "上传失败" + err,
           type: "error"
         });
       })
@@ -155,6 +155,7 @@ export default {
     color: #000;
     font-size: 24px;
     letter-spacing: 2.64px;
+    cursor: pointer;
   }
 }
 .bulkimport_left {
@@ -181,6 +182,7 @@ export default {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 2.42px;
+    cursor: pointer;
   }
   &_img {
     float: left;
@@ -189,6 +191,7 @@ export default {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 2.42px;
+    cursor: pointer;
   }
   &_doc {
     float: right;
@@ -197,6 +200,7 @@ export default {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 2.42px;
+    cursor: pointer;
   }
 }
 .bulkimport_body {

@@ -39,7 +39,7 @@
 <script>
 import downCard from '@/components/downCard.vue';
 import '@/assets/style/confirm.less'
-import { getDownloadList, setDownloadList } from '@/utils/storage'
+import { getDownload, deleteAllDownload, deleteMultiDownload, deleteOneDownload } from '@/api/download.js'
 export default {
   name: 'myDownload',
   components: { downCard },
@@ -98,6 +98,27 @@ export default {
           date: '2021-01-01',
           time: '13:14',
         },
+        {
+          isSlected: false,
+          id: 8,
+          title: '医学生物化学与分子生物学实验教学的改革与实践',
+          date: '2021-01-01',
+          time: '13:14',
+        },
+        {
+          isSlected: false,
+          id: 9,
+          title: 'SWOT视角下医学出版的数字化转型研究',
+          date: '2021-01-01',
+          time: '13:14',
+        },
+        {
+          isSlected: false,
+          id: 10,
+          title: '医学人文视域下医学史的学科价值和发展路径探析',
+          date: '2021-01-01',
+          time: '13:14',
+        },
       ],
       downListCopy: [],
     }
@@ -131,6 +152,22 @@ export default {
       }
       return true;
     },
+    listId() {
+      let arr = []
+      this.recycleList.forEach((item) => {
+        if(item.isSlected === true) {
+          arr.push(item.id)
+        }
+      })
+      return arr
+    },
+    AllId() {
+      let arr = []
+      this.recycleList.forEach((item) => {
+          arr.push(item.id)
+      })
+      return arr
+    }
   },
   watch: {
     // 文字清空时调用
@@ -148,12 +185,30 @@ export default {
     },
     // 文字匹配，先清空hisLis，数据暂存downListCopy，通过keyword和dateValue进行匹配，筛选出与keyword匹配的数据，再筛选出在dateValue之前的数据，再将筛选出的数据push到downList中
     getMachlist() {
-      this.matchList = [];
+      this.matchList = []
       this.downList.forEach((item) => {
         if(item.title.indexOf(this.keyWord) > -1) {
-          this.matchList.push(item);
+          this.matchList.push(item)
         }
-      });
+      })
+    },
+    async getDownloadList() {
+      await getDownload(localStorage.getItem('loginId'))
+      .then(res => {
+        console.log(res)
+        // this.downList = res
+        this.$store.commit('mydownload/setDownList', this.downList)
+        this.$message({
+          message: '获取下载列表成功',
+          type: "success"
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: '获取下载列表失败' + err,
+          type: "error"
+        })
+      })
     },
     // 清空下载记录
     clearAll() {
@@ -162,21 +217,35 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        this.downList = [];
-        setDownloadList([]);
-        // 发起axios请求，删除所有历史记录，后台数据也要删除
-        /////////////////////////////////////////////////
+      }).then(async () => {
+        this.downList = []
+        this.$store.commit('mydownload/setDownList', [])
         this.$message({
-          type: 'info',
-          message: '删除成功'
-        });
+          type: 'success',
+          message: '删除全部下载记录成功'
+        })
+        // await deleteAllDownload(localStorage.getItem('loginId'))
+        // .then(res => {
+        //   console.log(res)
+        //   this.$message({
+        //     type: 'success',
+        //     message: '删除全部下载记录成功'
+        //   })
+        //   this.downList = [];
+        //   this.$store.commit('mydownload/setDownList', this.downList)
+        // })
+        // .catch(err => {
+        //   this.$message({
+        //     type: 'error',
+        //     message: '删除全部下载记录失败' + err
+        //   })
+        // })
       }).catch(() => {
         this.$message({
           type: 'info',
           message: '已取消删除'
-        });          
-      });
+        })        
+      })
     },
     cancel() {
       // 取消选中的下载记录
@@ -190,13 +259,32 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
-        // 删除选中的历史记录,并且重新渲染
+      }).then(async () => {
+        // await deleteMultiDownload(localStorage.getItem('loginId'), this.listId)
+        // .then(res => {
+        //   console.log(res)
+        //   this.$message({
+        //     type: 'success',
+        //     message: '删除选中的下载记录成功'
+        //   })
+        //   this.downList = this.downList.filter((item) => {
+        //     return item.isSlected === false
+        //   })
+        //   this.$store.commit('mydownload/setDownList', this.downList)
+        // })
+        // .catch(err => {
+        //   this.$message({
+        //     type: 'error',
+        //     message: '删除选中的下载记录失败' + err
+        //   })
+        // })
         this.downList = this.downList.filter((item) => {
-          return item.isSlected === false;
-        });
-        // 发起axios请求，删除所有历史记录，后台数据也要删除
-        /////////////////////////////////////////////////
+          return item.isSlected === false
+        })
+        this.$message({
+          type: 'success',
+          message: '删除选中的下载记录成功'
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
@@ -210,19 +298,39 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
-      }).then(() => {
+      }).then(async () => {
+        // await deleteOneDownload(localStorage.getItem('loginId'), id)
+        // .then(res => {
+        //   console.log(res)
+        //   this.$message({
+        //     type: 'success',
+        //     message: '删除该条的下载记录成功'
+        //   })
+        //   this.downList = this.downList.filter((item) => {
+        //     return item.id !== id
+        //   })
+        //   this.matchList = this.downList
+        // })
+        // .catch(err => {
+        //   this.$message({
+        //     type: 'error',
+        //     message: '删除该条的下载记录失败' + err
+        //   })
+        // })
         this.downList = this.downList.filter((item) => {
           return item.id !== id;
-        });
-        this.matchList = this.downList;
-        // 发起axios请求，删除所有历史记录，后台数据也要删除，通过id发出请求 删除后台数据
-        /////////////////////////////////////////////////
+        })
+        this.matchList = this.downList
+        this.$message({
+          type: 'success',
+          message: '删除该条的下载记录成功'
+        })
       }).catch(() => {
         this.$message({
           type: 'info',
           message: '已取消删除'
-        });          
-      });
+        })
+      })
     },
   },
   provide() {
@@ -231,7 +339,8 @@ export default {
     };
   },
   created () {
-    this.matchList = this.downList;
+    this.matchList = this.downList
+    this.getDownloadList()
   },
 }
 </script>
@@ -293,9 +402,10 @@ export default {
   &_clear {
     width: 303px;
     height: 86px;
+    line-height: 91px;
     &_btn {
       border: none;
-      width: 172px;
+      width: 170px;
       height: 55px;
       border-radius: 8px;
       background: #013480;

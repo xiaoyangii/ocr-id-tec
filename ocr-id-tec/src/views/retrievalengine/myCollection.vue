@@ -22,7 +22,7 @@
       <div class="mycollection_head_title">我的收藏</div>
     </div>
     <div class="mycollection_content">
-      <collection v-for="(item, index) in colList" :key="index" :item="item"></collection>
+      <collection v-for="(item, index) in matchList" :key="index" :item="item"></collection>
     </div>
   </div>
 </template>
@@ -97,15 +97,38 @@ export default {
           desc: "UNet作为卷积神经网络（CNN）中最重要的语义分割框架之一，广泛地应用于医学图像的分类、分割和目标检测等图像处理任务。本文对UNet的结构原理进行了阐述，并对基于UNet网络及变体模型进行了全面综述，从..."
         },
       ],
+      matchList: [],
       dateValue: '',
       keyWord: '',
     }
   },
   computed: {},
-  watch: {},
+  watch: {
+    // 文字清空时调用
+    keyWord() {
+      if (this.keyWord === "") {
+        this.matchList = this.colList
+      } else {
+        this.getMachlist()
+      }
+    },
+  },
   methods: {
     pickerOptions() {
       
+    },
+    // 文字匹配，先清空Lis，数据暂存ListCopy，通过keyword和dateValue进行匹配，筛选出与keyword匹配的数据，再筛选出在dateValue之前的数据，再将筛选出的数据push到recycleList中
+    getMachlist() {
+      this.matchList = []
+      this.colList.forEach((item) => {
+        if(item.title.indexOf(this.keyWord) > -1) {
+          this.matchList.push(item)
+        } else if(item.desc.indexOf(this.keyWord) > -1) {
+          this.matchList.push(item)
+        } else if(item.author.indexOf(this.keyWord) > -1) {
+          this.matchList.push(item)
+        }
+      })
     },
     async getCollectionList() {
       await getColle(localStorage.getItem('loginId'))
@@ -154,6 +177,7 @@ export default {
   },
   created () {
     this.getCollectionList()
+    this.matchList = this.colList
   },
 }
 </script>
@@ -231,6 +255,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-content: flex-start;
   gap: 20px 220px;
   width: 100%;
   height: calc(100vh - 266px);

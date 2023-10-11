@@ -35,6 +35,7 @@ export default {
   margin: 0 auto;
   margin-bottom: 10px;
   background-color: #FAFAFA;
+  cursor: pointer;
   &_title {
     margin-left: 30px;
     // margin-top: 20px;

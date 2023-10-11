@@ -52,14 +52,15 @@ const routes = [
           },
           // 检索引擎的批量导入
           {
-            path: '/home/retrievalengine/bulkImport',
+            path: '/home/retrievalengine/bulkimport',
             name: 'bulkImport',
             component: () => import('@/views/retrievalengine/bulkImport.vue')
           },
           {
-            path: '/home/retrievalengine/bulkImportImg',
+            path: '/home/retrievalengine/bulkimportimg',
             name: 'bulkImportImg',
-            component: () => import('@/views/retrievalengine/bulkImportImg.vue')
+            component: () => import('@/views/retrievalengine/bulkImportImg.vue'),
+            meta: { activeIndex: '/home/retrievalengine/bulkimport' }
           },
           // 检索引擎的历史记录
           {

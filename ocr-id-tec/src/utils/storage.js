@@ -53,11 +53,11 @@ export const setDownloadList = (arr) => {
 
 // 获取回收站历史
 export const getrecyclebinList = () => {
-  const result = localStorage.getItem(DOWNLOAD_KEY)
+  const result = localStorage.getItem(RECYCLE_KEY)
   return result ? JSON.parse(result) : []
 }
 
 // 设置回收站历史
 export const setrecyclebinList = (arr) => {
-  localStorage.setItem(DOWNLOAD_KEY, JSON.stringify(arr))
+  localStorage.setItem(RECYCLE_KEY, JSON.stringify(arr))
 }
