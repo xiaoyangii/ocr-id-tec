@@ -110,10 +110,12 @@ export default {
         // 发送请求
         // 预期：希望如果响应的status非200，最好抛出一个promise错误，await只会等待成功的promise
         await getMsgCode(this.registerForm.userId).then(res => {
+          console.log(res)
+          this.code = res.code
           this.$message({
             message: "发送短信验证码成功",
             type: "success"
-          });
+          })
           // 开启倒计时
           this.timer = setInterval(() => {
             this.second--

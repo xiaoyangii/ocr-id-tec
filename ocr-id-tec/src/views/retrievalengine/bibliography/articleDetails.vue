@@ -53,8 +53,8 @@
         <div class="article_footer">
           <div class="article_footer_buttonbox">
             <button class="article_footer_buttonbox_online" @click="$router.push(`/home/retrievalengine/bibliography/${ articleId }/online`)">在线阅读</button>
-            <button class="article_footer_buttonbox_download">PDF下载</button>
-            <button class="article_footer_buttonbox_pigeonhole">文献归档</button>
+            <button class="article_footer_buttonbox_download" @click="pdfDownload()">PDF下载</button>
+            <button class="article_footer_buttonbox_pigeonhole" @click="$router.push('/home/smartcloud')">文献归档</button>
           </div>
           <div class="article_footer_data">
             <div class="article_footer_data_download">下载量：{{ article.downloads }}</div>
@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import { getArticleDetail, downloadArticle } from '@/api/article.js'
 export default {
   name: 'articleDetails',
   components: {
@@ -79,7 +80,7 @@ export default {
         id: 1,
         title: "中医药创新发展的逻辑与策略探讨",
         author: ["焦科兴", "董美佳", "李艺清", "侯胜田"],
-        school: ["北京中医药大学管理学院", "北京中医药大学国家中医药发展与战略研究院"],
+        school: ["1.北京中医药大学管理学院", "2.北京中医药大学国家中医药发展与战略研究院"],
         summary: "<span style='font-weight:700;'>摘要：</span>" + "中医药事业发展正迎来前所未有的机遇，但也面临复杂严峻的挑战。突破中医药传承创新发展瓶颈逐渐成为中医药创新发展的关键一步。深入梳理分析中医药创新发展的内在逻辑，并提出中医药创新发展需要解放思想，摈弃路径依赖，切实落实中医药发展战略定位；促进中医医疗服务事业与中医药健康服务业共同发展；走出医院和药店，积极融入大健康产业；把握中医药健康旅游行业发展，推进中医药健康旅游目的地建设等创新发展策略。通过一系列战略行动实现中医药传承创新发展战略目标。",
         key: "<span style='font-weight:700;'>关键词：</span>" + "中医药；创新发展；策略探讨",
         album: "<span style='font-weight:700;'>专辑：</span>" + "医药卫生科技",
@@ -93,7 +94,7 @@ export default {
         id: 1,
         title: "中医药创新发展的逻辑与策略探讨",
         author: ["焦科兴", "董美佳", "李艺清", "侯胜田"],
-        school: ["北京中医药大学管理学院", "北京中医药大学国家中医药发展与战略研究院"],
+        school: ["1.北京中医药大学管理学院", "2.北京中医药大学国家中医药发展与战略研究院"],
         summary: "<span style='font-weight:700;'>摘要：</span>" + "中医药事业发展正迎来前所未有的机遇，但也面临复杂严峻的挑战。突破中医药传承创新发展瓶颈逐渐成为中医药创新发展的关键一步。深入梳理分析中医药创新发展的内在逻辑，并提出中医药创新发展需要解放思想，摈弃路径依赖，切实落实中医药发展战略定位；促进中医医疗服务事业与中医药健康服务业共同发展；走出医院和药店，积极融入大健康产业；把握中医药健康旅游行业发展，推进中医药健康旅游目的地建设等创新发展策略。通过一系列战略行动实现中医药传承创新发展战略目标。",
         key: "<span style='font-weight:700;'>关键词：</span>" + "中医药；创新发展；策略探讨",
         album: "<span style='font-weight:700;'>专辑：</span>" + "医药卫生科技",
@@ -104,13 +105,12 @@ export default {
         date: "2021"
       },
       matchArticle: {
-
       },
     }
   },
   computed: {
     articleId () {
-      return this.$route.params.id;
+      return this.$route.params.id
     }
   },
   methods: {
@@ -195,6 +195,43 @@ export default {
     },
     watchScore(id) {
       this.$router.push(`/home/retrievalengine/bibliography/${ id }/score`);
+    },
+    async getArticleDetails() {
+      this.$message({
+        type: 'success',
+        message: '获取文章详情成功'
+      }) 
+      // await getArticleDetail(this.articleId)
+      // .then(res => {
+      //   console.log(res)
+      //   this.$message({
+      //     type: 'success',
+      //     message: '获取文章详情成功'
+      //   }) 
+      // })
+      // .catch(err => {
+      //   console.log(err)
+      //   this.$message({
+      //     type: 'error',
+      //     message: '获取文章详情失败' + err
+      //   })
+      // })
+    },
+    async pdfDownload() {
+      await downloadArticle(this.articleId)
+      .then(res => {
+        console.log(res)
+        this.$message({
+          type: 'success',
+          message: '下载成功'
+        }) 
+      })
+      .catch(err => {
+        this.$message({
+          type: 'error',
+          message: '下载失败' + err
+        })
+      })
     }
   },
   watch: {
@@ -206,12 +243,13 @@ export default {
     },
     checked(value) {
       if(value === true) {
-        this.getMachlist();
+        this.getMachlist()
       }
     }
   },
   created () {
     this.getMachlist()
+    this.getArticleDetails()
   },
 }
 </script>
@@ -283,6 +321,7 @@ export default {
       border: 1px solid #013480;
       color: #FFF;
       font-size: 22px;
+      cursor: pointer;
     }
     &_right {
       float: right;

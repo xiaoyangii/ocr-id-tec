@@ -110,7 +110,7 @@ const routes = [
         path: '/home/smartcloud',
         name: 'smartcloud',
         meta: { index: 3 },
-        component: () => import('@/views/smartcloud/index.vue'),
+        component: () => import('@/views/smartcloud/index.vue')
       },
       {
         path: '/home/feedback',

@@ -150,6 +150,7 @@ export default {
     async deleteCollection(id) {
       // 删除colList中的对应id数据
       this.colList = this.colList.filter(item => item.id !== id)
+      this.matchList = this.colList
       this.$message({
         type: 'success',
         message: '取消收藏成功'

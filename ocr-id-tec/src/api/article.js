@@ -9,7 +9,8 @@ export const getArticle = () => {
 export const getArticleDetail = (articleId) => {
   return request.get('/Article/SelectArticleByArticleId', {
     params: {
-      articleId
+      articleId: localStorage.getItem('loginId') + '#' + articleId
+      // articleId
     }
   })
 }
@@ -28,7 +29,26 @@ export const deleteArticle = (telephone, articleId) => {
 export const downloadArticle = (articleId) => {
   return request.post('/Article/Download', {
     params: {
-      articleId
+      // articleId
+      articleId: "17850966557#25"
+    }
+  })
+}
+
+// 5. 获取仓库文章
+export const getRepoArticle = (telephone) => {
+  return request.get('/Article/SelectAllBySelf', {
+    params: {
+      telephone
+    }
+  })
+}
+
+// 6. 查找图片关键词
+export const searchImg = (keyWord) => {
+  return request.get('/Article/SelectAllByKeyWord', {
+    params: {
+      keyWord
     }
   })
 }

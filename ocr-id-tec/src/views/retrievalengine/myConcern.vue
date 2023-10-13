@@ -144,6 +144,7 @@ export default {
     async deleteConcern(id) {
       // 删除concernList中的对应id数据
       this.concernList = this.concernList.filter(item => item.id !== id)
+      this.matchList = this.concernList
       this.$message({
         type: 'success',
         message: '取消关注成功'

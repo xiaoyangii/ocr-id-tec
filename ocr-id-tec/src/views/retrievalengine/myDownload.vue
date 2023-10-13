@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="content">
-      <div class="content_title">全部记录</div>
+      <div class="content_title">全部下载</div>
       <div class="content_boxx" v-show="hasSlected">
         <button class="content_boxx_button2" @click="cancel()">取消</button>
         <button class="content_boxx_button1" @click="deleteRecord()">删除</button>
@@ -219,6 +219,7 @@ export default {
         type: 'warning'
       }).then(async () => {
         this.downList = []
+        this.matchList = []
         this.$store.commit('mydownload/setDownList', [])
         this.$message({
           type: 'success',
@@ -250,7 +251,7 @@ export default {
     cancel() {
       // 取消选中的下载记录
       this.downList.forEach((item) => {
-        item.isSlected = false;
+        item.isSlected = false
       });
     },
     deleteRecord() {
@@ -279,8 +280,10 @@ export default {
         //   })
         // })
         this.downList = this.downList.filter((item) => {
-          return item.isSlected === false
+          return item.isSlected == false
         })
+        this.matchList = this.downList
+        this.$store.commit('mydownload/setDownList', this.downList)
         this.$message({
           type: 'success',
           message: '删除选中的下载记录成功'
@@ -321,6 +324,7 @@ export default {
           return item.id !== id;
         })
         this.matchList = this.downList
+        this.$store.commit('mydownload/setDownList', this.downList)
         this.$message({
           type: 'success',
           message: '删除该条的下载记录成功'
@@ -411,6 +415,7 @@ export default {
       background: #013480;
       color: #FFF;
       font-size: 22px;
+      cursor: pointer;
     }
   }
 }
@@ -460,6 +465,7 @@ export default {
       background: #013480;
       color: #FFF;
       font-size: 18px;
+      cursor: pointer;
     }
     &_button2 {
       float: right;
@@ -471,6 +477,7 @@ export default {
       border: none;
       color: #FFF;
       font-size: 18px;
+      cursor: pointer;
     }
   }
   &_empty {

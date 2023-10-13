@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import RadarChart from '@/components/RadarChart.vue';
-import _ from 'lodash';
+import RadarChart from '@/components/RadarChart.vue'
+import _ from 'lodash'
 export default {
   name: 'score',
   components: {

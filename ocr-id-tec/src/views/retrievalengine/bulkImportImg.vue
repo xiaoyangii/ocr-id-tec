@@ -42,7 +42,7 @@
     <div class="bulkimport_right">
       <div class="bulkimport_right_title">文字匹配</div>
       <div class="bulkimport_right_text">{{ this.text }}</div>
-      <div class="bulkimport_right_link">在文献库中检索 ></div>
+      <div class="bulkimport_right_link" @click="toSearch()">在文献库中检索 ></div>
     </div>
   </div>
 </template>
@@ -56,7 +56,7 @@ export default {
     return {
       formDate: new FormData(),
       pdfList: [],
-      text: " "
+      text: ""
     }
   },
   computed: {
@@ -70,7 +70,10 @@ export default {
       this.$router.push('/home/retrievalengine/bulkimport')
     },
     toDoc() {
-      this.$router.push('/home/retrievalengine/myFile')
+      this.$router.push('/home/smartcloud')
+    },
+    toSearch() {
+      this.$router.push({path: '/home/retrievalengine/bibliography', query: { keyWord: this.text }})
     },
     async onSubmit() {
       this.$refs.upload.submit()
@@ -139,7 +142,7 @@ export default {
     width: 609px;
     height: 660px;
     border-radius: 20px;
-    background: #b6cadd;
+    background: #e0ecf8;
     color: #514D4D;
     font-size: 32px;
     letter-spacing: 3.52px;

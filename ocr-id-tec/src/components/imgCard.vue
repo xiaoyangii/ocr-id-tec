@@ -1,7 +1,7 @@
 <template>
   <div class="list_item" v-if="item">
-    <img :src="item.img" alt="">
-    <div class="list_item_title" v-html="item.title"></div>
+    <img :src="item.picture" alt="">
+    <div class="list_item_title" v-html="item.pictureName"></div>
   </div>
 </template>
 

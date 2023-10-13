@@ -69,6 +69,7 @@ export default {
       color: #000;
       font-size: 22px;
       font-weight: 700;
+      cursor: pointer;
     }
     .el-icon-star-on {
       float: right;

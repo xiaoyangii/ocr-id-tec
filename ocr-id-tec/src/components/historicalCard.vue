@@ -114,6 +114,7 @@ export default {
     ::v-deep .el-icon-close {
       margin: 12.5px 0;
       font-size: 26px;
+      cursor: pointer;
     }
   }
 }

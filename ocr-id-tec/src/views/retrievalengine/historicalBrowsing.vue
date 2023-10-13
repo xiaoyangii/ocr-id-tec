@@ -55,99 +55,99 @@ export default {
           isSlected: false,
           articleId: 1,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-02-25',
+          time: '13:54',
         },
         {
           isSlected: false,
           articleId: 2,
           title: '新医科背景下的康复医学教育改革思考',
           date: '2021-01-01',
-          time: '13:14',
+          time: '15:54',
         },
         {
           isSlected: false,
           articleId: 3,
           title: '临床医学专业新发传染病防控课程设置的思考',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-12-11',
+          time: '11:14',
         },
         {
           isSlected: false,
           articleId: 4,
           title: '基础与临床整合医学人工智能实训案例平台的开发与应用',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-07-01',
+          time: '13:53',
         },
         {
           isSlected: false,
           articleId: 5,
           title: '医学技术的人文价值',
           date: '2021-01-01',
-          time: '13:14',
+          time: '18:74',
         },
         {
           isSlected: false,
           articleId: 6,
           title: '医学生物化学与分子生物学实验教学的改革与实践 ',
-          date: '2021-01-01',
+          date: '2022-04-27',
           time: '13:14',
         },
         {
           isSlected: false,
           articleId: 7,
           title: '全科医生在高血压领域研究的知识图谱分析',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-10-21',
+          time: '14:42',
         },
         {
           isSlected: false,
           articleId: 8,
           title: '实验动物智能化综合管理系统开发及应用',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-11-21',
+          time: '14:57',
         },
         {
           isSlected: false,
           articleId: 9,
           title: '中医药治疗老年性黄斑变性的研究进展',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-02-11',
+          time: '13:44',
         },
         {
           isSlected: false,
           articleId: 10,
           title: 'SWOT视角下医学出版的数字化转型研究',
           date: '2021-01-01',
-          time: '13:14',
+          time: '18:11',
         },
         {
           isSlected: false,
           articleId: 11,
           title: '基础与临床整合医学人工智能实训案例平台的开发与应用',
-          date: '2021-01-01',
+          date: '2021-02-20',
           time: '13:14',
         },
         {
           isSlected: false,
           articleId: 12,
           title: '医学人文视域下医学史的学科价值和发展路径探析',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-09-11',
+          time: '12:24',
         },
         {
           isSlected: false,
           articleId: 13,
           title: '医学技术的人文价值',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-11-08',
+          time: '18:14',
         },
         {
           isSlected: false,
           articleId: 14,
           title: '医学生物化学与分子生物学实验教学的改革与实践',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2022-12-01',
+          time: '20:14',
         }
       ],
       hisListCopy: [
@@ -254,6 +254,7 @@ export default {
         type: 'warning'
       }).then(async () => {
         this.hisList = []
+        this.matchList = []
         this.$store.commit('myhistory/setHistory', [])
         this.$message({
           type: 'success',
@@ -299,6 +300,7 @@ export default {
           return item.isSlected === false
         })
         this.$store.commit('myhistory/setHistory', this.hisList)
+        this.matchList = this.hisList
         this.$message({
           type: 'success',
           message: '删除选中的历史记录成功'
@@ -502,6 +504,7 @@ export default {
       background: #013480;
       color: #FFF;
       font-size: 18px;
+      cursor: pointer;
     }
     &_button2 {
       float: right;
@@ -513,10 +516,11 @@ export default {
       border: none;
       color: #FFF;
       font-size: 18px;
+      cursor: pointer;
     }
   }
   &_empty {
-    margin-top: 250px;
+    margin-top: 300px;
     text-align: center;
     color: #000;
     font-size: 36px;

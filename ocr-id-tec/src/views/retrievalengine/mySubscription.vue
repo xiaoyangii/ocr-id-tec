@@ -134,7 +134,6 @@ export default {
       this.subList.forEach((item) => {
         if(item.title.indexOf(this.keyWord) > -1) {
           this.matchList.push(item)
-          console.log(666)
         } else if(item.desc.indexOf(this.keyWord) > -1) {
           this.matchList.push(item)
         }
@@ -161,6 +160,7 @@ export default {
     async deleteSubs(title) {
       // 删除subList中的对应title数据
       this.subList = this.subList.filter(item => item.title !== title)
+      this.matchList = this.subList
       this.$message({
         type: 'success',
         message: '取消订阅成功'

@@ -451,6 +451,7 @@ export default {
       background: #013480;
       color: #FFF;
       font-size: 18px;
+      cursor: pointer;
     }
     &_button2 {
       float: right;
@@ -462,6 +463,7 @@ export default {
       border: none;
       color: #FFF;
       font-size: 18px;
+      cursor: pointer;
     }
   }
   &_empty {

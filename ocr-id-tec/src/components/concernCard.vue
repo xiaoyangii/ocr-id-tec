@@ -59,6 +59,7 @@ export default {
     color: #000;
     font-size: 26px;
     font-weight: 700;
+    cursor: pointer;
   }
   &_adr {
     margin-top: 5px;

@@ -57,7 +57,7 @@ export default {
       this.$router.push('/home/retrievalengine/bulkimportimg')
     },
     toDoc() {
-      this.$router.push('/home/retrievalengine/myFile')
+      this.$router.push('/home/smartcloud')
     },
     async onSubmit() {
       this.$refs.upload.submit()

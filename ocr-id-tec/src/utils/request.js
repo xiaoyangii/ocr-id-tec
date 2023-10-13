@@ -6,11 +6,7 @@ import { showFullScreenLoading , tryHideFullScreenLoading } from '@/utils/loadin
 const instance = axios.create({
   baseURL: 'http://orcsystem.v2.idcfengye.com/',
   timeout: 20000,
-  // withCredentials: true, // 跨域请求时是否需要使用凭证
   crossDomain: true,
-  headers: {
-    // 'Ascess-Control-Allow-Origin': '*',
-  }
 })
 
 // 自定义配置 - 请求/响应 拦截器
@@ -37,6 +33,7 @@ instance.interceptors.response.use(function (response) {
   // 2xx 范围内的状态码都会触发该函数。
   // 对响应数据做点什么 (默认axios会多包装一层data，需要响应拦截器中处理一下)
   const res = response.data
+  localStorage.setItem("cookie", response.headers['set-cookie'])
   console.log(response)
   if (response.status !== 200) {
     // tryHideFullScreenLoading()

@@ -18,7 +18,7 @@
         </el-date-picker>
       </div>
       <div class="bar_button">
-        <button class="bar_button_left" @click="getMachlist()">查询</button>
+        <button class="bar_button_left" @click="isImg ? getImgMatch() : getMachlist()">查询</button>
         <el-link class="bar_button_right" :underline="false">高级检索<i class="el-icon-arrow-right"></i> </el-link>
       </div>
     </div>
@@ -34,7 +34,7 @@
             <div class="content_list_box_bar_box">
               <el-checkbox v-model="checked">查看高亮</el-checkbox>
               <button class="content_list_box_bar_box_leftbutton" @click="textorimgList($event)" >文本</button>
-              <button class="content_list_box_bar_box_rightbutton" @click="textorimgList($event)" >图片</button>
+              <button class="content_list_box_bar_box_rightbutton" @click="textorimgList($event)" ref="img">图片</button>
             </div>
             <el-tabs v-model="activeName" @tab-click="handleTabClick">
               <el-tab-pane label="推荐文献" name="first">
@@ -89,7 +89,7 @@ import a5 from '@/assets/images/avatar5.png'
 import a6 from '@/assets/images/avatar6.png'
 import a7 from '@/assets/images/avatar7.png'
 import a8 from '@/assets/images/avatar8.png'
-import { getArticle } from '@/api/article.js'
+import { getArticle, searchImg } from '@/api/article.js'
 import { getImg } from '@/api/img.js'
 export default {
   name: 'Bibliography',
@@ -262,60 +262,112 @@ export default {
       imgList: [
         {
           id: 1,
-          title: "木麻黄人工林树高结构分布图",
-          img: require('@/assets/images/img1.png')
+          pictureName: "木麻黄人工林树高结构分布图",
+          picture: require('@/assets/images/img1.png')
         },
         {
           id: 2,
-          title: "不同海岸线距离木麻黄净光合速率的日变化",
-          img: require('@/assets/images/img2.png')
+          pictureName: "不同海岸线距离木麻黄净光合速率的日变化",
+          picture: require('@/assets/images/img2.png')
         },
         {
           id: 3,
-          title: "不同海岸线距离木麻黄净光合速率的光响应曲线",
-          img: require('@/assets/images/img3.png')
+          pictureName: "不同海岸线距离木麻黄净光合速率的光响应曲线",
+          picture: require('@/assets/images/img3.png')
         },
         {
           id: 4,
-          title: "底物浓度对d-伪麻黄碱产量的影响",
-          img: require('@/assets/images/img4.png')
+          pictureName: "底物浓度对d-伪麻黄碱产量的影响",
+          picture: require('@/assets/images/img4.png')
         },
         {
           id: 5,
-          title: "12名志愿者单次口服受试制剂后伪麻黄碱平均血药浓度-时间曲线",
-          img: require('@/assets/images/img5.png')
+          pictureName: "12名志愿者单次口服受试制剂后伪麻黄碱平均血药浓度-时间曲线",
+          picture: require('@/assets/images/img5.png')
         },
         {
           id: 6,
-          title: "温度对转化d-伪麻黄碱产量的影响",
-          img: require('@/assets/images/img6.png')
+          pictureName: "温度对转化d-伪麻黄碱产量的影响",
+          picture: require('@/assets/images/img6.png')
         },
         {
           id: 7,
-          title: "木麻黄小枝蒸腾速率日变化",
-          img: require('@/assets/images/img7.png')
+          pictureName: "木麻黄小枝蒸腾速率日变化",
+          picture: require('@/assets/images/img7.png')
         },
         {
           id: 8,
-          title: "短枝木麻黄DRIS营养诊断图",
-          img: require('@/assets/images/img8.png')
+          pictureName: "短枝木麻黄DRIS营养诊断图",
+          picture: require('@/assets/images/img8.png')
         }
-      ]
+      ],
+      imgList1: [
+        {
+          id: 1,
+          pictureName: "木麻黄人工林树高结构分布图",
+          picture: require('@/assets/images/img1.png')
+        },
+        {
+          id: 2,
+          pictureName: "不同海岸线距离木麻黄净光合速率的日变化",
+          picture: require('@/assets/images/img2.png')
+        },
+        {
+          id: 3,
+          pictureName: "不同海岸线距离木麻黄净光合速率的光响应曲线",
+          picture: require('@/assets/images/img3.png')
+        },
+        {
+          id: 4,
+          pictureName: "底物浓度对d-伪麻黄碱产量的影响",
+          picture: require('@/assets/images/img4.png')
+        },
+        {
+          id: 5,
+          pictureName: "12名志愿者单次口服受试制剂后伪麻黄碱平均血药浓度-时间曲线",
+          picture: require('@/assets/images/img5.png')
+        },
+        {
+          id: 6,
+          pictureName: "温度对转化d-伪麻黄碱产量的影响",
+          picture: require('@/assets/images/img6.png')
+        },
+        {
+          id: 7,
+          pictureName: "木麻黄小枝蒸腾速率日变化",
+          picture: require('@/assets/images/img7.png')
+        },
+        {
+          id: 8,
+          pictureName: "短枝木麻黄DRIS营养诊断图",
+          picture: require('@/assets/images/img8.png')
+        }
+      ],
+      imgMatchList: []
     }
   },
-  computed: {},
+  computed: {
+    queryKeyword() {
+      if(this.$route.query)
+        return this.$route.query.keyWord
+    }
+  },
   watch: {
     // 文字清空时调用
     keyWord() {
-      if (this.keyWord === "") {
+      if (this.keyWord === "" && this.isImg === false) {
         this.getMachlist()
+      } else if(this.keyWord === "" && this.isImg === true) {
+        this.getImgMatch()
       }
     },
     checked(value) {
-      if(value === true) {
+      if(value === true && this.isImg === false) {
         this.getMachlist()
+      } else if(value === true && this.isImg === true) {
+        this.getImgMatch()
       }
-    }
+    },
   },
   methods: {
     async getArticleList() {
@@ -365,11 +417,14 @@ export default {
       e.target.style.color = '#FFF'
       e.target.style.backgroundColor = '#013480'
       if(e.target.innerText == "文本") {
+        this.keyWord = ""
         this.isImg = false
         this.articleList = this.articleList1
       } else if(e.target.innerText == "图片") {
+        this.keyWord = ""
         this.isImg = true
         this.getImgList()
+        this.getImgMatch()
       }
     },
     handleTabClick() {
@@ -381,9 +436,55 @@ export default {
     pickerOptions() {
       
     },
+    // 模糊查询 高亮匹配imgList中的title
+    getImgMatch() {
+      this.imgMatchList = []
+      this.imgList = this.imgList1 // 获取一次数据
+      // 去除恶意输入代码片段的可能
+      let value = this.keyWord.replace(/<.*?>/gi, "")
+      if(this.keyWord === '') {
+        this.imgList = this.imgList1
+        return 
+      }
+      
+      // 修改高亮文案
+      let dataList = []
+      // 声明正则校验  (正则表达式,"匹配模式")  /gi(全文查找、忽略大小写)
+      const reg = new RegExp(value, "gi")
+      // 循环遍历 使用数据进行渲染  resultList 使用只符合条件的数据
+      if(this.checked === true) {
+        this.imgList.forEach((item) => {
+          if(!(item.pictureName.match(reg)))
+          {
+            return
+          }
+          let obj = {
+            id: item.id,
+            img: item.picture,
+            title: item.pictureName.replace(
+              reg,
+              //筛选出来的文字加样式
+              (val) => `<span style='background-color:#F4F92B'>${val}</span>`
+            )
+          }
+          dataList.push(obj)
+        })
+      } else {
+        this.imgList.forEach((item) => {
+          if(!(item.pictureName.match(reg)))
+          {
+            return
+          }
+          dataList.push(item)
+        })
+      }
+      // 赋值
+      this.imgMatchList = dataList
+      this.imgList = this.imgMatchList
+    },
     // 模糊查询 高亮匹配
     getMachlist() {
-      this.matchlist = [];
+      this.matchlist = []
       this.articleList = this.articleList1;// 获取一次数据
       // 去除恶意输入代码片段的可能
       let value = this.keyWord.replace(/<.*?>/gi, "")
@@ -391,26 +492,9 @@ export default {
         this.articleList = this.articleList1
         return 
       }
-      // 模糊查询 只保留符合条件的数据
-      let resultList = []
-      this.articleList.forEach((item) => {
-        if (
-          //  英文大小写数据进行判断 toUpperCase 大写  toLowerCase 小写
-          item.title.indexOf(value.toUpperCase()) > -1 ||
-          item.title.indexOf(value.toLowerCase()) > -1,
-          item.author.indexOf(value.toUpperCase()) > -1 ||
-          item.author.indexOf(value.toLowerCase()) > -1,
-          item.details.indexOf(value.toUpperCase()) > -1 ||
-          item.details.indexOf(value.toLowerCase()) > -1,
-          item.name.indexOf(value.toUpperCase()) > -1 ||
-          item.name.indexOf(value.toLowerCase()) > -1
-        ) {
-          resultList.push(item)
-        }
-      });
       
       // 修改高亮文案
-      let dataList = [];
+      let dataList = []
       // 声明正则校验  (正则表达式,"匹配模式")  /gi(全文查找、忽略大小写)
       const reg = new RegExp(value, "gi");
       // 循环遍历  this.articleList 使用数据进行渲染  resultList 使用只符合条件的数据
@@ -456,16 +540,37 @@ export default {
             return
           }
           dataList.push(item)
-        });
+        })
       }
       // 赋值
       this.matchlist = dataList
       this.articleList = this.matchlist
     },
+    async getImgKeyword(queryKeyword) {
+      this.$refs.img.click()
+      await searchImg(queryKeyword)
+      .then(res => {
+        console.log(res)
+        this.$message({
+          message: "获取图片列表成功",
+          type: "success"
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        this.$message({
+          message: "获取图片列表失败" + err,
+          type: "error"
+        })
+      })
+    }
   },
   created () {
-    this.getMachlist()
     this.getArticleList()
+    this.getMachlist()
+    if(this.queryKeyword) {
+      console.log(666)
+    }
   },
   mounted() {
   },
@@ -759,11 +864,7 @@ export default {
 }
 .colrow {
   column-count: 3; /* 调整列数 */
-  column-gap: 20px; /* 调整列间距 */
+  column-gap: 10px; /* 调整列间距 */
   column-fill: balance; /* 平衡填充 */
-  // display: flex;
-  // align-items: baseline;
-  // flex-wrap: wrap;
-  // justify-content: space-between;
 }
 </style>

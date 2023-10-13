@@ -100,7 +100,9 @@ export default {
       if (pt === 'signOut') {
         this.handleLogout();
       } else {
-        console.log(pt);
+        if (pt === 'feedback') {
+          pt = "home/" + pt 
+        }
         this.$router.push(`/${ pt }`);
       }
     }
