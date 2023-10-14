@@ -25,7 +25,7 @@
       <div class="content_title">全部记录</div>
       <div class="content_boxx" v-show="hasSlected">
         <button class="content_boxx_button2" @click="cancel()">取消</button>
-        <button class="content_boxx_button1" @click="deleteRecord()">删除</button>
+        <button class="content_boxx_button1" @click="deleteRecord()">还原</button>
         <div class="content_boxx_num">已选 <span>{{ total }}</span> 项</div>
       </div>
       <div class="content_List" v-if="isempty">
@@ -242,7 +242,7 @@ export default {
     },
     deleteRecord() {
       // 利用elementUI弹出消息确认框询问是否确定删除,如果确定，清空recycleList,并发起请求，删除后台数据
-      this.$confirm('此操作将永久删除选中的回收站记录, 是否继续?', {
+      this.$confirm('此操作将还原选中的回收站记录, 是否继续?', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -253,7 +253,7 @@ export default {
         this.matchList = this.recycleList
         this.$store.commit('myrecyclebin/setRecyclebin', this.recycleList)
         this.$message({
-          message: "删除选中的回收站记录成功",
+          message: "还原选中的回收站记录成功",
           type: "success"
         })
         // 发起axios请求，删除所有历史记录，后台数据也要删除
@@ -278,7 +278,7 @@ export default {
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '已取消删除'
+          message: '已取消还原'
         });          
       });
     },
