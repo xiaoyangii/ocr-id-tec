@@ -65,3 +65,15 @@ export const insertArticle = (data) => {
     }
   })
 }
+
+// 8. 仓库插入文章
+export const insertRepoArticle = (data) => {
+  return request({
+    url: 'http://orcsystem.v2.idcfengye.com/Article/InsertArticle',
+    method: "post",
+    data,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    }
+  })
+}

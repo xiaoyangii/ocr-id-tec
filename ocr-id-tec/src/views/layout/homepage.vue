@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     jump() {
-      this.$router.push("/retrievalengine");
+      this.$router.push("/home/retrievalengine/bibliography");
     }
   },
 };

@@ -25,21 +25,19 @@
             class="upload-demo"
             ref="upload"
             action="http://orcsystem.v2.idcfengye.com/Article/InsertArticle"
-            :limit="4"
+            :limit="1"
             :on-exceed="handleExceed"
-            :on-change="onChange"
-            :before-upload="beforeUpload"
             :http-request="uploadFile"
-            :on-progress="onProgress"
-            :auto-upload="false"
             accept=".pdf"
-            multiple
             >
-            <i class="el-icon-upload"></i>
-            <div class="el-upload__text">拖拽上传你的<em>PDF</em>文件</div>
+            <button class="btn_upload">本地上传</button>
           </el-upload>
-          <button class="btn_upload">本地上传</button>
           <button class="btn_import">导入库</button>
+        </div>
+        <div class="content_boxx" v-show="hasSlected">
+          <button class="content_boxx_button2" @click="cancel()">取消</button>
+          <button class="content_boxx_button1" @click="deleteRecord()">还原</button>
+          <div class="content_boxx_num">已选 <span>{{ total }}</span> 项</div>
         </div>
         <div class="right_head_index">文献库 > 默认仓库</div>
       </div>
@@ -59,7 +57,8 @@
 
 <script>
 import kuCard from '@/components/kuCard.vue'
-import { getRepoArticle } from '@/api/article.js'
+import '@/assets/style/confirm.less'
+import { getRepoArticle, insertRepoArticle } from '@/api/article.js'
 export default {
   name: 'smartcloud',
   components: { kuCard },
@@ -143,12 +142,90 @@ export default {
           date: "2023/4/25 17:18",
           size: "17.3"
         }
-      ]
+      ],
+      formDate: new FormData(),
     }
   },
-  computed: {},
-  watch: {},
+  computed: {
+    listId() {
+      let arr = []
+      this.fileList.forEach((item) => {
+        if(item.isSlected === true) {
+          arr.push(item.id)
+        }
+      })
+      return arr
+    },
+    total() {
+      let count = 0;
+      this.fileList.forEach((item) => {
+        if(item.isSlected === true) {
+          count++
+        }
+      });
+      return count;
+    },
+    // 监视fileList每个对象的isSlected是否为true，如果有一个为true，hasSlected为true
+    hasSlected() {
+      let flag = false
+      this.fileList.forEach((item) => {
+        if(item.isSlected === true) {
+          flag = true
+          return
+        }
+      })
+      return flag
+    },
+  },
+  watch: {
+  },
   methods: {
+    cancel() {
+      // 取消选中的回收站记录
+      this.fileList.forEach((item) => {
+        item.isSlected = false
+      })
+    },
+    deleteRecord() {
+      // 利用elementUI弹出消息确认框询问是否确定删除,如果确定，清空recycleList,并发起请求，删除后台数据
+      this.$confirm('此操作将永久删除选中的文章, 是否继续?', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(async () => {
+        this.fileList = this.fileList.filter((item) => {
+          return item.isSlected === false
+        })
+        this.$message({
+          message: "删除选中的文章成功",
+          type: "success"
+        })
+        // 发起axios请求，删除所有历史记录，后台数据也要删除
+        // await deleteMultiRecyclebin(localStorage.getItem('loginId'), this.listId)
+        // .then(res => {
+        //   console.log(res)
+        //   this.$message({
+        //     message: "删除选中的文章成功",
+        //     type: "success"
+        //   })
+        //   // 删除选中的历史记录,并且重新渲染
+        //   this.fileList = this.fileList.filter((item) => {
+        //     return item.isSlected === false;
+        //   })
+        // .catch(err => {
+        //   this.$message({
+        //     message: "删除选中的文章失败" + err,
+        //     type: "error"
+        //   })
+        // })
+      }).catch(() => {
+        this.cancel()
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });          
+      });
+    },
     async getKuList() {
       await getRepoArticle(localStorage.getItem('loginId'))
       .then(res => {
@@ -164,10 +241,37 @@ export default {
           type: "success"
         })
       })
-    }
+    },
+    handleExceed() {
+      this.$message({
+        message: "最多上传1个文件",
+        type: "warn"
+      })
+    },
+    async uploadFile(file) {
+      console.log("uploadfile")
+      console.log(file)
+      //参数file文件就是传入的文件流，添加进formDate中
+      this.formDate.append("files", file.file)
+      await insertRepoArticle(this.formDate)
+      .then(res => {
+        console.log(res)
+        this.$message({
+          message: "上传成功",
+          type: "success"
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: "上传失败" + err,
+          type: "error"
+        })
+      })
+    },
   },
   created () {
     this.getKuList()
+    this.formDate.append('telephone', localStorage.getItem('loginId'))
   },
 }
 </script>
@@ -273,6 +377,7 @@ export default {
       .btn_import {
         background: #013480;
         color: #fff;
+        margin-right: 0;
       }
     }
     &_index {
@@ -315,6 +420,54 @@ export default {
       width: 100%;
       height: calc(100% - 3vh);
     }
+  }
+}
+.upload-demo {
+  float: left;
+}
+::v-deep .el-upload-list {
+  display: none;
+}
+.content_boxx {
+  position: absolute;
+  top: 250px;
+  right: 80px;
+  width: 40%;
+  height: 10%;
+  &_num {
+    height: 44px;
+    line-height: 44px;
+    float: right;
+    color: #000;
+    font-size: 22px;
+    text-align: center;
+    span {
+      color: #1559DD;
+    }
+  }
+  &_button1 {
+    float: right;
+    margin-left: 20px;
+    width: 69px;
+    height: 44px;
+    border-radius: 6px;
+    border: none;
+    background: #013480;
+    color: #FFF;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  &_button2 {
+    float: right;
+    margin-left: 10px;
+    width: 69px;
+    height: 44px;
+    border-radius: 6px;
+    background: #D9D9D9;
+    border: none;
+    color: #FFF;
+    font-size: 18px;
+    cursor: pointer;
   }
 }
 </style>
