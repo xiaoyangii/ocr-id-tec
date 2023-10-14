@@ -145,7 +145,7 @@ export default {
         }
       ],
       articleList1: [
-      {
+        {
           id: "1",
           title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "基于UNet的医学图像分割综述",
           author: "作者： " + "叶晓滨",
@@ -460,8 +460,8 @@ export default {
           }
           let obj = {
             id: item.id,
-            img: item.picture,
-            title: item.pictureName.replace(
+            picture: item.picture,
+            pictureName: item.pictureName.replace(
               reg,
               //筛选出来的文字加样式
               (val) => `<span style='background-color:#F4F92B'>${val}</span>`
@@ -480,7 +480,7 @@ export default {
       }
       // 赋值
       this.imgMatchList = dataList
-      this.imgList = this.imgMatchList
+      this.imgList = dataList
     },
     // 模糊查询 高亮匹配
     getMachlist() {
@@ -563,13 +563,32 @@ export default {
           type: "error"
         })
       })
+    },
+    async searchImg() {
+      await searchImg(this.queryKeyword)
+      .then(res => {
+        res.title = "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + res.title
+        this.articleList.push(res)
+        this.$route.query.keyWord = ''
+        this.$message({
+          message: "检索图片成功",
+          type: "success"
+        })
+      })
+      .catch(err => {
+        this.$message({
+          message: "检索图片失败" + err,
+          type: "error"
+        })
+      })
     }
   },
   created () {
-    this.getArticleList()
-    this.getMachlist()
     if(this.queryKeyword) {
-      console.log(666)
+      this.searchImg()
+    } else {
+      this.getArticleList()
+      this.getMachlist()
     }
   },
   mounted() {

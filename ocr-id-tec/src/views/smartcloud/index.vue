@@ -21,6 +21,23 @@
         <div class="right_head_title">文件归档</div>
         <div class="right_head_btnbox">
           <button class="btn_add">检索添加</button>
+          <el-upload
+            class="upload-demo"
+            ref="upload"
+            action="http://orcsystem.v2.idcfengye.com/Article/InsertArticle"
+            :limit="4"
+            :on-exceed="handleExceed"
+            :on-change="onChange"
+            :before-upload="beforeUpload"
+            :http-request="uploadFile"
+            :on-progress="onProgress"
+            :auto-upload="false"
+            accept=".pdf"
+            multiple
+            >
+            <i class="el-icon-upload"></i>
+            <div class="el-upload__text">拖拽上传你的<em>PDF</em>文件</div>
+          </el-upload>
           <button class="btn_upload">本地上传</button>
           <button class="btn_import">导入库</button>
         </div>

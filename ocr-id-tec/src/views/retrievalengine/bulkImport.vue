@@ -76,9 +76,7 @@ export default {
           'Content-Type': 'multipart/form-data',
         },
         onUploadProgress: progress => {
-          console.log(progress)
           if (progress.event.lengthComputable) {
-            console.log(progress)
             this.uploadprogressPercentage = parseInt((progress.loaded / progress.total) * 100) // 进度条百分比
           }
         },

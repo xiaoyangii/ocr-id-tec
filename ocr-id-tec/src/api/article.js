@@ -53,3 +53,15 @@ export const searchImg = (keyWord) => {
     }
   })
 }
+
+// 7.插入文章
+export const insertArticle = (data) => {
+  return request({
+    url: 'http://orcsystem.v2.idcfengye.com/Article/InsertArticle',
+    method: "post",
+    data,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    }
+  })
+}
