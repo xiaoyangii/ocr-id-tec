@@ -27,11 +27,12 @@ export const deleteArticle = (telephone, articleId) => {
 
 // 4. 下载文章
 export const downloadArticle = (articleId) => {
-  return request.post('/Article/Download', {
+  return request.get('/Article/Download', {
     params: {
       // articleId
-      articleId: "17850966557#25"
-    }
+      articleId: "17850966557" + "#" + 25
+    },
+    responseType: 'blob'
   })
 }
 

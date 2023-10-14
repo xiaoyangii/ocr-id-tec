@@ -26,7 +26,7 @@
       <i class="el-icon-arrow-left" @click="$router.go(-1)"></i>
       <div class="details_header_iconbox">
         <div class="details_header_iconbox_tag" title="标记"></div>
-        <div class="details_header_iconbox_collect" title="收藏"></div>
+        <div class="details_header_iconbox_collect" title="收藏" @click="collect($event)"></div>
         <div class="details_header_iconbox_share" title="分享"></div>
         <div class="details_header_iconbox_cite" title="引用"></div>
       </div>
@@ -68,6 +68,7 @@
 
 <script>
 import { getArticleDetail, downloadArticle } from '@/api/article.js'
+import { addColle } from '@/api/myCollection.js'
 export default {
   name: 'articleDetails',
   components: {
@@ -218,18 +219,49 @@ export default {
       // })
     },
     async pdfDownload() {
+      this.$message({
+        type: 'success',
+        message: '获取文件中'
+      })
       await downloadArticle(this.articleId)
+      .then(res => {
+        const link=document.createElement('a')
+        let blob =  res
+        let _fileName = res.headers['content-disposition'].split(';')[1].split('=')[1]
+	      link.style.display='none';
+        const url = window.URL || window.webkitURL || window.moxURL
+        let binaryData = []
+        binaryData.push(blob)
+        link.href = window.URL.createObjectURL(new Blob(binaryData))
+        link.download = _fileName   //下载的文件名称
+        link.click()
+        window.URL.revokeObjectURL(url)
+        this.$message({
+          type: 'success',
+          message: '下载中'
+        })
+      })
+      .catch(err => {
+        console.log(err);
+        this.$message({
+          type: 'error',
+          message: '下载失败' + err
+        })
+      })
+    },
+    async collect(e) {
+      await addColle(this.articleId)
       .then(res => {
         console.log(res)
         this.$message({
           type: 'success',
-          message: '下载成功'
+          message: '收藏成功'
         }) 
       })
       .catch(err => {
         this.$message({
           type: 'error',
-          message: '下载失败' + err
+          message: '收藏失败' + err
         })
       })
     }

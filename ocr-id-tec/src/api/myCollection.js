@@ -18,3 +18,13 @@ export const deleteColle = (telephone, articleId) => {
     }
   })
 }
+
+// 3. 收藏
+export const addColle = (telephone, articleId) => {
+  return request.post('/CollectLink/InsertCollectLink', {
+    data: {
+      telephone,
+      articleId
+    }
+  })
+}

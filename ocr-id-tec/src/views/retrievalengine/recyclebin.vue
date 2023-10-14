@@ -33,7 +33,7 @@
       </div>
       <div class="content_empty" v-else>
         <img src="@/assets/images/recycle.png" alt="">
-        <div>暂无内容😃😃😃</div>
+        <div>当前回收站记录为空😃</div>
       </div>
     </div>
   </div>

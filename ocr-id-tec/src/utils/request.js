@@ -21,7 +21,6 @@ instance.interceptors.request.use(function (config) {
   if (token) {
     config.headers['Access-Token'] = token
   }
-
   return config
 }, function (error) {
   // 对请求错误做些什么
@@ -33,14 +32,16 @@ instance.interceptors.response.use(function (response) {
   // 2xx 范围内的状态码都会触发该函数。
   // 对响应数据做点什么 (默认axios会多包装一层data，需要响应拦截器中处理一下)
   const res = response.data
-  localStorage.setItem("cookie", response.headers['set-cookie'])
   console.log(response)
+  if(response.config.responseType === 'blob') {
+    return response
+  }
   if (response.status !== 200) {
     // tryHideFullScreenLoading()
     Vue.prototype.$message({
       message: res.msg,
       type: 'warning'
-    });
+    })
     // 抛出一个错误的promise
     return Promise.reject(res.message)
   } else {
@@ -48,7 +49,6 @@ instance.interceptors.response.use(function (response) {
   }
   return res
 }, function (error) {
-  // 超出 2xx 范围的状态码都会触发该函数。
   // 对响应错误做点什么
   return Promise.reject(error)
 })

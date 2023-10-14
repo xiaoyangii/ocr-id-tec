@@ -32,7 +32,10 @@
       <div class="content_List" v-if="isempty">
         <historicalCard v-for="(item) in matchList" :key="item.id" :item="item"></historicalCard>
       </div>
-      <div class="content_empty" v-else>当前历史记录为空！😃😃😃</div>
+      <div class="content_empty" v-else>
+        <img src="@/assets/images/recycle.png" alt="">
+        <div>当前浏览历史为空😃</div>
+      </div>
     </div>
   </div>
 </template>
@@ -520,11 +523,17 @@ export default {
     }
   }
   &_empty {
-    margin-top: 300px;
+    margin-top: 100px;
     text-align: center;
     color: #000;
     font-size: 36px;
     font-weight: 700;
+    div {
+      margin-top: 30px;
+      color: #74ADFD;
+      font-size: 38px;
+      letter-spacing: 4.18px;
+    }
   }
   &_List {
     height: calc(100% - 114px);

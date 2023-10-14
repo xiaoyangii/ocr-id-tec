@@ -78,6 +78,7 @@ export default {
       left: 40px;
       font-size: 35px;
       line-height: 2;
+      cursor: pointer;
     }
     &_title {
       position: absolute;

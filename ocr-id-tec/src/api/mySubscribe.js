@@ -18,3 +18,13 @@ export const deleteSubs = (telephone, subscriptionName) => {
     }
   })
 }
+
+// 3. 订阅
+export const addSubs = (telephone, subscriptionName) => {
+  return request.post('/SubscriptionLink/InsertSubscriptionLink', {
+    data: {
+      telephone,
+      subscriptionName
+    }
+  })
+}
