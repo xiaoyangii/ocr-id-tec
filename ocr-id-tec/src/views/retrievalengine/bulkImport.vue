@@ -17,6 +17,7 @@
         :on-change="onChange"
         :before-upload="beforeUpload"
         :http-request="uploadFile"
+        :on-progress="onProgress"
         :auto-upload="false"
         accept=".pdf"
         multiple
@@ -32,7 +33,7 @@
         </div>
         <div class="process_card_right">
           <div class="process_card_right_title">{{ item.name }}</div>
-          <el-progress :percentage="item.percentage" :stroke-width="8" :show-text="false"></el-progress>
+          <el-progress :percentage="uploadprogressPercentage" :stroke-width="8" :show-text="false"></el-progress>
           <div class="process_card_right_size">{{ (item.size/1024/1024).toFixed(2) }}MB</div>
         </div>
       </div>
@@ -48,7 +49,8 @@ export default {
   data () {
     return {
       pdfList: [],
-      formDate: new FormData()
+      formDate: new FormData(),
+      uploadprogressPercentage: 0
     }
   },
   watch: {},
@@ -62,7 +64,25 @@ export default {
     async onSubmit() {
       this.$refs.upload.submit()
       this.formDate.append('telephone', localStorage.getItem('loginId'))
-      await uploadPdfFile(this.formDate)
+      this.$message({
+        message: "上传中",
+        type: "success"
+      })
+      await request({
+        url: 'http://orcsystem.v2.idcfengye.com/Picture/InsertPicture',
+        method: "post",
+        data: this.formDate,
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        onUploadProgress: progress => {
+          console.log(progress)
+          if (progress.event.lengthComputable) {
+            console.log(progress)
+            this.uploadprogressPercentage = parseInt((progress.loaded / progress.total) * 100) // 进度条百分比
+          }
+        },
+      })
       .then(res => {
         this.$message({
           message: "上传成功",
@@ -78,7 +98,7 @@ export default {
     },
     beforeUpload(file) {
       console.log("beforeupload")
-      console.log(file);
+      console.log(file)
     },
     onChange(file, fileList) {
       console.log("onchange")
@@ -89,10 +109,14 @@ export default {
       this.$message({
         message: "最多上传4个文件",
         type: "warn"
-      });
+      })
+    },
+    onProgress(event, file, fileList) {
+      console.log("onprogress")
+      console.log(event, file, fileList)
     },
     uploadFile(file) {
-      console.log("uploadfile");
+      console.log("uploadfile")
       console.log(file)
       //参数file文件就是传入的文件流，添加进formDate中
       this.formDate.append("files", file.file)
