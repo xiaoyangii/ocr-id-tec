@@ -8,13 +8,7 @@
 <script>
 export default {
   name: "afterFeedback",
-  data() {
-    return {
-
-    };
-  },
-  methods: {},
-};
+}
 </script>
 <style scoped>
 .left {
