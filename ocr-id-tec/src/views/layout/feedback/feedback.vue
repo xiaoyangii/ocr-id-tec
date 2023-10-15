@@ -13,14 +13,7 @@
 <script>
 export default {
   name: "feedback",
-  data() {
-    return {
-
-    };
-  },
-  methods: {
-  },
-};
+}
 </script>
 <style scoped lang="less">
 .right {
