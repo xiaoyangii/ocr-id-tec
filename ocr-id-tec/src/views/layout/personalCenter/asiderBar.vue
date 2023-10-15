@@ -27,12 +27,6 @@
 <script>
 export default {
   name: 'asiderBar',
-  components: {},
-  data () {
-    return {
-
-    }
-  },
   computed: {
     activeIndex() {
       const route = this.$route;
@@ -40,9 +34,6 @@ export default {
       return path;
     }
   },
-  watch: {},
-  methods: {},
-  created () {},
 }
 </script>
 <style scoped lang='less'>
