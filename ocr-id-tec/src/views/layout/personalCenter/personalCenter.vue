@@ -19,14 +19,6 @@ export default {
     navbar,
     asiderBar
   },
-  data () {
-    return {
-    }
-  },
-  computed: {},
-  watch: {},
-  methods: {
-  },
   created () {},
 }
 </script>
