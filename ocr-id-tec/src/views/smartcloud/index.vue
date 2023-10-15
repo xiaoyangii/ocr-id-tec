@@ -177,8 +177,6 @@ export default {
       return flag
     },
   },
-  watch: {
-  },
   methods: {
     cancel() {
       // 取消选中的回收站记录
