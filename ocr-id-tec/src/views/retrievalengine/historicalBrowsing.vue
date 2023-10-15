@@ -155,8 +155,7 @@ export default {
       ],
       hisListCopy: [
       ],
-      matchList: [],
-      deleteList: [],
+      matchList: []
     }
   },
   computed: {
