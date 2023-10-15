@@ -187,8 +187,6 @@ export default {
       imgList: []
     }
   },
-  computed: {},
-  watch: {},
   methods: {
     async editAvatar() {
       this.$refs.upload.submit()
