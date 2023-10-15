@@ -15,15 +15,7 @@
 //import passwordLogin from "@/components/passwordLogin.vue";
 export default {
   name: "login",
-  data: function() {
-    return {
-
-    };
-  },
-  methods: {
-
-  }
-};
+}
 </script>
 <style scoped lang="less">
 @import "@/assets/font/font.css";
