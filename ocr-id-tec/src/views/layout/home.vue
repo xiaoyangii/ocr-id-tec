@@ -16,13 +16,6 @@ export default {
   components: {
     Navbar
   },
-  data () {
-    return {}
-  },
-  computed: {},
-  watch: {},
-  methods: {},
-  created () {},
 }
 </script>
 <style scoped lang='less'>
