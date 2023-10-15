@@ -67,7 +67,6 @@ export default {
       return localStorage.getItem('loginId')
     }
   },
-  watch: {},
   methods: {
     toPdf() {
       this.$router.push('/home/retrievalengine/bulkimport')

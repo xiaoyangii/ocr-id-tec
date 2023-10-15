@@ -53,7 +53,6 @@ export default {
       uploadprogressPercentage: 0
     }
   },
-  watch: {},
   methods: {
     toImg() {
       this.$router.push('/home/retrievalengine/bulkimportimg')

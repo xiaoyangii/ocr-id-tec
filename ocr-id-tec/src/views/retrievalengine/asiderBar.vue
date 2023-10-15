@@ -55,11 +55,8 @@ export default {
       if (meta.activeIndex) {
         return meta.activeIndex;
       }
-      return path;
+      return path
     }
-  },
-  methods: {
-
   },
 };
 </script>

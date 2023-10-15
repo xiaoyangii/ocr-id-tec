@@ -33,7 +33,6 @@ export default {
       dateValue: "",
     }
   },
-  computed: {},
   watch: {
     // 文字清空时调用
     keyWord() {
