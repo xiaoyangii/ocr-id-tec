@@ -49,9 +49,6 @@
 import { getArticleDetail } from '@/api/article.js'
 export default {
   name: 'articleOnline',
-  components: {
-    
-  },
   data () {
     return {
       keyWord: "", //搜索框输入的值
