@@ -43,10 +43,7 @@ export default {
   data() {
     return {
       activeIndex: ""
-    };
-  },
-  methods: {
-    
+    }
   },
 };
 </script>
