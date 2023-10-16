@@ -15,11 +15,6 @@
 import Asider from '@/views/retrievalengine/asiderBar.vue'
 export default {
   name: 'retrievalengine',
-  data() {
-    return {
-      
-    };
-  },
   components: {
     Asider
   }
