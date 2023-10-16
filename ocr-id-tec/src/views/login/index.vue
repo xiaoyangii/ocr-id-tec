@@ -12,7 +12,6 @@
 </template>
 
 <script>
-//import passwordLogin from "@/components/passwordLogin.vue";
 export default {
   name: "login",
 }
