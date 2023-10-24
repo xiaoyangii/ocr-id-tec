@@ -6,9 +6,6 @@
 export default {
   name: 'settings',
   components: {},
-  data () {
-    return {}
-  },
 }
 </script>
 <style scoped lang='less'>
