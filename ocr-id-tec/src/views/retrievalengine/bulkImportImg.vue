@@ -137,7 +137,6 @@ export default {
       this.formDate.append("file", file.file)
     },
   },
-  created () {},
 }
 </script>
 <style scoped lang='less'>
