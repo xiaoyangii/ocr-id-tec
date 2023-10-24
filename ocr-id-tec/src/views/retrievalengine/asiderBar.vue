@@ -39,11 +39,6 @@
 <script>
 export default {
   name: 'asiderBar',
-  data() {
-    return {
-    };
-  },
-  //监听属性 类似于data概念
   computed: {
     activeIndex() {
       const route = this.$route;
