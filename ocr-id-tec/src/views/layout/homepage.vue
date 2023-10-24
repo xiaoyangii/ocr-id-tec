@@ -56,11 +56,6 @@
 <script>
 export default {
   name: "Homepage",
-  data() {
-    return {
-
-    };
-  },
   methods: {
     jump() {
       this.$router.push("/home/retrievalengine/bibliography");
