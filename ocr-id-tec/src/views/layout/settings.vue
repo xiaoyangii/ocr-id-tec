@@ -5,7 +5,6 @@
 <script>
 export default {
   name: 'settings',
-  components: {},
 }
 </script>
 <style scoped lang='less'>
