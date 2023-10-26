@@ -24,84 +24,88 @@ export default {
 </script>
 <style scoped lang='less'>
 .onlinestore {
-  width: 100%;
+  width: 100vw;
   height: 91.5vh;
   background: url('../../assets/images/onlineshop.png') no-repeat;
+  background-size: cover;
 }
 .onlinestore_head {
   float: left;
-  width: 100%;
-  height: 320px;
+  width: 100vw;
+  .px2vh(height, 320);
   text-align: center;
   &_title {
-    margin-top: 130px;
+    .px2vh(margin-top, 130);
     color: #D8AA69;
-    font-size: 70px;
+    .px2font(70);
     font-weight: 700;
   }
   &_stitle {
-    margin-top: 40px;
+    .px2vh(margin-top, 40);
     color: #FFF;
-    font-size: 40px;
+    .px2font(40);
   }
 }
 .onlinestore_content {
   float: left;
-  width: 100%;
-  height: 180px;
+  width: 100vw;
+  .px2vh(height, 180);
   text-align: center;
   .el-icon-shop {
     position: relative;
-    top: 40px;
+    .px2vh(top, 40);
     left: 0;
     background: url('@/assets/images/shopicon.png') center center no-repeat;
-    height: 105px;
-    width: 100px;
+    background-size: cover;
+    .px2vh(height, 120);
+    .px2vw(width, 100);
   }
   &_line1 {
     position: absolute;
-    top: 50px;
-    left: -650px;
-    width: 504px;
-    height: 4px;
+    .px2vh(height, 4);
+    .px2vw(width, 504);
+    .px2vh(top, 50);
+    .px2vw(left, -650);
     background: url('@/assets/images/Line1.png') center center no-repeat;
+    background-size: cover;
   }
   &_line2 {
     position: absolute;
-    top: 50px;
-    left: 250px;
-    width: 504px;
-    height: 4px;
+    .px2vh(height, 4);
+    .px2vw(width, 504);
+    .px2vh(top, 50);
+    .px2vw(left, 250);
     background: url('@/assets/images/Line2.png') center center no-repeat;
+    background-size: cover;
   }
 }
 .onlinestore_foot {
   float: left;
-  width: 100%;
-  height: calc(100% - 500px);
+  width: 100vw;
+  .px2vh(height, 360);
   text-align: center;
   &_btn {
     position: relative;
-    top: 60px;
+    .px2vh(top, 60);
     left: 0;
-    width: 398px;
-    height: 112px;
-    border-radius: 65.5px;
+    .px2vh(height, 112);
+    .px2vw(width, 398);
+    .px2vh(border-radius, 65.5);
     background: linear-gradient(90deg, #D8AA69 26.01%, #E5A03D 90.33%);
     box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.25);
     border: none;
     color: #FFF;
-    font-size: 42px;
+    .px2font(42);
     font-weight: 700;
   }
   &_text {
     position: relative;
-    top: 100px;
+    .px2vh(top, 100);
     left: 0;
     width: 100%;
-    height: 50px;
+    .px2vh(height, 50);
     color: #D8AA69;
-    font-size: 40px;
+    .px2font(40);
     font-weight: 700;
   }
 }

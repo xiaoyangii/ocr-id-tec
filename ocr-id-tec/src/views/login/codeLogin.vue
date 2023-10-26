@@ -43,10 +43,10 @@
           >登录</el-button
         >
       </el-form-item>
-      <el-row style="text-align: center;margin-top: -10px;">
+      <el-row style="text-align: center;">
         <el-checkbox size="medium" v-model="checked" class="saveSettings">保存登陆设置</el-checkbox>
       </el-row>
-      <el-row style="text-align: center;margin-top: -10px;">
+      <el-row style="text-align: center;">
         <el-link type="primary" @click="toRegister" class="goRegister"
           >还没有账号？点击此处注册
         </el-link>
@@ -162,62 +162,61 @@ export default {
 </script>
 <style scoped lang="less">
 .login-container {
-  padding-top: 100px;
-  margin: 80px auto;
-  width: 500px;
+  .px2vw(width, 500);
+  .px2vh(padding-top, 80);
+  margin: 100px auto;
+  .px2vh(margin-bottom, 100);
+  .px2vh(margin-top, 150);
   text-align: left;
 }
 .passwordLogin {
   position: absolute;
-  width: 140px;
-  height: 26px;
-  left: 592px;
-  top: 204px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 26px;
-
+  .px2vw(width, 140);
+  .px2vh(height, 26);
+  .px2vw(left, 592);
+  .px2vh(top, 184);
+  .px2vh(line-height, 26);
+  .px2font(20);
   color: #D9D9D9 !important;
 }
 .title {
   margin: 0px auto 50px auto;
+  .px2vh(margin-bottom, 50);
   text-align: center;
   color: black;
   font-weight: 700;
-  font-size: 40px;
+  .px2font(40);
   letter-spacing: 0.08em;
 }
 .account {
-  height: 100px;
+  .px2vh(height, 100);
 }
 .code {
-  height: 100px;
-  margin-top: 10px;
+  .px2vh(height, 100);
+  .px2vh(margin-top, 10);
 }
 .bind_code_gain {
   position: absolute;
-  top: calc(50% - 10px);
-  right: 20px;
-  line-height: 18px;
+  .px2vh(top, 30);
+  .px2vw(right, 20);
+  .px2vh(line-height, 18);
   cursor: pointer;
   padding: 0 !important;
   background-color: #F7F4F4 !important;
   border: none !important;
-  font-weight: 400;
-  font-size: 20px;
-
+  .px2font(20);
   color: #9B9595;
 }
 .login {
-  margin-top: 50px !important;
-  height: 100px;
+  .px2vh(margin-top, 50)!important;
+  .px2vh(height, 100);
   &-button {
     position: relative;
-    height: 80px;
+    .px2vh(margin-top, 10);
+    .px2vh(height, 80);
     background-color: #9AC1E4;
-    border-radius: 10px;
-    font-size: 22px;
+    .px2vw(border-radius, 12);
+    .px2font(22);
     font-weight: 600;
     letter-spacing: 0.08em;
     border-color: #9AC1E4;
@@ -231,51 +230,60 @@ export default {
 }
 .saveSettings {
   float: left;
-  font-size: 18px !important;
+  .px2font(18)!important;
 }
 .goRegister {
   position: absolute;
-  width: 210px;
-  height: 21px;
-  left: 152px;
-  top: 61px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 21px;
-
+  .px2vw(width, 220);
+  .px2vh(height, 21);
+  .px2vw(left, 152);
+  .px2vh(top, 60);
+  .px2vh(line-height, 21);
+  .px2font(18);
   color: #3E68BB !important;
 }
 ::v-deep .el-checkbox__label {
-  font-size: 20px;
-  margin-left: 10px;
+  .px2font(20);
+  .px2vw(margin-left, 10);
   color: #000;
 }
 ::v-deep .el-checkbox__input{
   transform: scale(2);
-  margin-bottom: 3px;
 }
 ::v-deep .el-checkbox__inner {
-  border-radius: 2px;
-  border: 1px solid #000;
+  .px2vw(width, 15);
+  .px2vh(height, 16);
+  .px2vw(border-radius, 2);
+  border: 0.1vw solid #000;
 }
 ::v-deep .el-form-item {
-  margin-top: 25px;
+  .px2vh(margin-top, 50);
+  .px2vh(margin-bottom, 25);
+  .px2vh(height, 89);
 }
 ::v-deep .el-form-item__label {
-  padding-bottom: 12px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 26px;
+  .px2vh(height, 35);
+  .px2vh(line-height, 35);
+  .px2vh(padding-bottom, 12) !important;
+  .px2font(20);
   color: #000000;
 }
 ::v-deep .el-input__inner {
-  width: 500px;
-  height: 70px;
+  .px2vw(width, 500);
+  .px2vh(height, 80);
   background: #F6F4F4;
   border-color: #F6F4F4;
-  font-size: 20px;
-  border-radius: 5px;
+  .px2font(20);
+  .px2vw(border-radius, 5);
+}
+.el-col {
+  .px2vh(height, 62);
+}
+::v-deep .el-form-item__content {
+  .px2font(20);
+  .px2vh(line-height, 40);
+}
+.el-row {
+  .px2vh(margin-top, 10);
 }
 </style>

@@ -21,13 +21,13 @@ export default {
 <style scoped lang='less'>
 .header {
   position: fixed;
-  width: 100%;
+  width: 100vw;
   right: 0;
   top: 0;
   z-index: 999;//一直将导航栏置于最顶层
 }
 .panel {
-  width: 100%;
-  margin-top: 80px;
+  width: 100vw;
+  .px2vh(margin-top, 89);
 }
 </style>

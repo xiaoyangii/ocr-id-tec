@@ -35,8 +35,8 @@
 
       <div class="avatar" v-else>
         <el-dropdown trigger="click" @command="handleCommand">
-          <el-avatar :size="56" :src="avatarUrl"></el-avatar>
-          <el-dropdown-menu slot="dropdown">
+          <el-avatar :src="avatarUrl"></el-avatar>
+          <el-dropdown-menu slot="dropdown" ref="elDropdown">
             <el-dropdown-item  v-for="(item) in option" :key="item.value" :command="item.value">
               {{ item.label }}
             </el-dropdown-item>
@@ -113,10 +113,13 @@ export default {
 .header {
   position: relative;
   display: flex;
-  height: 80px;
+  .px2vh(height, 89);
   align-items: center;
-  padding: 10px 70px;
-  min-width: 900px;
+  .px2vw(padding-left, 80);
+  .px2vw(padding-right, 10);
+  .px2vh(padding-top, 10);
+  .px2vh(padding-bottom, 10);
+  .px2vw(min-width, 900);
   background-color: #E2F0FD;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
   &.main-color {
@@ -128,19 +131,23 @@ export default {
     }
     .login-text {
       color: #3370ff;
-      padding: 5px;
+      .px2vw(padding-left, 5);
+      .px2vw(padding-right, 5);
+      .px2vh(padding-top, 5);
+      .px2vh(padding-bottom, 5);
     }
   }
   img {
-    height: 100%;
+    .px2vh(height, 60);
   }
 }
 .logo {
   float: left;
-  width: 300px;
-  height: 100%;
-  margin-left: 20px;
-  line-height: 51px;
+  .px2vw(width, 300);
+  .px2vh(height, 53);
+  .px2vh(line-height, 45);
+  .px2vw(margin-left, 20);
+  .px2font(32);
   color: #000;
   font-family: "zihun";
   font-weight: 400;
@@ -150,61 +157,80 @@ export default {
   }
 }
 .navbar {
-  margin-left: 300px;
+  .px2vw(margin-left, 300);
   display: flex;
   &-item {
-    padding: 24px 0px;
-    margin: 0 75px;
-    font-size: 22px;
-    width: 90px;
-    height: 80px;
+    .px2vh(padding-top, 24);
+    .px2vh(padding-bottom, 24);
+    .px2vw(margin-left, 75);
+    .px2vw(margin-right, 75);
+    .px2font(22);
+    .px2vw(width, 90);
+    .px2vh(height, 88);
     text-align: center;
     &.active {
-      border-bottom: 4px solid;
+      .px2vh(border-bottom, 6);
+      border-bottom-style: solid;
       color: #1559DD;
     }
   }
 }
 .user {
-  margin-left: 40px;
-  margin-right: 15px;
+  .px2vw(margin-left, 40);
+  .px2vw(margin-right, 15);
   position: relative;
-  width: 150px;
-  height: 55px;
-  line-height: 50px;
-  font-size: 22px;
+  .px2vw(width, 150);
+  .px2vh(height, 55);
+  .px2vh(line-height, 50);
+  .px2font(22);
   color: #fff;
   .login {
     margin: 2.5px auto;
-    width: 85px;
-    border-radius: 18px;
+    .px2vw(width, 85);
+    border-radius: 0.8vw;
     background-color: #053593;
-    padding: 0px 15px;
+    .px2vw(padding-right, 15);
+    .px2vw(padding-left, 15);
     text-align: center;
   }
 }
 .avatar {
   float: right;
-  height: 60px;
+  .px2vw(width, 150);
+  .px2vh(height, 60);
+  .px2vw(margin-right, 15);
 }
-.el-dropdown-menu {
-  top: 70px !important;
-  left: 1750px !important;
-  padding: 5px 0;
-  margin: 0 auto;
-  border-radius: 8px;
-}
+
 /* 消除小三角 */
 .el-popper {
   overflow: auto; 
 }
 ::v-deep .el-dropdown-menu__item {
-  font-size: 16px;
+  .px2vw(width, 92);
+  .px2vh(height, 45);
+  .px2vh(line-height, 45);
+  .px2font(16);
   color: #013480;
   text-align: center;
-  padding: 5px 14px;
+  .px2vw(padding-left, 14);
+  .px2vw(padding-right, 14);
+  .px2vh(padding-top, 5);
+  .px2vh(padding-bottom, 5);
   &:hover {
     color: #013480 !important;
   }
+}
+::v-deep .el-avatar {
+  .px2vh(height, 56);
+  .px2vw(width, 50);
+}
+.el-dropdown-menu {
+  // position: relative !important;
+  .px2vh(top, 78) !important;
+  .px2vw(left, 1707) !important;
+  .px2vh(padding-top, 5);
+  .px2vh(padding-bottom, 5);
+  margin: 0 auto;
+  border-radius: 0.5vw;
 }
 </style>

@@ -10,37 +10,39 @@ export default {
   name: "afterFeedback",
 }
 </script>
-<style scoped>
+<style scoped lang="less">
 .left {
   float: left;
   width: 58%;
-  height: 878px;
+  .px2vh(height, 990);
   background: #EBF5FF;
-  border-radius: 0px;
-  margin: 0px auto;
+  border-radius: 0;
+  margin: 0 auto;
   text-align: center;
 }
 .text1 {
-  margin-top: 260px;
-  height: 70px;
+  .px2vh(margin-top, 360);
+  .px2vh(height, 70);
+  .px2vh(line-height, 61);
   width: 100%;
   font-family: 'MicrosoftYaHei';
   font-weight: 700;
-  font-size: 66px;
-  line-height: 61px;
+  .px2font(66);
   /* identical to box height */
   color: #013480;
 }
 .text2 {
   width: 100%;
-  height: 53px;
-  margin-top: 100px;
+  .px2vh(height, 53);
+  .px2vh(line-height, 53);
+  .px2vh(margin-top, 100);
   font-family: 'MicrosoftYaHei';
-  font-style: normal;
   font-weight: 400;
-  font-size: 50px;
-  line-height: 53px;
+  .px2font(50);
   /* identical to box height */
   color: #013480;
+}
+.el-form-item__content {
+  .px2font(14);
 }
 </style>

@@ -113,31 +113,33 @@ export default {
 .left {
   float: left;
   width: 58%;
-  height: 878px;
+  .px2vh(height, 990);
   background: #EBF5FF;
   margin: 0px auto;
   text-align: center;
   .title {
-    margin: 20px auto 50px auto;
+    .px2vh(margin-top, 20);
+    .px2vh(margin-bottom, 50);
     text-align: center;
     color: #013480;
     font-family: "MicrosoftYaHei" !important;
     font-style: normal;
     font-weight: 700;
-    font-size: 36px;
+    .px2font(36);
     letter-spacing: 0.08em;
   }
   .text {
-    width: 560px;
-    height: 80px;
-    margin: 20px auto;
+    .px2vh(height, 80);
+    .px2vw(width, 560);
+    margin: 0 auto;
+    .px2vh(margin-top, 20);
+    .px2vh(margin-bottom, 20);
     font-family: "MicrosoftYaHei";
-    font-size: 20px;
-    line-height: 147.48%;
+    .px2font(20);
+    .px2vh(line-height, 40);
     /* or 24px */
-    text-align: center;
+    // text-align: center;
     letter-spacing: 0.135em;
-
     color: #053593;
   }
 }
@@ -146,34 +148,38 @@ export default {
 }
 ::v-deep .el-form-item {
   margin: 0px auto;
-  margin-top: 10px;
+  .px2vh(margin-top, 10);
 }
 ::v-deep .el-form-item__label {
+  .px2vh(height, 55);
+  .px2vh(line-height, 55);
   float: left;
   padding: 0;
   font-family: "MicrosoftYaHei" !important;
-  font-weight: 400;
-  font-size: 20px;
+  .px2font(20);
   color: #013480;
 }
 ::v-deep .el-input__inner {
-  width: 433px;
-  height: 70px;
+  .px2vh(height, 70);
+  .px2vw(width, 433);
   background-color: #EBF5FF !important;
-  border: 1px solid #013480;
-  border-radius: 45px;
+  border: 0.1vw solid #013480;
+  border-radius: 4vw;
 }
 ::v-deep .el-button {
-  margin-top: 30px;
-  height: 80px;
-  width: 200px !important;
+  .px2vh(margin-top, 30);
+  .px2vh(height, 80);
+  .px2vw(width, 200) !important;
   background: #013480;
-  border-radius: 45px;
-  font-size: 28px;
+  border-radius: 4vw;
+  .px2font(28);
   font-weight: 600;
   letter-spacing: 0.08em;
 }
 ::v-deep .el-form-item__error {
-  left: 290px;
+  .px2vw(left, 290);
+}
+.el-form-item__content {
+  .px2font(14);
 }
 </style>

@@ -24,12 +24,12 @@ export default {
 </script>
 <style scoped lang='less'>
 .body {
-  height: 877px;
-  width: 100%;
+  .px2vh(height, 990);
+  width: 100vw;
   .right {
-    margin-left: 317px;
-    padding-left: 155px;
-    height: 100%;
+    .px2vw(margin-left, 317);
+    .px2vh(padding-left, 155);
+    .px2vh(height, 990);
     background: #FFF;
   }
 }

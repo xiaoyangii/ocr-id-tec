@@ -236,7 +236,7 @@ export default {
       .catch(err => {
         this.$message({
           message: "获取文献库列表失败" + err,
-          type: "success"
+          type: "error"
         })
       })
     },
@@ -283,7 +283,9 @@ export default {
   width: 15vw;
   height: 100%;
   float: left;
-  border-right: 3px solid #E5E5E5;
+  .px2vw(border-right, 3);
+  border-color: #E5E5E5;
+  border-style: solid;
 }
 .left {
   &_head {
@@ -294,9 +296,11 @@ export default {
       height: 10vh;
       width: 100%;
       img {
-        width: 30px;
-        height: 30px;
-        margin: 21px 30px;
+        .px2vw(width, 30);
+        .px2vh(height, 30);
+        .px2vw(margin-left, 21);
+        .px2vw(margin-right, 21);
+        .px2vh(margin-top, 30);
         scale: 1.2;
         cursor: pointer;
       }
@@ -305,10 +309,10 @@ export default {
       width: 100%;
       height: 7vh;
       color: #013480;
-      font-size: 22px;
+      .px2font(22);
       text-align: center;
       font-weight: 700;
-      padding-left: 80px;
+      .px2vw(padding-left, 80);
       background: #EBF5FF;
       &_text {
         float: left;
@@ -316,8 +320,10 @@ export default {
       }
       img {
         float: left;
-        margin-top: 21px;
-        margin-right: 15px;
+        .px2vw(width, 27);
+        .px2vh(height, 27);
+        .px2vw(margin-right, 15);
+        .px2vh(margin-top, 21);
       }
     }
   }
@@ -332,7 +338,7 @@ export default {
       line-height: 5vh;
       width: 100%;
       color: #000;
-      font-size: 18px;
+      .px2font(18);
       font-weight: 700;
       background-color: #dbdbdb;
     }
@@ -347,29 +353,30 @@ export default {
   &_head {
     height: 23vh;
     width: 100%;
-    padding: 0 112px;
+    .px2vw(padding-right, 112);
+    .px2vw(padding-left, 112);
     &_title {
       float: left;
-      margin-top: 50px;
+      .px2vh(margin-top, 50);
       color: #000;
-      font-size: 36px;
+      .px2font(36);
       font-weight: 700;
     }
     &_btnbox {
       float: left;
       height: 8vh;
       width: 100%;
-      padding-top: 28px;
+      .px2vh(padding-top, 28);
       button {
         float: left;
-        width: 117px;
-        height: 44px;
-        margin-right: 15px;
-        border-radius: 10px;
-        border: 1px solid #1559DD;
+        .px2vw(width, 117);
+        .px2vh(height, 44);
+        .px2vw(margin-right, 15);
+        .px2vh(border-radius, 10);
+        border: 0.1vw solid #1559DD;
         background-color: #fff;
         color: #1559DD;
-        font-size: 20px;
+        .px2font(20);
         cursor: pointer;
       }
       .btn_import {
@@ -382,16 +389,16 @@ export default {
       float: left;
       height: 3vh;
       width: 100%;
-      margin-top: 17px;
+      .px2vh(margin-top, 17);
       color: #9B9595;
-      font-size: 20px;
+      .px2font(20);
     }
   }
   &_body {
     float: left;
     width: 100%;
     height: 68.7vh;
-    padding-top: 10px;
+    .px2vh(padding-top, 10);
     overflow-y: scroll;
     &::-webkit-scrollbar {
       display: none
@@ -399,19 +406,20 @@ export default {
     &_head {
       width: 100%;
       height: 3vh;
-      padding: 0 198px;
-      border-bottom: 2px solid #E3E2E2;
+      .px2vw(padding-left, 198);
+      .px2vw(padding-right, 198);
+      border-bottom: 0.2vw solid #E3E2E2;
       div {
         float: left;
         color: #9B9595;
-        font-size: 20px;
+        .px2font(20);
         font-weight: 500;
       }
       &_time {
-        margin-left: 600px;
+        .px2vw(margin-left, 198);
       }
       &_size {
-        margin-left: 200px;
+        .px2vw(margin-left, 200);
       }
     }
     &_body {
@@ -428,16 +436,16 @@ export default {
 }
 .content_boxx {
   position: absolute;
-  top: 250px;
-  right: 80px;
+  .px2vw(right, 80);
+  .px2vh(top, 250);
   width: 40%;
   height: 10%;
   &_num {
-    height: 44px;
-    line-height: 44px;
+    .px2vh(height, 50);
+    .px2vh(line-height, 50);
     float: right;
     color: #000;
-    font-size: 22px;
+    .px2font(22);
     text-align: center;
     span {
       color: #1559DD;
@@ -445,26 +453,27 @@ export default {
   }
   &_button1 {
     float: right;
-    margin-left: 20px;
-    width: 69px;
-    height: 44px;
-    border-radius: 6px;
+    .px2vw(width, 70);
+    .px2vh(height, 50);
+    .px2vw(margin-left, 20);
+    .px2vh(border-radius, 8);
     border: none;
     background: #013480;
     color: #FFF;
-    font-size: 18px;
+    .px2font(18);
     cursor: pointer;
   }
   &_button2 {
     float: right;
-    margin-left: 10px;
-    width: 69px;
-    height: 44px;
-    border-radius: 6px;
+    .px2vw(margin-left, 10);
+    .px2vw(width, 70);
+    .px2vh(height, 52);
+    .px2vw(margin-left, 20);
+    .px2vh(border-radius, 8);
     background: #D9D9D9;
     border: none;
     color: #FFF;
-    font-size: 18px;
+    .px2font(18);
     cursor: pointer;
   }
 }

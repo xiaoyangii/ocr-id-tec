@@ -2,7 +2,7 @@
   <div class="right">
     <div class="personaldata">
       <div class="personaldata_avatar">
-        <el-avatar :size="87" :src="avatarUrl"></el-avatar>
+        <el-avatar :src="avatarUrl"></el-avatar>
         <el-upload
           class="upload-demo"
           ref="upload"
@@ -29,7 +29,7 @@
     <div class="editform">
       <el-form 
         label-position="left"
-        label-width="100px"
+        label-width="6vw"
         :model="userInfo"
         :rules="editRules"
         ref="editForm"
@@ -153,6 +153,7 @@ export default {
     return {
       avatarUrl,
       userInfo: {
+        name: "不吃香菜"
       },
       editRules: {
         telephone: [
@@ -285,22 +286,22 @@ export default {
 </script>
 <style scoped lang='less'>
 .personaldata {
-  height: 190px;
+  .px2vh(height, 190);
   width: 50%;
   &_avatar {
     position: relative;
     left: 0;
-    top: 50px;
+    .px2vh(top, 50);
     width: 20%;
     &_edit {
       position: absolute;
-      left: -3px;
-      top: 100px;
-      margin-left: 10px;
+      .px2vw(left, -3);
+      .px2vh(top, 100);
+      .px2vw(margin-left, 10);
     }
     ::v-deep .el-link {
       color: #2B68C2;
-      font-size: 20px;
+      .px2font(20);
     }
     ::v-deep .is-underline:hover:after {
       border: none;
@@ -308,76 +309,88 @@ export default {
   }
   &_username {
     position: relative;
-    top: -35px;
-    left: 120px;
-    width: 50%;
+    .px2vw(left, 120);
+    .px2vh(top, -35);
     color: #053593;
-    font-size: 28px;
+    .px2font(28);
     font-weight: 700;
   }
   &_authentication {
     position: relative;
-    top: -20px;
-    left: 120px;
-    width: 118px;
-    height: 33px;
-    line-height: 33px;
-    border-radius: 11.5px;
+    .px2vw(left, 120);
+    .px2vh(top, -20);
+    .px2vw(width, 118);
+    .px2vh(height, 33);
+    .px2vh(line-height, 33);
+    .px2vw(border-radius, 11.5);
     background: #043492;
     color: #FFF;
-    font-size: 16px;
+    .px2font(16);
     font-weight: 700;
     text-align: center;
   }
   &_authenticationname {
     position: relative;
-    top: -53px;
-    left: 253px;
-    width: 118px;
-    height: 33px;
-    line-height: 33px;
-    border-radius: 11.5px;
+    .px2vw(left, 253);
+    .px2vh(top, -53);
+    .px2vw(width, 118);
+    .px2vh(height, 33);
+    .px2vh(line-height, 33);
+    .px2vw(border-radius, 11.5);
     background: #6192F2;
     color: #FFF;
-    font-size: 16px;
+    .px2font(16);
     font-weight: 700;
     text-align: center;
   }
 }
 .editform {
   float: left;
-  height: calc(100% - 190px);
+  .px2vh(height, 797);
   width: 100%;
   ::v-deep .el-form-item {
-    margin-bottom: 22px;
+    .px2vh(margin-bottom, 35);
   }
   ::v-deep .el-form-item__label {
-    width: 67px;
-    height: 57px;
-    line-height: 57px;
+    .px2vw(width, 67);
+    .px2vw(padding-left, 10);
+    .px2vh(height, 57);
+    .px2vh(line-height, 57);
     color: #000;
-    font-size: 22px;
     font-weight: 700;
+    .px2font(22);
+    .px2vw(padding-right, 0);
   }
   ::v-deep .el-input__inner {
-    padding-left: 35px;
-    width: 1185px;
-    height: 57px;
-    border-radius: 20px;
+    .px2vw(padding-left, 35);
+    .px2vw(width, 1185);
+    .px2vh(height, 57);
+    .px2vh(line-height, 33);
+    .px2vw(border-radius, 20);
     background: #EBF5FF;
   }
   .editForm-edit {
     position: relative;
+    .px2vw(left, 1190);
+    .px2vw(width, 84);
+    .px2vh(height, 30);
     top: 0;
-    left: 1190px;
-    margin-bottom: 10px;
-    width: 84px;
-    height: 30px;
+    .px2vh(margin-bottom, 10);
     color: #2B68C2;
-    font-size: 20px;
+    .px2font(20);
   }
   .el-link.is-underline:hover:after {
     border: none;
   }
+}
+.el-avatar {
+  .px2vw(width, 77);
+  .px2vh(height, 87);
+}
+::v-deep .el-form-item__content {
+  .px2vh(line-height, 40);
+}
+::v-deep .el-input {
+  .px2font(20);
 }
 </style>

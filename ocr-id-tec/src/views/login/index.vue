@@ -20,54 +20,51 @@ export default {
 @import "@/assets/font/font.css";
 .left {
   position: absolute;
-  width: 950px;
-  height: 958px;
+  width: 50vw;
+  height: 100vh;
   left: 0px;
   top: 0px;
   background: #EBF5FF;
-  border-radius: 0px;
   .logoimg {
     position: absolute;
-    width: 100px;
-    height: 40px;
-    left: 59px;
-    top: 25px;
-    width: 65px;
-    height: 65px;
+    .px2vw(width, 65);
+    .px2vh(height, 65);
+    .px2vw(left, 59);
+    .px2vh(top, 40);
   }
   .logo {
     position: absolute;
-    width: 35px;
-    height: 40px;
-    left: 140px;
-    top: 37px;
+    .px2vw(width, 35);
+    .px2vh(height, 40);
+    .px2vw(left, 140);
+    .px2vh(top, 37);
     font-family: "zihun";
-    font-size: 30px;
-    line-height: 40px;
+    .px2font(30);
+    .px2vh(line-height, 40);
     /* identical to box height */
     letter-spacing: 0.095em;
 
     color: #013480;
     div {
       position: absolute;
-      left: 31px;
+      .px2vw(width, 68);
+      .px2vw(left, 31);
       top: 0px;
-      width: 68px;
       color: #000;
     }
   }
   img {
     position: absolute;
-    width: 810px;
-    height: 600px;
-    left: 100px;
-    top: 160px;
+    .px2vw(width, 810);
+    .px2vh(height, 600);
+    .px2vw(left, 100);
+    .px2vh(top, 250);
   }
 }
 .right {
   position: relative;
-  height: 686px;
-  margin-left: 950px;
+  .px2vh(height, 686);
+  margin-left: 50vw;
   background-color: #fff;
 }
 </style>

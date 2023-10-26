@@ -29,34 +29,36 @@ export default {
 </script>
 <style scoped lang='less'>
 .kuCard {
-  height: 66px;
+  .px2vh(height, 66);
+  .px2vh(line-height, 66);
   width: 100%;
   border: 2px solid #F4F4F4;
-  padding: 0 95px;
+  .px2vw(padding-left, 95);
+  .px2vw(padding-right, 95);
   &_select {
     float: left;
     width: 5%;
     height: 100%;
     ::v-deep .el-checkbox {
-      margin-left: 16px;
-      line-height: 66px;
+      .px2vw(margin-left, 16);
+      .px2vh(line-height, 66);
       &__input {
-        line-height: 19px;
+        .px2vh(line-height, 19);
       }
       &__inner {
-        width: 30px;
-        height: 30px;
+        .px2vh(height, 32);
+        .px2vw(width, 30);
         text-align: center;
-        font-size: 16px;
-        border-radius: 3px;
-        border: 1px solid #000;
+        .px2font(20);
+        border-radius: 0.22vw;
+        border: 0.1vw solid #000;
         background-color: #FFF;
         &::after {
-          height: 22px;
-          left: 12px;
+          .px2vw(left, 12);
+          .px2vh(height, 22);
           top: 0px;
           border-color: #000;
-          border-width: 4px;
+          .px2vw(border-width, 4);
         }
       }
     }
@@ -64,29 +66,32 @@ export default {
   &_title {
     float: left;
     width: 44.6%;
-    margin-left: 30px;
+    .px2vw(margin-left, 30);
+    .px2vh(line-height, 66);
     height: 100%;
-    line-height: 66px;
     color: #3C3C3C;
-    font-size: 20px;
+    .px2font(20);
     letter-spacing: 1.1px;
   }
   &_date {
     float: left;
     width: 15.4%;
     height: 100%;
-    line-height: 66px;
+    .px2vh(line-height, 66);
     color: #9B9595;
-    font-size: 20px;
+    .px2font(20);
   }
   &_size {
-    margin-left: 62px;
+    .px2vw(margin-left, 62);
     float: left;
     width: 10%;
     height: 100%;
-    line-height: 66px;
+    .px2vh(line-height, 66);
     color: #9B9595;
-    font-size: 20px;
+    .px2font(20);
   }
+}
+.el-checkbox {
+  .px2vh(height, 62);
 }
 </style>
