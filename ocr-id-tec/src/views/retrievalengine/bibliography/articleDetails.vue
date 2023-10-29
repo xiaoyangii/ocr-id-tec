@@ -378,6 +378,9 @@ export default {
       }
     }
   }
+  ::v-deep .el-input__icon {
+    .px2vw(width, 25) !important;
+  }
 }
 .details {
   display: block;
@@ -387,6 +390,7 @@ export default {
   &_header {
     float: left;
     .px2vh(height, 68);
+    .px2vh(line-height, 68);
     width: 95%;
     margin: auto;
     .el-icon-arrow-left {
@@ -407,6 +411,7 @@ export default {
         .px2vw(width, 30);
         scale: 1.1;
         background: url('@/assets/images/引用.png') no-repeat;
+        background-size: cover;
         cursor: pointer;
       }
       &_share {
@@ -417,6 +422,7 @@ export default {
         .px2vw(width, 30);
         scale: 1.1;
         background: url('@/assets/images/分享.png') no-repeat;
+        background-size: cover;
         cursor: pointer;
       }
       &_collect {
@@ -427,6 +433,7 @@ export default {
         .px2vw(width, 30);
         scale: 1.1;
         background: url('@/assets/images/收藏.png') no-repeat;
+        background-size: cover;
         cursor: pointer;
       }
       &_tag {
@@ -437,6 +444,7 @@ export default {
         .px2vw(width, 30);
         scale: 1.1;
         background: url('@/assets/images/tag.png') no-repeat;
+        background-size: cover;
         cursor: pointer;
       }
     }
@@ -446,7 +454,7 @@ export default {
     width: 100%;
     .px2vh(height, 823);
     &_wrap {
-      .px2vh(height, 814);
+      .px2vh(height, 818);
       width: 88%;
       margin: 0 auto;
     }
@@ -455,7 +463,7 @@ export default {
 .article_header {
   position: relative;
   top: 0;
-  .px2vh(height, 152);
+  .px2vh(height, 160);
   width: 100%;
   text-align: center;
   &_score {
@@ -468,7 +476,7 @@ export default {
     .px2vw(border-radius, 10);
     border: none;
     background: #013480;
-    .px2vh(margin-top, 4);
+    .px2vh(margin-top, 10.5);
     .px2vh(padding-top, 1);
     .px2vh(padding-bottom, 1);
     .px2vw(padding-right, 6);
@@ -479,15 +487,19 @@ export default {
     cursor: pointer;
   }
   &_title {
+    width: 100%;
+    .px2vh(height, 78);
     padding: 10px auto;
-    .px2vh(margin-top, 11.3);
-    .px2vh(margin-bottom, 11.3);
+    .px2vh(padding-top, 11.3);
+    .px2vh(padding-bottom, 11.3);
     color: #000;
     .px2font(38);
     font-weight: 700;
   }
   &_box {
     margin: 0 auto;
+    .px2vh(height, 40);
+    width: 100%;
     .px2vh(padding-top, 11);
     &_author {
       .px2vw(margin-right, 60);
@@ -500,8 +512,10 @@ export default {
   }
   &_school {
     .px2vw(margin-right, 25);
+    width: 100%;
     color: #676363;
     .px2font(20);
+    .px2vh(height, 40);
     &:last-child {
       margin-right: 0;
     }
@@ -509,8 +523,7 @@ export default {
 }
 .article_body {
   width: 100%;
-  height: 475px;
-  .px2vh(height, 510);
+  .px2vh(height, 530);
   .px2font(28);
   letter-spacing: 0.12vw;
   &_key, &_album, &_special, &_number {
@@ -525,15 +538,20 @@ export default {
   position: relative;
   bottom: 0px;
   width: 100%;
-  .px2vh(height, 150);
+  .px2vh(height, 125);
   &_buttonbox {
     &_online, &_download, &_pigeonhole {
       width: 132px;
-      height: 44px;
-      border-radius: 7px;
+      .px2vw(width, 133);
+      .px2vh(height, 53);
+      .px2vw(border-radius, 8);
+      .px2vh(padding-top, 1);
+      .px2vh(padding-bottom, 1);
+      .px2vw(padding-right, 6);
+      .px2vw(padding-left, 6);
       border: none;
-      margin-right: 13px;
-      font-size: 18px;
+      .px2vw(margin-right, 15);
+      .px2font(18);
     }
     &_online {
       background: #013480;
@@ -554,13 +572,13 @@ export default {
   }
   &_data {
     color: #BDBDBD;
-    font-size: 16px;
-    padding-top: 23px;
+    .px2font(16);
+    .px2vh(padding-top, 25);
     &_download, &_size {
       float: left;
     }
     &_download {
-      margin-right: 37px;
+      .px2vw(margin-right, 37);
     }
   }
 }
