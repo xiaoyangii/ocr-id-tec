@@ -386,57 +386,55 @@ export default {
   background-color: #F5FAFF;
   &_header {
     float: left;
-    height: 60px;
     .px2vh(height, 68);
     width: 95%;
     margin: auto;
     .el-icon-arrow-left {
-      font-size: 35px;
+      .px2font(35);
       line-height: 2;
-      margin-left: 10px;
+      .px2vw(margin-left, 10);
       cursor: pointer;
     }
-
     &_iconbox {
       float: right;
-      margin-right: 30px;
+      .px2vw(margin-right, 30);
       height: 100%;
       width: 18%;
       &_cite {
         float: right;
-        margin-top: 10px;
-        height: 30px;
-        width: 30px;
+        .px2vh(margin-top, 13.5);
+        .px2vh(height, 34);
+        .px2vw(width, 30);
         scale: 1.1;
         background: url('@/assets/images/引用.png') no-repeat;
         cursor: pointer;
       }
       &_share {
         float: right;
-        margin-top: 10px;
-        margin-left: 22px;
-        height: 30px;
-        width: 30px;
+        .px2vh(margin-top, 13.5);
+        .px2vw(margin-left, 22);
+        .px2vh(height, 34);
+        .px2vw(width, 30);
         scale: 1.1;
         background: url('@/assets/images/分享.png') no-repeat;
         cursor: pointer;
       }
       &_collect {
         float: right;
-        margin-top: 10px;
-        margin-left: 22px;
-        height: 30px;
-        width: 30px;
+        .px2vh(margin-top, 13);
+        .px2vw(margin-left, 22);
+        .px2vh(height, 34);
+        .px2vw(width, 30);
         scale: 1.1;
         background: url('@/assets/images/收藏.png') no-repeat;
         cursor: pointer;
       }
       &_tag {
         float: right;
-        margin-left: 25px;
-        margin-top: 13px;
-        height: 30px;
-        width: 30px;
+        .px2vw(margin-left, 29);
+        .px2vh(margin-top, 15.5);
+        .px2vh(height, 34);
+        .px2vw(width, 30);
         scale: 1.1;
         background: url('@/assets/images/tag.png') no-repeat;
         cursor: pointer;
@@ -446,9 +444,9 @@ export default {
   &_body {
     float: left;
     width: 100%;
-    height: calc(100% - 146px);
+    .px2vh(height, 823);
     &_wrap {
-      height: 100%;
+      .px2vh(height, 814);
       width: 88%;
       margin: 0 auto;
     }
@@ -457,47 +455,53 @@ export default {
 .article_header {
   position: relative;
   top: 0;
-  height: 131px;
+  .px2vh(height, 152);
   width: 100%;
   text-align: center;
   &_score {
     position: absolute;
     top: 0;
     right: 0;
-    width: 146px;
-    height: 45px;
-    border-radius: 10px;
+    .px2vw(width, 146);
+    .px2vh(height, 53);
+    .px2vh(line-height, 53);
+    .px2vw(border-radius, 10);
     border: none;
     background: #013480;
-    margin-top: 3px;
+    .px2vh(margin-top, 4);
+    .px2vh(padding-top, 1);
+    .px2vh(padding-bottom, 1);
+    .px2vw(padding-right, 6);
+    .px2vw(padding-left, 6);
     color: #FFF;
-    font-size: 20px;
-    font-style: normal;
+    .px2font(20);
     font-weight: 700;
     cursor: pointer;
   }
   &_title {
     padding: 10px auto;
+    .px2vh(margin-top, 11.3);
+    .px2vh(margin-bottom, 11.3);
     color: #000;
-    font-size: 38px;
+    .px2font(38);
     font-weight: 700;
   }
   &_box {
     margin: 0 auto;
-    padding-top: 16px;
+    .px2vh(padding-top, 11);
     &_author {
-      margin-right: 60px;
+      .px2vw(margin-right, 60);
       color: #9B9595;
-      font-size: 20px;
+      .px2font(20);
       &:last-child {
         margin-right: 0;
       }
     }
   }
   &_school {
-    margin-right: 25px;
+    .px2vw(margin-right, 25);
     color: #676363;
-    font-size: 20px;
+    .px2font(20);
     &:last-child {
       margin-right: 0;
     }
@@ -506,14 +510,14 @@ export default {
 .article_body {
   width: 100%;
   height: 475px;
-  font-size: 28px;
-  letter-spacing: 1.26px;
+  .px2vh(height, 510);
+  .px2font(28);
+  letter-spacing: 0.12vw;
   &_key, &_album, &_special, &_number {
-    margin-top: 15px;
+    .px2vh(margin-top, 17);
   }
   &_summary {
-    padding-top: 35px;
-    padding-bottom: 10px;
+    .px2vh(padding-top, 28);
     overflow: hidden;
   }
 }
@@ -521,7 +525,7 @@ export default {
   position: relative;
   bottom: 0px;
   width: 100%;
-  height: 125px;
+  .px2vh(height, 150);
   &_buttonbox {
     &_online, &_download, &_pigeonhole {
       width: 132px;
