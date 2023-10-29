@@ -825,13 +825,13 @@ export default {
           .px2vw(margin-left, 150);
           .px2vw(width, 24);
           .px2vh(height, 27);
-          .px2vh(margin-top, 18);
+          .px2vh(margin-top, 15);
           cursor: pointer;
         }
         &_change {
           float: left;
           .px2vw(margin-left, 20);
-          .px2vh(margin-top, 18);
+          .px2vh(margin-top, 15);
           color: #9B9595;
           .px2font(17);
           letter-spacing: 0.1vw;

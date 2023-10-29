@@ -3,7 +3,7 @@
     <div class="card_left">
       <div class="card_left_avatar">
         <div v-for="avatarUrl in item.avatar" :key="avatarUrl" class="card_left_avatar_box">
-          <el-avatar :size="33" :src="avatarUrl"></el-avatar>
+          <el-avatar :src="avatarUrl"></el-avatar>
         </div>
       </div>
     </div>
@@ -36,22 +36,29 @@ export default {
 .card {
   float: left;
   width: 100%;
-  height: 108px;
-  border-bottom: 2px solid #F0F0F0;
-  &:first-child {
-    margin-top: 55px;
-  }
+  .px2vh(height, 122);
+  border-bottom: 0.2vw solid #F0F0F0;
   &_left {
     float: left;
-    margin-left: 45px;
-    margin-top: 16px;
-    width: 75px;
-    height: 75px;
+    .px2vw(margin-left, 45);
+    .px2vh(margin-top, 18);
+    .px2vh(height, 83);
+    .px2vh(line-height, 83);
+    .px2vw(width, 75);
     &_avatar_box {
       float: left;
-      height: 33px;
-      width: 33px;
-      margin: 2px 2px;
+      .px2vh(height, 37);
+      .px2vh(line-height, 37);
+      .px2vw(width, 33);
+      .px2vw(margin-left, 2);
+      .px2vh(margin-top, 2.2);
+      .px2vw(margin-right, 2);
+      .px2vh(margin-bottom, 2.2);
+      ::v-deep .el-avatar {
+        .px2vh(height, 37);
+        // .px2vh(line-height, 37);
+        .px2vw(width, 33);
+      }
     }
   }
   &_right {
@@ -60,31 +67,32 @@ export default {
     height: 100%;
     &_name {
       float: left;
-      margin-top: 16px;
+      .px2vh(margin-top, 18);
       height: 22px;
+      .px2vh(height, 24.7);
       color: #000;
-      font-size: 16px;
+      .px2font(16);
       font-weight: 700;
       cursor: pointer;
     }
     &_desc {
       float: left;
-      margin-top: 5px;
+      .px2vh(margin-top, 6);
       color: rgba(0, 0, 0, 0.68);
-      font-size: 12px;
+      .px2font(12);
     }
     &_info {
       float: left;
-      margin-top: 5px;
+      .px2vh(margin-top, 7);
       color: #B4AEAE;
-      font-size: 8px;
+      .px2font(10);
     }
     &_member {
       float: left;
-      margin-top: 5px;
-      margin-left: 10px;
+      .px2vh(margin-top, 7);
+      .px2vw(margin-left, 10.5);
       color: #B4AEAE;
-      font-size: 8px;
+      .px2font(10);
     }
   }
 }

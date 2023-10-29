@@ -44,14 +44,17 @@ export default {
   float: left;
   width: 100%;
   .px2vh(height, 85);
-  border-bottom: 2px solid #F0F0F0;
+  border-bottom: 0.2vw solid #F0F0F0;
   &_left {
     float: left;
     width: 27%;
     .px2vh(height, 75);
+    // .px2vh(line-height, 75);
     &_avatar {
       float: right;
-      margin-top: 8px;
+      .px2vh(height, 60);
+      .px2vh(line-height, 60);
+      .px2vh(margin-top, 9.5);
       ::v-deep .el-avatar {
         .px2vh(height, 60);
         .px2vw(width, 54.5);
@@ -87,10 +90,18 @@ export default {
     float: left;
     height: 100%;
     width: 12%;
+    &_button {
+      .px2vh(height, 28);
+      .px2vh(line-height, 28);
+    }
     button {
       margin: 23px 0;
       .px2vh(margin-top, 26);
       .px2vh(margin-bottom, 26);
+      .px2vh(padding-top, 1);
+      .px2vh(padding-bottom, 1);
+      .px2vw(padding-right, 6);
+      .px2vw(padding-left, 6);
       .px2vw(width, 50);
       .px2vh(height, 28);
       text-align: center;
@@ -98,6 +109,7 @@ export default {
       background: #EBF5FF;
       border: 0.1vw solid #EBF5FF;
       .px2font(12);
+      cursor: pointer;
     }
   }
 }
