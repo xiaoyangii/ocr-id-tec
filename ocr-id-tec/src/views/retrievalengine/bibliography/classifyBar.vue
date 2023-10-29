@@ -50,20 +50,20 @@ export default {
 <style scoped lang="less">
 .el-menu-vertical-demo {
   background-color: #fff !important;
-  border-radius: 9px;
+  .px2vw(border-radius, 9);
   .text {
     color: #000;
-    font-size: 26px;
+    .px2font(26);
     text-align: center;
   }
 }
 ::v-deep .el-menu-item {
-  height: 50px;
-  line-height: 50px;
+  .px2vh(height, 50);
+  .px2vh(line-height, 50);
   text-align: center;
   background-color: #FFF !important;
   span {
-    font-size: 20px;
+    .px2font(20);
   }
 }
 ::v-deep .el-menu-item.is-active {

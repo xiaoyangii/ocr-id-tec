@@ -69,23 +69,23 @@ export default {
   &_header {
     position: relative;
     top: 0;
-    height: 100px;
+    .px2vh(height, 100);
     width: 100%;
     margin: auto;
     .el-icon-arrow-left {
       position: absolute;
-      top: 40px;
-      left: 40px;
-      font-size: 35px;
+      .px2vh(top, 45);
+      .px2vw(left, 45);
+      .px2font(35);
       line-height: 2;
       cursor: pointer;
     }
     &_title {
       position: absolute;
-      top: 53px;
-      left: 115px;
+      .px2vh(top, 61);
+      .px2vw(left, 115);
       color: #000;
-      font-size: 28px;
+      .px2font(28);
       font-weight: 700;
     }
   }
@@ -93,36 +93,36 @@ export default {
 .score_body {
   float: left;
   width: 100%;
-  height: calc(100% - 100px);
+  .px2vh(height, 877);
   &_radar {
     float: left;
-    margin-top: 120px;
+    .px2vh(margin-top, 110);
   }
   &_box {
     float: left;
-    margin-top: 120px;
-    padding-top: 70px;
-    height: calc(80% - 120px);
-    width: calc(100% - 900px);
+    .px2vh(margin-top, 120);
+    .px2vh(padding-top, 70);
+    .px2vh(height, 729);
+    .px2vw(width, 730);
     span {
       display: flex;
       flex-direction: row-reverse;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
-      margin-bottom: 52px;
+      .px2vh(margin-bottom, 52);
       color: #000;
-      font-size: 32px;
+      .px2font(32);
       font-weight: 700;
     }
   }
   &_total {
     float: right;
-    margin-right: 180px;
-    font-size: 60px;
+    .px2vw(margin-right, 210);
+    .px2font(60);
     font-weight: 700;
     &_score {
       float: right;
-      padding-left: 40px;
+      .px2vw(padding-right, 40);
       color: #013480;
     }
   }
@@ -131,16 +131,18 @@ export default {
 ::v-deep .el-progress {
   display: inline-block;
   margin: 0 25px;
-  margin-top: 5px;
-  height: 32px;
-  width: 350px;
+  .px2vw(margin-right, 25);
+  .px2vw(margin-left, 25);  
+  .px2vh(margin-top, 5);
+  .px2vh(height, 32);
+  .px2vw(width, 350);
 }
 
 ::v-deep .el-progress-bar {
-  height: 32px;
+  .px2vh(height, 32);
 }
 ::v-deep .el-progress-bar__outer {
-  height: 32px !important;
+  .px2vh(height, 32)!important;
   background-color: #EBF5FF;
 }
 </style>

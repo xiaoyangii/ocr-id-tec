@@ -145,79 +145,85 @@ export default {
 <style scoped lang='less'>
 .bar {
   display: flex;
-  height: 86px;
+  .px2vh(height, 86);
+  .px2vh(line-height, 90);
   width: 100%;
   flex-direction: row;
-  line-height: 90px;
   &_search {
     background-color: #fff;
     ::v-deep .el-input {
-      margin-left: 114px;
-      margin-right: 16px;
+      .px2vw(margin-left, 114);
+      .px2vw(margin-left, 16);
     }
     ::v-deep .el-input__inner {
-      width: 829px;
-      height: 55px;
-      border-radius: 8px;
-      border: 1px solid #D9D9D9;
+      .px2vh(height, 55);
+      .px2vw(width, 829);
+      .px2vw(border-radius, 8);
+      border: 0.1vw solid #D9D9D9;
       color: #9B9595;
-      font-size: 20px;
-      padding-left: 60px;
+      .px2font(20);
+      .px2vw(padding-left, 60);
     }
     ::v-deep .el-input__icon.el-icon-search {
       scale: 2;
       margin: 0 15px;
-      height: 86px !important;
-      line-height: 85px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 15);
+      .px2vh(height, 86)!important;
+      .px2vh(line-height, 85);
     }
   }
   &_time {
     background-color: #fff;
     .el-date-editor {
-      width: 300px;
+      .px2vw(width, 300);
       margin: 0 25px;
-      margin-left: 15px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 25);
     }
     ::v-deep .el-input__inner {
-      padding-left: 55px;
-      line-height: 86px;
-      height: 55px;
-      border-radius: 8px;
+      .px2vw(padding-left, 55);
+      .px2vh(height, 55);
+      .px2vh(line-height, 86);
+      .px2vw(border-radius, 8);
       color: #9B9595;
-      font-size: 20px;
+      .px2font(20);
     }
     ::v-deep .el-icon-date {
       scale: 2;
       margin: 0 15px;
-      height: 86px !important;
-      line-height: 82px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 15);
+      .px2vh(height, 86)!important;
+      .px2vh(line-height, 82);
     }
     ::v-deep .el-input__prefix {
-      top: -2px;
+      .px2vh(top, -2);
     }
   }
   &_button {
     background-color: #fff;
-    height: 86px;
-    line-height: 91px;
+    .px2vh(height, 86);
+    .px2vh(line-height, 91);
     &_left {
-      margin-left: 15px;
-      width: 129px;
-      height: 55px;
+      .px2vh(height, 55);
+      .px2vh(line-height, 82);
+      .px2vw(margin-left, 15);
+      .px2vw(width, 129);
+      .px2vw(border-radius, 7);
       text-align: center;
-      border-radius: 7px;
       background: #013480;
-      border: 1px solid #013480;
+      border: 0.1vw solid #013480;
       color: #FFF;
-      font-size: 22px;
+      .px2font(22);
     }
     &_right {
       float: right;
-      width: 184px;
+      .px2vw(width, 184);
       color: #000;
-      font-size: 22px;
+      .px2font(22);
       .el-icon-arrow-right {
-        margin-left: 5px;
+        .px2vw(margin-left, 5);
       }
       &:hover {
         color: #000;

@@ -57,19 +57,19 @@ export default {
 </script>
 <style scoped lang="less">
 .el-menu-vertical-demo {
-  margin-top: 65px;
+  .px2vh(margin-top, 65);
   background-color: #fff !important;
 }
 ::v-deep .el-menu {
   border-right: none;
 }
 ::v-deep .el-menu-item {
-  height: 93px;
-  line-height: 93px;
+  .px2vh(height, 93);
+  .px2vh(line-height, 93);
   text-align: center;
   background-color: #FFF !important;
   span {
-    font-size: 26px;
+    .px2font(26);
   }
 }
 ::v-deep .el-menu-item.is-active {

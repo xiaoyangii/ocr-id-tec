@@ -29,47 +29,47 @@ export default {
 </script>
 <style scoped lang='less'>
 .list_item {
-  width: 830px;
-  height: 180px;
-  border-radius: 6px;
+  .px2vh(height, 205);
+  .px2vw(width, 834);
+  .px2vw(border-radius, 10);
   margin: 0 auto;
-  margin-bottom: 10px;
+  .px2vh(margin-bottom, 11);
   background-color: #FAFAFA;
   cursor: pointer;
   &_title {
-    margin-left: 30px;
-    // margin-top: 20px;
-    padding-top: 20px;
+    .px2vw(margin-left, 30);
+    .px2vh(padding-top, 23);
     color: #000;
-    font-size: 22px;
+    .px2font(22);
   }
   &_info {
-    margin-left: 30px;
-    margin-top: 10px;
-    padding-left: 10px;
+    .px2vw(padding-left, 10);
+    .px2vw(margin-left, 30);  
+    .px2vh(margin-top, 11);
     width: 92%;
-    height: 25px;
+    .px2vh(height, 28.45);
     div {
-      margin-right: 40px;
+      .px2vw(margin-right, 40);
       float: left;
       color: #878686;
-      font-size: 16px;
+      .px2font(16);
     }
   }
   &_des {
-    margin-left: 40px;
+    .px2vw(margin-left, 40);
     overflow: hidden;
-    margin-top: 5px;
+    .px2vh(margin-top, 7);
     width: 92%;
-    height: 66px;
+    .px2vh(height, 75);
     color: #878686;
-    font-size: 16px;
+    .px2font(16);
   }
-  .el-icon-document {
+  ::v-deep .el-icon-document {
     color: #1559DD;
-    width: 23px;
-    height: 23px;
-    margin-left: 5px;
+    .px2vh(height, 24);
+    .px2vw(width, 22);
+    .px2vw(margin-left, 12);
+    .px2vw(margin-right, 10);
   }
 }
 </style>

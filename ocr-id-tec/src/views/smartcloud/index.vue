@@ -277,20 +277,18 @@ export default {
 .smartcloud {
   background-color: #fff;
   width: 100vw;
-  height: calc(100vh - 80px);
+  .px2vh(height, 991);
 }
 .smartcloud_left {
   width: 15vw;
   height: 100%;
   float: left;
-  .px2vw(border-right, 3);
-  border-color: #E5E5E5;
-  border-style: solid;
+  border-right: 0.2vw #E5E5E5 solid;
 }
 .left {
   &_head {
     float: left;
-    height: 17vh;
+    .px2vh(height, 184);
     width: 100%;
     &_return {
       height: 10vh;
@@ -329,7 +327,7 @@ export default {
   }
   &_body {
     float: left;
-    height: calc(100% - 17vh);
+    .px2vh(height, 807);
     width: 100%;
     &_nav {
       float: left;
@@ -399,16 +397,12 @@ export default {
     width: 100%;
     height: 68.7vh;
     .px2vh(padding-top, 10);
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
-      display: none
-    }
     &_head {
       width: 100%;
       height: 3vh;
       .px2vw(padding-left, 198);
       .px2vw(padding-right, 198);
-      border-bottom: 0.2vw solid #E3E2E2;
+      border-bottom: 0.13vw solid #E3E2E2;
       div {
         float: left;
         color: #9B9595;
@@ -425,6 +419,10 @@ export default {
     &_body {
       width: 100%;
       height: calc(100% - 3vh);
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none
+      }
     }
   }
 }

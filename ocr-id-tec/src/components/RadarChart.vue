@@ -1,5 +1,5 @@
 <template>
-  <div id="myChart" :style="{width: '900px', height: '600px'}"></div>
+  <div id="myChart" ref="radar"></div>
 </template>
 
 <script>
@@ -10,12 +10,30 @@ export default {
     return {}
   },
   mounted(){
-    setTimeout(() => { this.drawChart() }, 500)
+    this.drawChart();
+    window.addEventListener('resize',()=>{
+    	this.drawChart();
+    })
   },
   methods: {
+    fontSize(size) {
+      let clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+      if (!clientWidth) return;
+      return  size * (clientWidth / 1920);
+    },
+    x(tx) {
+      let clientWidth = window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;
+      if (!clientWidth) return;
+      return  tx * (clientWidth / 1920);
+    },
+    y(ty) {
+      let clientHeight = window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight;
+      if (!clientHeight) return;
+      return  ty * (clientHeight / 1080);
+    },
     drawChart() {
       // 初始化echarts实例
-      let myChart = this.$echarts.init(document.getElementById('myChart'))
+      let myChart = this.$echarts.init(this.$refs.radar)
       // 绘制图表
       var option = {
         radar: {
@@ -30,8 +48,8 @@ export default {
           ],
           axisName: {
             color: '#000',
-            fontSize: 32,
-            padding: [12, 10],
+            fontSize: this.fontSize(32),
+            padding: [15, 10],
             fontFamily: 'Microsoft YaHei'
           },
           axisTick: {
@@ -71,8 +89,8 @@ export default {
               show: true,
               position: 'top',
               distance: 50,
-              fontSize: 32,
-              offset: [20, 20],
+              fontSize: this.fontSize(32),
+              offset: [this.x(20), this.y(20)],
               fontFamily: 'Microsoft YaHei',
               align: 'right',
               verticalAlign: 'top'
@@ -85,15 +103,12 @@ export default {
       // 设置option
       myChart.setOption(option);
     },
-  //   resetCharts() {
-  //     // 重置图表大小
-  //     this.$echarts.init(this.$refs.myChart).resize()
-  //   }
-  },
-  created () {
-    
   },
 }
 </script>
 <style scoped lang='less'>
+#myChart {
+  .px2vh(height, 700);
+  .px2vw(width, 900);
+}
 </style>

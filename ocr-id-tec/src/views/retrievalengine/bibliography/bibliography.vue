@@ -113,7 +113,7 @@ export default {
       copyList: [
         {
           id: "1",
-          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "基于UNet的医学图像分割综述",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "基于UNet的医学图像分割综述",
           author: "作者： " + "叶晓滨",
           details: "源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
           date: "2021",
@@ -121,7 +121,7 @@ export default {
         },
         {
           id: "2",
-          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄在肾脏病中的应用研究进展",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄在肾脏病中的应用研究进展",
           author: "作者： " + "叶晓滨",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
           date: "2021",
@@ -129,7 +129,7 @@ export default {
         },
         {
           id: "3",
-          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄研究简史",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄研究简史",
           author: "作者： " + "焦科兴; 董美佳; 李艺清; 侯胜田",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
           date: "2021",
@@ -137,7 +137,7 @@ export default {
         },
         {
           id: "4",
-          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄类药对组成规律的基础研究—麻黄石膏药对血药动力学",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄类药对组成规律的基础研究—麻黄石膏药对血药动力学",
           author: "作者： " + "叶晓滨",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
           date: "2021",
@@ -147,7 +147,7 @@ export default {
       articleList1: [
         {
           id: "1",
-          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "基于UNet的医学图像分割综述",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "基于UNet的医学图像分割综述",
           author: "作者： " + "叶晓滨",
           details: "源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
           date: "2021",
@@ -155,7 +155,7 @@ export default {
         },
         {
           id: "2",
-          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄在肾脏病中的应用研究进展",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄在肾脏病中的应用研究进展",
           author: "作者： " + "叶晓滨",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
           date: "2021",
@@ -163,7 +163,7 @@ export default {
         },
         {
           id: "3",
-          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄研究简史",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄研究简史",
           author: "作者： " + "焦科兴; 董美佳; 李艺清; 侯胜田",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
           date: "2021",
@@ -171,7 +171,7 @@ export default {
         },
         {
           id: "4",
-          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;margin: 0px 10px'></i>" + "麻黄类药对组成规律的基础研究—麻黄石膏药对血药动力学",
+          title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄类药对组成规律的基础研究—麻黄石膏药对血药动力学",
           author: "作者： " + "叶晓滨",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
           date: "2021",
@@ -598,80 +598,90 @@ export default {
 <style scoped lang='less'>
 .bar {
   display: flex;
-  height: 86px;
+  .px2vh(height, 99);
+  .px2vh(line-height, 99);
   width: 100%;
   flex-direction: row;
-  line-height: 90px;
   &_search {
     background-color: #fff;
     ::v-deep .el-input {
-      margin-left: 114px;
-      margin-right: 16px;
+      .px2vh(height, 99);
+      .px2vh(line-height, 103);
+      .px2vw(margin-left, 114);
+      .px2vw(margin-right, 20);
     }
     ::v-deep .el-input__inner {
-      width: 829px;
-      height: 55px;
-      border-radius: 8px;
-      border: 1px solid #D9D9D9;
+      .px2vh(height, 57);
+      .px2vw(width, 829);
+      .px2vw(border-radius, 8);
+      border: 0.1vw solid #D9D9D9;
       color: #9B9595;
-      font-size: 20px;
-      padding-left: 60px;
+      .px2font(20);
+      .px2vw(padding-left, 70);
     }
     ::v-deep .el-input__icon.el-icon-search {
       scale: 2;
       margin: 0 15px;
-      height: 86px !important;
-      line-height: 85px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 15);
+      .px2vh(height, 86)!important;
+      .px2vh(line-height, 86);
+      .px2vw(width, 40);
+      .px2font(16);
     }
   }
   &_time {
     background-color: #fff;
+    display: inline-flex;
+    flex-direction: row;
     .el-date-editor {
-      width: 300px;
+      .px2vw(width, 300);
       margin: 0 25px;
-      margin-left: 15px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 25);
     }
     ::v-deep .el-input__inner {
-      padding-left: 55px;
-      line-height: 86px;
-      height: 55px;
-      border-radius: 8px;
+      border: 0.1vw solid #D9D9D9;
+      .px2vw(padding-left, 60);
+      .px2vh(height, 57);
+      .px2vh(line-height, 86);
+      .px2vw(border-radius, 8);
       color: #9B9595;
-      font-size: 20px;
+      .px2font(20);
     }
     ::v-deep .el-icon-date {
       scale: 2;
       margin: 0 15px;
-      height: 86px !important;
-      line-height: 82px;
-    }
-    ::v-deep .el-input__prefix {
-      top: -2px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 15);
+      .px2vh(height, 86)!important;
+      .px2vh(line-height, 86);
+      .px2font(16);
     }
   }
   &_button {
     background-color: #fff;
-    height: 86px;
-    line-height: 91px;
+    .px2vh(line-height, 99);
+    .px2vh(height, 99);
     &_left {
-      margin-left: 15px;
-      width: 129px;
-      height: 55px;
+      .px2vh(height, 55);
+      .px2vw(margin-left, 15);
+      .px2vw(width, 129);
+      .px2vw(border-radius, 7);
       text-align: center;
-      border-radius: 7px;
       background: #013480;
-      border: 1px solid #013480;
+      border: 0.1vw solid #013480;
       color: #FFF;
-      font-size: 22px;
-      cursor: pointer;
+      .px2font(22);
     }
     &_right {
       float: right;
-      width: 184px;
+      .px2vh(line-height, 99);
+      .px2vw(width, 184);
       color: #000;
-      font-size: 22px;
+      .px2font(22);
       .el-icon-arrow-right {
-        margin-left: 5px;
+        .px2vw(margin-left, 5);
       }
       &:hover {
         color: #000;
@@ -679,21 +689,34 @@ export default {
     }
   }
 }
+::v-deep .el-input--suffix .el-input__inner {
+  padding-right: 0;
+}
+::v-deep .el-input__icon {
+  .px2vw(width, 25);
+  text-align: center;
+  transition: all .3s;
+}
+::v-deep .el-input__prefix {
+  .px2vw(left, 5);
+}
 .content {
   display: flex;
-  height: 791px;
+  .px2vh(height, 892);
   width: 100%;
   flex-direction: row;
   background: #EBF5FF;
   &_asideBar {
     height: 100%;
-    width: 310px;
+    .px2vw(width, 310);
     background: #EBF5FF;
     &_box {
-      width: 280px;
-      height: 758px;
-      margin: 18px auto;
-      border-radius: 9px;
+      .px2vw(width, 280);
+      .px2vh(height, 863);
+      margin: 16px auto;
+      .px2vh(margin-top, 16);
+      .px2vh(margin-bottom, 16);
+      .px2vw(border-radius, 9);
       background-color: #FFF;
     }
   }
@@ -702,34 +725,36 @@ export default {
     width: 56%;
     &_box {
       width: 97%;
-      height: 758px;
-      margin: 18px auto;
-      margin-left: 10px;
-      border-radius: 9px;
+      .px2vh(height, 863);
+      margin: 16px auto;
+      .px2vh(margin-top, 16);
+      .px2vh(margin-bottom, 16);
+      .px2vw(margin-left, 10);
+      .px2vw(border-radius, 9);
       background-color: #FFF;
       &_bar {
-        height: 86px;
+        .px2vh(height, 97);
         ::v-deep .el-tabs__nav-wrap {
-          height: 86px;
+          .px2vh(height, 97);
         }
         ::v-deep .el-tabs__item {
           padding: 0;
           text-align: center;
-          line-height: 86px;
-          height: 86px;
-          width: 150px !important;
-          font-size: 26px;
+          .px2vw(width, 150)!important;
+          .px2vh(line-height, 95);
+          .px2vh(height, 95);
+          .px2font(26);
           &:first-child {
-            margin-left: 10px;
+            .px2vw(margin-left, 10);
           }
         }
         ::v-deep .el-tabs__active-bar {
           color: #1559DD;
-          width: 80px !important;
+          .px2vw(width, 80)!important;
           text-align: center;
-          left: 36px;
-          height: 5px;
-          border-radius: 4.5px;
+          .px2vw(left, 36);
+          .px2vw(border-radius, 4.5);
+          .px2vh(height, 5);
         }
         ::v-deep .el-tabs__nav-wrap::after {
           background: #F0F0F0;
@@ -745,65 +770,71 @@ export default {
     width: 25%;
     &_bigbox {
       width: 97%;
-      height: 758px;
-      margin: 18px auto;
+      .px2vh(height, 863);
+      margin: 16px auto;
+      .px2vh(margin-top, 16);
+      .px2vh(margin-bottom, 16);
       margin-left: 0;
       &_top {
         width: 100%;
-        height: 430px;
-        border-radius: 10px;
+        .px2vh(height, 485);
+        .px2vw(border-radius, 10);
         background: #FFF;
         &_title {
           float: left;
-          margin-left: 45px;
-          margin-top: 20px;
-          width: 150px;
+          .px2vw(margin-left, 45);
+          .px2vw(width, 150);
+          .px2vh(margin-top, 15);
+          .px2font(26);
           color: #000;
-          font-size: 26px;
         }
         img {
           float: left;
-          margin-left: 150px;
-          margin-top: 14px;
+          .px2vw(margin-left, 150);
+          .px2vw(width, 24);
+          .px2vh(height, 27);
+          .px2vh(margin-top, 18);
           cursor: pointer;
         }
         &_change {
           float: left;
-          margin-top: 14px;
-          margin-left: 25px;
+          .px2vw(margin-left, 20);
+          .px2vh(margin-top, 18);
           color: #9B9595;
-          font-size: 16px;
-          letter-spacing: 1.12px;
+          .px2font(17);
+          letter-spacing: 0.1vw;
           cursor: pointer;
         }
       }
       &_bottom {
         width: 100%;
-        height: 320px;
-        margin-top: 8px;
-        border-radius: 10px;
+        .px2vh(height, 370);
+        .px2vh(margin-top, 8);
+        .px2vw(border-radius, 10);
         background: #FFF;
         &_title {
           float: left;
-          margin-left: 45px;
-          margin-top: 20px;
-          width: 150px;
+          .px2vh(margin-top, 15);
+          .px2vw(margin-left, 45);
+          .px2vw(width, 150);
           color: #000;
-          font-size: 26px;
+          .px2font(26);
         }
         img {
           float: left;
-          margin-left: 150px;
-          margin-top: 14px;
+          .px2vw(margin-left, 150);
+          .px2vw(width, 24);
+          .px2vh(height, 27);
+          .px2vh(margin-top, 18);
           cursor: pointer;
         }
         &_change {
           float: left;
-          margin-top: 14px;
-          margin-left: 25px;
+          .px2vw(margin-left, 20);
+          .px2vh(margin-top, 18);
           color: #9B9595;
-          font-size: 16px;
-          letter-spacing: 1.12px;
+          .px2font(17);
+          letter-spacing: 0.1vw;
           cursor: pointer;
         }
       }
@@ -812,78 +843,101 @@ export default {
 }
 ::v-deep .el-tabs__content {
   overflow-y: scroll;
-  height: 640px;
+  .px2vh(height, 740) !important;
   &::-webkit-scrollbar {
 		display: none
 	}
 }
 .content_list_box_bar_box {
   float: right;
-  height: 86px;
-  line-height: 86px;
+  .px2vh(height, 97);
+  .px2vh(line-height, 97);
   width: 30%;
   background-color: #fff;
-  border-bottom: 2px solid #F0F0F0;
+  border-bottom: 0.15vw solid #F0F0F0;
+  .px2vw(border-top-right-radius, 9);
   ::v-deep .el-checkbox {
     float: left;
-    line-height: 86px;;
+    .px2vh(height, 97);
+    .px2vh(line-height, 97);
+    .px2font(14);
     &__input {
-      line-height: 19px;
+      .px2vh(line-height, 19);
     }
     &__inner {
-      width: 21px;
-      height: 21px;
+      .px2vw(width, 24);
+      .px2vh(height, 24);
       text-align: center;
-      font-size: 16px;
-      border-radius: 3px;
-      border: 1px solid #000;
+      .px2font(16);
+      // font-size: 16px;
+      .px2vw(border-radius, 3);
+      border: 0.1vw solid #000;
       background-color: #FFF;
       &::after {
-        height: 15px;
-        left: 7px;
+        .px2vh(height, 15);
+        .px2vw(left, 7);
         top: 0px;
         border-color: #000;
-        border-width: 3px;
+        .px2vw(border-width, 3);
+        .px2vw(width, 4);
       }
     }
     &__label {
       display: inline;
-      line-height: 17px;
+      .px2vh(line-height, 18);
+      .px2vw(padding-left, 10);
       color: #000;
       text-align: center;
-      font-size: 17px;
+      .px2font(17);
     }
   }
   &_leftbutton {
-    margin-left: 25px;
-    width: 54px;
-    height: 33px;
-    line-height: 33px;
-    border-radius: 12px 0px 0px 12px;
+    .px2vw(width, 54);
+    .px2vh(height, 35);
+    .px2vw(margin-left, 25);
+    .px2vw(padding-right, 6);
+    .px2vw(padding-left, 6);
+    .px2vh(line-height, 35);
+    border-radius: 0.7vw 0px 0px 0.7vw;
     background: #013480;
     border: none;
     color: #FFF;
-    font-size: 14px;
+    .px2font(14);
     cursor: pointer;
     z-index: 1000;
   }
   &_rightbutton {
-    width: 51px;
-    height: 33px;
-    line-height: 33px;
+    .px2vw(width, 54);
+    .px2vh(height, 35);
+    .px2vw(padding-right, 6);
+    .px2vw(padding-left, 6);
+    .px2vh(line-height, 35);
     text-align: center;
-    border-radius: 0px 12px 12px 0px;
+    border-radius: 0px 0.7vw 0.7vw 0px;
     background: #EBF5FF;
     border: none;
     color: #013480;
-    font-size: 14px;
+    .px2font(14);
     cursor: pointer;
     z-index: 1000;
   }
 }
+::v-deep .el-tabs__nav-wrap::after {
+  .px2vh(height, 2);
+}
+::v-deep .el-tabs__nav-scroll {
+  .px2vh(height, 97);
+}
+::v-deep .el-tabs__nav {
+  .px2vh(height, 97);
+  .px2vh(line-height, 75);
+}
+::v-deep .el-tabs__header {
+  .px2vh(margin-bottom, 15);
+}
 .colrow {
   column-count: 3; /* 调整列数 */
-  column-gap: 10px; /* 调整列间距 */
+  .px2vw(column-gap, 8); /* 调整列间距 */
   column-fill: balance; /* 平衡填充 */
 }
 </style>
