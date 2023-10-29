@@ -2,7 +2,7 @@
   <div class="card" v-if="item">
     <div class="card_left">
       <div class="card_left_avatar">
-        <el-avatar :size="57" :src="item.avatar"></el-avatar>
+        <el-avatar :src="item.avatar"></el-avatar>
       </div>
     </div>
     <div class="card_middle">
@@ -43,40 +43,44 @@ export default {
 .card {
   float: left;
   width: 100%;
-  height: 72px;
+  .px2vh(height, 85);
   border-bottom: 2px solid #F0F0F0;
   &_left {
     float: left;
     width: 27%;
-    height: 57px;
+    .px2vh(height, 75);
     &_avatar {
       float: right;
       margin-top: 8px;
+      ::v-deep .el-avatar {
+        .px2vh(height, 60);
+        .px2vw(width, 54.5);
+      }
     }
   }
   &_middle {
     float: left;
-    margin-left: 20px;
+    .px2vw(margin-left, 20);
     width: 50%;
     height: 100%;
     &_name {
-      margin-top: 5px;
+      .px2vh(margin-top, 8);
       width: 100%;
       color: #000;
-      font-size: 16px;
+      .px2font(16);
       font-weight: 700;
     }
     &_school {
       width: 50%;
-      margin-top: 3px;
+      .px2vh(margin-top, 4);
       color: rgba(0, 0, 0, 0.68);
-      font-size: 12px;
+      .px2font(12);
     }
     &_major {
       float: left;
-      margin-top: 3px;
+      .px2vh(margin-top, 4);
       color: #B4AEAE;
-      font-size: 10px;
+      .px2font(10);
     }
   }
   &_right {
@@ -85,13 +89,15 @@ export default {
     width: 12%;
     button {
       margin: 23px 0;
-      width: 45px;
-      height: 20px;
+      .px2vh(margin-top, 26);
+      .px2vh(margin-bottom, 26);
+      .px2vw(width, 50);
+      .px2vh(height, 28);
       text-align: center;
-      border-radius: 9.5px;
+      .px2vw(border-radius, 10);
       background: #EBF5FF;
-      border: 1px solid #EBF5FF;
-      font-size: 10px;
+      border: 0.1vw solid #EBF5FF;
+      .px2font(12);
     }
   }
 }
