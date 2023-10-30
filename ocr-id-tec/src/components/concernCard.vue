@@ -1,7 +1,7 @@
 <template>
   <div class="concernCard" v-if="item">
     <div class="card_left">
-      <el-avatar :size="100" :src="avatar"></el-avatar>
+      <el-avatar :src="avatar"></el-avatar>
     </div>
     <div class="card_middle">
       <div class="card_middle_name">{{ item.name }}</div>
@@ -41,52 +41,60 @@ export default {
 </script>
 <style scoped lang='less'>
 .concernCard {
-  width: 570px;
-  height: 100px;
+  .px2vw(width, 578);
+  .px2vh(height, 120);
 }
 .card_left {
   float: left;
   height: 100%;
-  width: 100px;
+  .px2vw(width, 100);
 }
 .card_middle {
   float: left;
-  margin-left: 10px;
+  .px2vw(margin-left, 15);
   height: 100%;
-  width: 360px;
+  .px2vw(width, 360);
   &_name {
-    margin-top: 7px;
+    .px2vh(margin-top, 5);
     color: #000;
-    font-size: 26px;
+    .px2font(26);
     font-weight: 700;
     cursor: pointer;
   }
   &_adr {
-    margin-top: 5px;
+    .px2vh(margin-top, 5.5);
     color: #000;
-    font-size: 18px;
+    .px2font(18);
   }
   &_decs {
-    margin-top: 5px;
+    .px2vh(margin-top, 5.5);
     color: #000;
-    font-size: 18px;
+    .px2font(18);
   }
 }
 .card_right {
   float: right;
   height: 100%;
-  width: 100px;
-  line-height: 105px;
+  .px2vw(width, 100);
+  .px2vh(line-height, 121);
   &_concern {
     border: none;
-    width: 100px;
-    height: 42px;
-    border-radius: 21px;
+    .px2vw(width, 100);
+    .px2vh(height, 49);
+    .px2vw(padding-right, 6);
+    .px2vw(padding-left, 6);
+    .px2vh(padding-bottom, 1);
+    .px2vh(padding-top, 1);
+    .px2vw(border-radius, 21);
     background: #EBF5FF;
     color: #013480;
-    font-size: 18px;
+    .px2font(18);
     font-weight: 700;
     cursor: pointer;
   }
+}
+::v-deep .el-avatar {
+  .px2vh(height, 113);
+  .px2vw(width, 100);
 }
 </style>

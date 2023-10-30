@@ -515,6 +515,7 @@ export default {
     width: 100%;
     .px2vw(padding-left, 50);
     .px2vh(margin-top, 137);
+    .px2vh(padding-bottom, 50);
     overflow-y: scroll;
     &::-webkit-scrollbar {
       display: none

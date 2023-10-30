@@ -461,6 +461,10 @@ export default {
       .px2vw(margin-right, 136);
       .px2vw(width, 171);
       .px2vw(border-radius, 10);
+      .px2vw(padding-right, 6);
+      .px2vw(padding-left, 6);
+      .px2vh(padding-bottom, 1);
+      .px2vh(padding-top, 1);
       text-align: center;
       background: #013480;
       border: 0.1vw solid #013480;
@@ -553,6 +557,7 @@ export default {
     width: 100%;
     .px2vw(padding-left, 50);
     .px2vh(margin-top, 137);
+    .px2vh(padding-bottom, 50);
     overflow-y: scroll;
     &::-webkit-scrollbar {
       display: none
