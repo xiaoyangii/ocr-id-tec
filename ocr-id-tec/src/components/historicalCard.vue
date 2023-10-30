@@ -44,6 +44,9 @@ export default {
 </script>
 <style scoped lang='less'>
 .historyCard {
+  &:hover {
+    background-color: #f3f3f3;
+  }
   .px2vh(height, 63);
   width: 95%;
   .px2vh(margin-bottom, 17.3);

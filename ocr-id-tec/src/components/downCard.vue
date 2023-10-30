@@ -50,34 +50,36 @@ export default {
 </script>
 <style scoped lang='less'>
 .downCard {
-  height: 83px;
+  &:hover {
+    background-color: #f3f3f3;
+  }
+  .px2vh(height, 94.5);
   width: 95%;
-  margin-bottom: 16px;
-  border-radius: 6px;
+  .px2vh(margin-bottom, 18);
+  .px2vw(border-radius, 7);
   &_slect {
     float: left;
     width: 5%;
     height: 100%;
     ::v-deep .el-checkbox {
-      margin-left: 16px;
-      line-height: 55px;
-      &__input {
-        line-height: 19px;
-      }
+      .px2vw(margin-left, 16);
+      .px2vh(line-height, 60);
+      .px2font(14);
       &__inner {
-        width: 30px;
-        height: 30px;
+        .px2vw(width, 30);
+        .px2vh(height, 33);
         text-align: center;
-        font-size: 16px;
-        border-radius: 3px;
-        border: 1px solid #000;
+        .px2font(16);
+        border-radius: 0.2vw;
+        border: 0.1vw solid #000;
         background-color: #FFF;
         &::after {
-          height: 22px;
-          left: 12px;
+          .px2vh(height, 23);
+          .px2vw(width, 4);
+          .px2vw(left, 12);
           top: 0px;
           border-color: #000;
-          border-width: 4px;
+          .px2vw(border-width, 5);
         }
       }
     }
@@ -86,18 +88,18 @@ export default {
     float: left;
     width: 100%;
     height: 60%;
-    line-height: 51px;
+    .px2vh(line-height, 60);
     text-align: left;
     color: #3C3C3C;
-    font-size: 20px;
-    letter-spacing: 0.9px;
+    .px2font(20);
+    letter-spacing: 0.02vw;
   }
   &_link {
     float: left;
     height: 40%;
     color: #1559DD;
-    font-size: 16px;
-    letter-spacing: 0.72px;
+    .px2font(16);
+    .px2vw(letter-spacing, 0.72);
     cursor: pointer;
   }
   &_date {
@@ -111,11 +113,11 @@ export default {
       }
       width: 40%;
       height: 100%;
-      line-height: 51px;
+      .px2vh(line-height, 60);
       text-align: left;
       color: #9B9595;
-      font-size: 20px;
-      letter-spacing: 0.9px;
+      .px2font(20);
+      letter-spacing: 0.02vw;
     }
   }
   &_deleteicon {
@@ -124,8 +126,8 @@ export default {
     height: 100%;
     text-align: center;
     ::v-deep .el-icon-close {
-      margin: 12.5px 0;
-      font-size: 26px;
+      .px2vh(margin-top, 16.5);
+      .px2font(26);
       cursor: pointer;
     }
   }
@@ -134,10 +136,10 @@ export default {
   float: left;
   width: 63%;
   height: 100%;
-  padding-left: 30px;
+  .px2vw(padding-left, 30);
 }
 .slected {
-  border-radius: 6px;
+  .px2vw(border-radius, 7);
   background: #EBF5FF;
 }
 </style>
