@@ -66,6 +66,8 @@ export default {
 ::v-deep .el-menu-item {
   .px2vh(height, 93);
   .px2vh(line-height, 93);
+  .px2vw(padding-left, 20) !important;
+  .px2vw(padding-right, 20) !important;
   text-align: center;
   background-color: #FFF !important;
   span {

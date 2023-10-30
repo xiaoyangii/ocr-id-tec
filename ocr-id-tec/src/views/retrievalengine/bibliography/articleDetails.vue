@@ -37,7 +37,7 @@
           <button class="article_header_score" @click="watchScore(articleId)">查看命中得分</button>
           <div class="article_header_title" v-html="article.title"></div>
           <div class="article_header_box">
-            <span class="article_header_box_author" v-for="author in article.author" :key="author">{{ author }}</span>
+            <div class="article_header_box_author" v-for="author in article.author" :key="author">{{ author }}</div>
           </div>
           <div class="article_header_box">
             <span class="article_header_school" v-for="school in article.school" :key="school">{{ school }}</span>
@@ -302,6 +302,7 @@ export default {
     }
     ::v-deep .el-input__inner {
       .px2vh(height, 57);
+      .px2vh(line-height, 57);
       .px2vw(width, 829);
       .px2vw(border-radius, 8);
       border: 0.1vw solid #D9D9D9;
@@ -499,9 +500,11 @@ export default {
   &_box {
     margin: 0 auto;
     .px2vh(height, 40);
+    .px2vh(line-height, 40);
     width: 100%;
     .px2vh(padding-top, 11);
     &_author {
+      display: inline-block;
       .px2vw(margin-right, 60);
       color: #9B9595;
       .px2font(20);
@@ -540,8 +543,10 @@ export default {
   width: 100%;
   .px2vh(height, 125);
   &_buttonbox {
+    .px2vh(height, 60);
+    .px2vw(width, 500);
     &_online, &_download, &_pigeonhole {
-      width: 132px;
+      float: left;
       .px2vw(width, 133);
       .px2vh(height, 53);
       .px2vw(border-radius, 8);
@@ -571,14 +576,16 @@ export default {
     }
   }
   &_data {
+    .px2vw(width, 300);
+    .px2vh(height, 53);
     color: #BDBDBD;
     .px2font(16);
-    .px2vh(padding-top, 25);
+    .px2vh(padding-top, 15);
     &_download, &_size {
       float: left;
     }
     &_download {
-      .px2vw(margin-right, 37);
+      .px2vw(margin-right, 55);
     }
   }
 }

@@ -121,7 +121,7 @@ export default {
   .px2vh(padding-bottom, 10);
   .px2vw(min-width, 900);
   background-color: #E2F0FD;
-  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 0.8vh 0px rgba(0, 0, 0, 0.25);
   &.main-color {
     background-color: rgba(255, 255, 255, 0);
     .navbar-item {
@@ -186,6 +186,8 @@ export default {
   color: #fff;
   .login {
     margin: 2.5px auto;
+    .px2vh(margin-top, 2.8);
+    .px2vh(margin-bottom, 2.8);
     .px2vw(width, 85);
     border-radius: 0.8vw;
     background-color: #053593;
