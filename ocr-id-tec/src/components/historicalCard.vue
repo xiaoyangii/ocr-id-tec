@@ -44,35 +44,35 @@ export default {
 </script>
 <style scoped lang='less'>
 .historyCard {
-  height: 55px;
+  .px2vh(height, 63);
   width: 95%;
-  margin-bottom: 16px;
-  border-radius: 6px;
-  border: 2px solid #fff;
+  .px2vh(margin-bottom, 17.3);
+  .px2vw(border-radius, 7);
+  border: 0.15vw solid #fff;
   &_slect {
     float: left;
     width: 5%;
     height: 100%;
+    line-height: 50%;
     ::v-deep .el-checkbox {
-      margin-left: 16px;
-      line-height: 55px;
-      &__input {
-        line-height: 19px;
-      }
+      .px2vw(margin-left, 16);
+      .px2vh(line-height, 60);
+      .px2font(14);
       &__inner {
-        width: 30px;
-        height: 30px;
+        .px2vw(width, 30);
+        .px2vh(height, 33);
         text-align: center;
-        font-size: 16px;
-        border-radius: 3px;
-        border: 1px solid #000;
+        .px2font(16);
+        border-radius: 0.2vw;
+        border: 0.1vw solid #000;
         background-color: #FFF;
         &::after {
-          height: 22px;
-          left: 12px;
+          .px2vh(height, 23);
+          .px2vw(width, 4);
+          .px2vw(left, 12);
           top: 0px;
           border-color: #000;
-          border-width: 4px;
+          .px2vw(border-width, 5);
         }
       }
     }
@@ -81,12 +81,12 @@ export default {
     float: left;
     width: 63%;
     height: 100%;
-    line-height: 51px;
-    padding-left: 30px;
+    .px2vh(line-height, 60);
+    .px2vw(padding-left, 30);
     text-align: left;
     color: #3C3C3C;
-    font-size: 20px;
-    letter-spacing: 0.9px;
+    .px2font(20);
+    letter-spacing: 0.02vw;
   }
   &_date {
     float: right;
@@ -99,11 +99,11 @@ export default {
       }
       width: 40%;
       height: 100%;
-      line-height: 51px;
+      .px2vh(line-height, 60);
       text-align: left;
       color: #9B9595;
-      font-size: 20px;
-      letter-spacing: 0.9px;
+      .px2font(20);
+      letter-spacing: 0.02vw;
     }
   }
   &_deleteicon {
@@ -112,8 +112,8 @@ export default {
     height: 100%;
     text-align: center;
     ::v-deep .el-icon-close {
-      margin: 12.5px 0;
-      font-size: 26px;
+      .px2vh(margin-top, 15);
+      .px2font(26);
       cursor: pointer;
     }
   }

@@ -390,107 +390,113 @@ export default {
 <style scoped lang='less'>
 .bar {
   display: flex;
-  height: 86px;
+  .px2vh(height, 99);
+  .px2vh(line-height, 99);
   width: 100%;
   flex-direction: row;
-  line-height: 90px;
   &_search {
     background-color: #fff;
     ::v-deep .el-input {
-      margin-left: 114px;
-      margin-right: 16px;
+      .px2vh(height, 99);
+      .px2vh(line-height, 103);
+      .px2vw(margin-left, 114);
+      .px2vw(margin-right, 20);
     }
     ::v-deep .el-input__inner {
-      width: 829px;
-      height: 55px;
-      border-radius: 8px;
-      border: 1px solid #D9D9D9;
+      .px2vh(height, 57);
+      .px2vw(width, 829);
+      .px2vw(border-radius, 8);
+      border: 0.1vw solid #D9D9D9;
       color: #9B9595;
-      font-size: 20px;
-      padding-left: 60px;
+      .px2font(20);
+      .px2vw(padding-left, 70);
     }
     ::v-deep .el-input__icon.el-icon-search {
       scale: 2;
       margin: 0 15px;
-      height: 86px !important;
-      line-height: 85px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 15);
+      .px2vh(height, 86)!important;
+      .px2vh(line-height, 86);
+      .px2vw(width, 40);
+      .px2font(16);
     }
   }
   &_time {
     background-color: #fff;
+    display: inline-flex;
+    flex-direction: row;
     .el-date-editor {
-      width: 300px;
+      .px2vw(width, 300);
       margin: 0 25px;
-      margin-left: 15px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 25);
     }
     ::v-deep .el-input__inner {
-      padding-left: 55px;
-      line-height: 86px;
-      height: 55px;
-      border-radius: 8px;
+      border: 0.1vw solid #D9D9D9;
+      .px2vw(padding-left, 60);
+      .px2vh(height, 57);
+      .px2vh(line-height, 86);
+      .px2vw(border-radius, 8);
       color: #9B9595;
-      font-size: 20px;
+      .px2font(20);
     }
     ::v-deep .el-icon-date {
       scale: 2;
       margin: 0 15px;
-      height: 86px !important;
-      line-height: 82px;
-    }
-    ::v-deep .el-input__prefix {
-      top: -2px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 15);
+      .px2vh(height, 86)!important;
+      .px2vh(line-height, 86);
+      .px2font(16);
     }
   }
   &_button {
-    background-color: #fff;
-    height: 86px;
-    line-height: 91px;
+    background-color: #FFF;
+    .px2vh(line-height, 99);
+    .px2vh(height, 99);
     &_left {
-      margin-left: 25px;
-      margin-right: 200px;
-      width: 170px;
-      height: 55px;
+      .px2vh(height, 63);
+      .px2vw(margin-left, 25);
+      .px2vw(margin-right, 136);
+      .px2vw(width, 171);
+      .px2vw(border-radius, 10);
       text-align: center;
-      border-radius: 8px;
       background: #013480;
-      border: 1px solid #013480;
+      border: 0.1vw solid #013480;
       color: #FFF;
-      font-size: 22px;
-      cursor: pointer;
+      .px2font(22);
     }
   }
 }
 .content {
   float: left;
-  padding: 0 115px;
+  .px2vw(padding-right, 115.5);
+  .px2vw(padding-left, 115.5);
   width: 100%;
-  height: 791px;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-		display: none
-	}
+  .px2vh(height, 892);
   background-color: #fff;
   &_title {
     float: left;
     width: 60%;
     height: 10%;
-    margin-top: 35px;
+    .px2vh(margin-top, 40);
     color: #000;
-    font-size: 28px;
+    .px2font(28);
     font-weight: 700;
   }
   &_boxx {
     float: left;
     width: 40%;
     height: 10%;
-    margin-top: 35px;
-    padding-right: 70px;
+    .px2vh(margin-top, 40);
+    .px2vw(padding-right, 70);
     &_num {
-      height: 44px;
-      line-height: 44px;
+      .px2vh(height, 50);
+      .px2vh(line-height, 50);
       float: right;
       color: #000;
-      font-size: 22px;
+      .px2font(22);
       text-align: center;
       span {
         color: #1559DD;
@@ -498,47 +504,59 @@ export default {
     }
     &_button1 {
       float: right;
-      margin-left: 20px;
-      width: 69px;
-      height: 44px;
-      border-radius: 6px;
+      .px2vw(margin-left, 20);
+      .px2vw(width, 70);
+      .px2vh(height, 50);
+      .px2vw(border-radius, 7);
+      .px2vw(padding-right, 6);
+      .px2vw(padding-left, 6);
+      .px2vh(padding-top, 1);
+      .px2vh(padding-bottom, 1);
       border: none;
       background: #013480;
       color: #FFF;
-      font-size: 18px;
+      .px2font(18);
       cursor: pointer;
     }
     &_button2 {
       float: right;
-      margin-left: 10px;
-      width: 69px;
-      height: 44px;
-      border-radius: 6px;
+      .px2vw(margin-left, 10);
+      .px2vw(width, 70);
+      .px2vh(height, 50);
+      .px2vw(border-radius, 7);
+      .px2vw(padding-right, 6);
+      .px2vw(padding-left, 6);
+      .px2vh(padding-top, 1);
+      .px2vh(padding-bottom, 1);
       background: #D9D9D9;
       border: none;
       color: #FFF;
-      font-size: 18px;
+      .px2font(18);
       cursor: pointer;
     }
   }
   &_empty {
-    margin-top: 100px;
+    .px2vh(margin-top, 120);
     text-align: center;
     color: #000;
-    font-size: 36px;
+    .px2font(36);
     font-weight: 700;
     div {
-      margin-top: 30px;
+      .px2vh(margin-top, 34);
       color: #74ADFD;
-      font-size: 38px;
-      letter-spacing: 4.18px;
+      .px2font(38);
+      letter-spacing: 0.2vw;
     }
   }
   &_List {
-    height: calc(100% - 114px);
+    .px2vh(height, 755);
     width: 100%;
-    padding-left: 50px;
-    margin-top: 120px;
+    .px2vw(padding-left, 50);
+    .px2vh(margin-top, 137);
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none
+    }
   }
 }
 
