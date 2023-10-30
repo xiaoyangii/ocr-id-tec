@@ -33,7 +33,7 @@
         </div>
         <div class="process_card_right">
           <div class="process_card_right_title">{{ item.name }}</div>
-          <el-progress :percentage="uploadprogressPercentage" :stroke-width="8" :show-text="false"></el-progress>
+          <el-progress :percentage="uploadprogressPercentage" :show-text="false"></el-progress>
           <div class="process_card_right_size">{{ (item.size/1024/1024).toFixed(2) }}MB</div>
         </div>
       </div>
@@ -171,15 +171,15 @@ export default {
   }
 }
 .bulkimport_body {
-  padding-top: 15px;
+  .px2vh(padding-top, 17);
   float: left;
   height: 40.7vh;
   width: 67.4vw;
 }
 .bulkimport_foot{
-  padding-top: 15px;
+  .px2vh(padding-top, 17);
   float: left;
-  height: 36vh;
+  height: 35.5vh;
   width: 67.4vw;
   overflow-y: scroll;
   &::-webkit-scrollbar {
@@ -187,60 +187,65 @@ export default {
 	}
   .process_card {
     float: left;
-    height: 87px;
+    .px2vh(height, 100);
     width: 100%;
-    margin-bottom: 15px;
+    .px2vh(margin-bottom, 17);
     &_left {
       float: left;
       height: 100%;
-      width: 86px;
+      .px2vw(width, 86);
       img {
-        height: 86px;
-        width: 86px;
+        .px2vh(height, 98.5);
+        .px2vw(width, 86);
       }
     }
     &_right {
       float: left;
       height: 100%;
-      width: calc(100% - 86px);
+      .px2vw(width, 1207.9);
       &_title {
-        margin-bottom: 10px;
+        .px2vh(margin-bottom, 15);
         color: #000;
-        font-size: 23px;
+        .px2font(20);
         font-weight: 700;
-        letter-spacing: 1.4px;
+        letter-spacing: 0.1vw;
       }
       &_size {
-        margin-top: 13px;
+        .px2vh(margin-top, 17);
         color: #9B9595;
-        font-size: 16px;
+        .px2font(16);
         font-weight: 700;
-        line-height: 149.482%; /* 17.938px */
       }
     }
   }
 }
 ::v-deep .el-upload-dragger {
-  width: 1290px;
-  height: 373px;
-  border: 1px dashed #9B9595;
+  .px2vw(width, 1295);
+  .px2vh(height, 425);
+  .px2vh(line-height, 50);
+  border: 0.15vw dashed #9B9595;
   background: rgba(235, 245, 255, 0.40)
 }
 ::v-deep .el-icon-upload {
-  font-size: 100px;
-  margin: 130px 0;
-  margin-bottom: 50px;
+  .px2font(120);
+  .px2vh(margin-top, 140);
+  .px2vh(margin-bottom, 50);
 }
 .el-upload__text {
   color: #000;
-  font-size: 26px;
-  line-height: 149.482%; /* 38.865px */
-  letter-spacing: 2.86px;
+  .px2font(28);
+  letter-spacing: 0.15vw;
 }
 .el-progress-bar {
   background-color: #fff;
 }
 ::v-deep .el-upload-list {
   display: none;
+}
+::v-deep .el-upload-dragger .el-icon-upload {
+  .px2vh(line-height, 60);
+}
+::v-deep .el-progress-bar__outer {
+  .px2vh(height, 11) !important;
 }
 </style>
