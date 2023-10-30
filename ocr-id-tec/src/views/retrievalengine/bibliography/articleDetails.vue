@@ -37,10 +37,10 @@
           <button class="article_header_score" @click="watchScore(articleId)">查看命中得分</button>
           <div class="article_header_title" v-html="article.title"></div>
           <div class="article_header_box">
-            <div class="article_header_box_author" v-for="author in article.author" :key="author">{{ author }}</div>
+            <span class="article_header_box_author" v-for="author in article.author" :key="author">{{ author }}</span>
           </div>
           <div class="article_header_box">
-            <span class="article_header_school" v-for="school in article.school" :key="school">{{ school }}</span>
+            <span class="article_header_box_school" v-for="school in article.school" :key="school">{{ school }}</span>
           </div>
         </div>
         <div class="article_body">
@@ -499,10 +499,11 @@ export default {
   }
   &_box {
     margin: 0 auto;
-    .px2vh(height, 40);
-    .px2vh(line-height, 40);
+    .px2vh(height, 35);
+    .px2vh(line-height, 35);
     width: 100%;
-    .px2vh(padding-top, 11);
+    .px2vh(margin-top, 8);
+    text-align: center;
     &_author {
       display: inline-block;
       .px2vw(margin-right, 60);
@@ -512,15 +513,13 @@ export default {
         margin-right: 0;
       }
     }
-  }
-  &_school {
-    .px2vw(margin-right, 25);
-    width: 100%;
-    color: #676363;
-    .px2font(20);
-    .px2vh(height, 40);
-    &:last-child {
-      margin-right: 0;
+    &_school {
+      .px2vw(margin-right, 25);
+      color: #676363;
+      .px2font(20);
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 }
@@ -533,7 +532,7 @@ export default {
     .px2vh(margin-top, 17);
   }
   &_summary {
-    .px2vh(padding-top, 28);
+    .px2vh(padding-top, 25);
     overflow: hidden;
   }
 }

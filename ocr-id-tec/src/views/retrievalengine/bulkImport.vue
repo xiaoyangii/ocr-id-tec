@@ -126,7 +126,8 @@ export default {
 .bulkimport {
   height: 91.7vh;
   width: 85.1vw;
-  padding: 0 170px;
+  .px2vw(padding-right, 170);
+  .px2vw(padding-left, 170);
   background-color: #fff;
 }
 .bulkimport_head {
@@ -135,37 +136,37 @@ export default {
   width: 67.4vw;
   &_title {
     text-align: center;
-    margin-top: 50px;
+    .px2vh(margin-top, 58);
     color: #000;
-    font-size: 36px;
+    .px2font(37);
     font-weight: 700;
   }
   &_confirm {
     float: left;
-    margin-left: 30px;
-    margin-top: 15px;
+    .px2vw(margin-left, 30);
+    .px2vh(margin-top, 17);
     color: #000;
-    font-size: 22px;
+    .px2font(22);
     font-weight: 700;
-    letter-spacing: 2.42px;
+    letter-spacing: 0.12vw;
     cursor: pointer;
   }
   &_img {
     float: left;
-    margin-top: 15px;
+    .px2vh(margin-top, 17);
     color: #1559DD;
-    font-size: 22px;
+    .px2font(22);
     font-weight: 700;
-    letter-spacing: 2.42px;
+    letter-spacing: 0.12vw;
     cursor: pointer;
   }
   &_doc {
     float: right;
-    margin-top: 15px;
+    .px2vh(margin-top, 17);
     color: #1559DD;
-    font-size: 22px;
+    .px2font(22);
     font-weight: 700;
-    letter-spacing: 2.42px;
+    letter-spacing: 0.12vw;
     cursor: pointer;
   }
 }
