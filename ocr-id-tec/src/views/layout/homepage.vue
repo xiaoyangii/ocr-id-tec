@@ -109,6 +109,11 @@ export default {
   .px2vw(width, 250);
   .px2vh(height, 100);
   .px2vh(margin-top, 100);
+  .px2vw(padding-right, 6);
+  .px2vw(padding-left, 6);
+  .px2vh(padding-top, 1);
+  .px2vh(padding-bottom, 1);
+  border: none;
   background: #013480;
   .px2vh(border-radius, 50);
   font-family: "MicrosoftYaHei";

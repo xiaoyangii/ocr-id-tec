@@ -26,15 +26,17 @@ export default {
 .list_item {
   display: inline-block;
   break-inside: avoid;
-  width: 288px;
-  border: 1px solid #000;
+  .px2vw(width, 289);
+  border: 0.1vw solid #000;
   background: #F9F9F9;
   cursor: pointer;
   text-align: center;
   &_title {
     color: #9B9595;
-    font-size: 18px;
+    .px2font(18);
     margin: 5px 0;
+    .px2vh(margin-top, 5);
+    .px2vh(margin-bottom, 5);
   }
 }
 </style>

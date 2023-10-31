@@ -371,6 +371,10 @@ export default {
         .px2vh(height, 44);
         .px2vw(margin-right, 15);
         .px2vh(border-radius, 10);
+        .px2vw(padding-right, 6);
+        .px2vw(padding-left, 6);
+        .px2vh(padding-top, 1);
+        .px2vh(padding-bottom, 1);
         border: 0.1vw solid #1559DD;
         background-color: #fff;
         color: #1559DD;
@@ -420,6 +424,7 @@ export default {
       width: 100%;
       height: calc(100% - 3vh);
       overflow-y: scroll;
+      .px2vh(padding-bottom, 20);
       &::-webkit-scrollbar {
         display: none
       }

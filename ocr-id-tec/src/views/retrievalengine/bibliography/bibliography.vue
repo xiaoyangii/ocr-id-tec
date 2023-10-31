@@ -299,7 +299,22 @@ export default {
           id: 8,
           pictureName: "短枝木麻黄DRIS营养诊断图",
           picture: require('@/assets/images/img8.png')
-        }
+        },
+        {
+          id: 9,
+          pictureName: "不同海岸线距离木麻黄净光合速率的日变化",
+          picture: require('@/assets/images/img2.png')
+        },
+        {
+          id: 10,
+          pictureName: "12名志愿者单次口服受试制剂后伪麻黄碱平均血药浓度-时间曲线",
+          picture: require('@/assets/images/img5.png')
+        },
+        {
+          id: 11,
+          pictureName: "木麻黄人工林树高结构分布图",
+          picture: require('@/assets/images/img1.png')
+        },
       ],
       imgList1: [
         {
@@ -341,7 +356,22 @@ export default {
           id: 8,
           pictureName: "短枝木麻黄DRIS营养诊断图",
           picture: require('@/assets/images/img8.png')
-        }
+        },
+        {
+          id: 9,
+          pictureName: "不同海岸线距离木麻黄净光合速率的日变化",
+          picture: require('@/assets/images/img2.png')
+        },
+        {
+          id: 10,
+          pictureName: "12名志愿者单次口服受试制剂后伪麻黄碱平均血药浓度-时间曲线",
+          picture: require('@/assets/images/img5.png')
+        },
+        {
+          id: 11,
+          pictureName: "木麻黄人工林树高结构分布图",
+          picture: require('@/assets/images/img1.png')
+        },
       ],
       imgMatchList: []
     }

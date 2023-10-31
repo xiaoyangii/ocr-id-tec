@@ -206,6 +206,10 @@ export default {
     position: relative;
     .px2vh(margin-top, 10);
     .px2vh(height, 80);
+    .px2vw(padding-right, 6);
+    .px2vw(padding-left, 6);
+    .px2vh(padding-top, 1);
+    .px2vh(padding-bottom, 1);
     background-color: #9AC1E4;
     .px2vw(border-radius, 12);
     .px2font(22);

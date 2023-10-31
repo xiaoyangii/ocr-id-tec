@@ -220,6 +220,10 @@ export default {
     font-weight: 600;
     letter-spacing: 0.08em;
     border-color: #9AC1E4;
+    .px2vw(padding-right, 6);
+    .px2vw(padding-left, 6);
+    .px2vh(padding-top, 1);
+    .px2vh(padding-bottom, 1);
   }
 }
 .el-link {

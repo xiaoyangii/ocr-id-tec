@@ -155,6 +155,10 @@ export default {
     .px2vh(margin-top, 10);
     .px2vh(height, 80);
     background-color: #9AC1E4;
+    .px2vw(padding-right, 6);
+    .px2vw(padding-left, 6);
+    .px2vh(padding-top, 1);
+    .px2vh(padding-bottom, 1);
     .px2vw(border-radius, 12);
     .px2font(22);
     font-weight: 600;
@@ -206,6 +210,7 @@ export default {
   .px2vh(margin-top, 50);
   .px2vh(margin-bottom, 25);
   .px2vh(height, 89);
+  
 }
 ::v-deep .el-form-item__label {
   .px2vh(height, 35);
