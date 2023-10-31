@@ -474,7 +474,6 @@ export default {
   }
 }
 .content {
-  float: left;
   .px2vw(padding-right, 115.5);
   .px2vw(padding-left, 115.5);
   width: 100%;

@@ -302,5 +302,7 @@ export default {
   &::-webkit-scrollbar {
 		display: none
 	}
+  .px2vh(padding-top, 20);
+  .px2vh(padding-bottom, 50);
 }
 </style>
