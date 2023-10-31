@@ -50,6 +50,7 @@ export default {
 .card_left {
   float: left;
   height: 100%;
+  line-height: 100%;
   .px2vw(width, 65.3);
   ::v-deep .el-avatar {
     .px2vw(width, 65.3);

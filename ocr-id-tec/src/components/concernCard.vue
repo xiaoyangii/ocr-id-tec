@@ -81,6 +81,7 @@ export default {
     border: none;
     .px2vw(width, 100);
     .px2vh(height, 49);
+    .px2vh(line-height, 49);
     .px2vw(padding-right, 6);
     .px2vw(padding-left, 6);
     .px2vh(padding-bottom, 1);
