@@ -290,4 +290,3 @@ export default {
   .px2vh(padding-bottom, 50);
 }
 </style>
-
