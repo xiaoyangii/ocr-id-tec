@@ -37,45 +37,49 @@ export default {
 </script>
 <style scoped lang='less'>
 .subscription_card {
-  width: 570px;
-  height: 155px;
+  .px2vw(width, 572);
+  .px2vh(height, 175);
 }
 .card_left {
   float: left;
-  width: 250px;
+  .px2vw(width, 255);
   height: 100%;
   img {
-    width: 254px;
-    height: 148px;
-    border-radius: 20px;
+    .px2vw(width, 255);
+    .px2vh(height, 167);
+    .px2vw(border-radius, 20);
   }
 }
 .card_right {
   float: right;
-  width: 275px;
+  .px2vw(width, 276);
   height: 100%;
   &_title {
-    height: 35px;
+    .px2vh(height, 39);
     width: 100%;
     color: #000;
-    font-size: 24px;
+    .px2font(24);
   }
   &_desc {
-    height: 97px;
+    .px2vh(height, 110);
     width: 100%;
     color: #9B9595;
-    font-size: 18px;
+    .px2font(18);
     overflow: hidden;
   }
   &_subs {
     float: right;
-    width: 64px;
-    height: 24px;
-    border-radius: 11px;
+    .px2vw(width, 64);
+    .px2vh(height, 29);
+    .px2vw(border-radius, 11);
+    .px2vw(padding-right, 6);
+    .px2vw(padding-left, 6);
+    .px2vh(padding-bottom, 1);
+    .px2vh(padding-top, 1);
     background: #EBF5FF;
     border: none;
     color: #013480;
-    font-size: 11px;
+    .px2font(11);
     cursor: pointer;
   }
 }
