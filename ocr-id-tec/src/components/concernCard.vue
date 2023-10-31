@@ -94,7 +94,7 @@ export default {
   }
 }
 ::v-deep .el-avatar {
-  .px2vh(height, 113);
+  .px2vw(height, 100);
   .px2vw(width, 100);
 }
 </style>

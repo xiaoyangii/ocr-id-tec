@@ -265,8 +265,6 @@ export default {
   .px2vh(height, 113.5);
   &_title {
     float: left;
-    margin-top: 30px;
-    margin-left: 110px;
     .px2vh(margin-top, 40);
     .px2vw(margin-left, 115);
     color: #000;

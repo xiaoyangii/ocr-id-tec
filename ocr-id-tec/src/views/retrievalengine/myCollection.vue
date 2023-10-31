@@ -187,67 +187,94 @@ export default {
 }
 .bar {
   display: flex;
-  height: 86px;
-  width: 100vw;
+  .px2vh(height, 99);
+  .px2vh(line-height, 99);
+  width: 100%;
   flex-direction: row;
-  line-height: 90px;
   &_search {
     background-color: #fff;
     ::v-deep .el-input {
-      margin-left: 114px;
-      margin-right: 16px;
+      .px2vh(height, 99);
+      .px2vh(line-height, 103);
+      .px2vw(margin-left, 114);
+      .px2vw(margin-right, 20);
     }
     ::v-deep .el-input__inner {
-      width: 829px;
-      height: 55px;
-      border-radius: 8px;
-      border: 1px solid #D9D9D9;
+      .px2vh(height, 57);
+      .px2vw(width, 829);
+      .px2vw(border-radius, 8);
+      border: 0.1vw solid #D9D9D9;
       color: #9B9595;
-      font-size: 20px;
-      padding-left: 60px;
+      .px2font(20);
+      .px2vw(padding-left, 70);
     }
     ::v-deep .el-input__icon.el-icon-search {
       scale: 2;
       margin: 0 15px;
-      height: 86px !important;
-      line-height: 85px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 15);
+      .px2vh(height, 86)!important;
+      .px2vh(line-height, 86);
+      .px2vw(width, 40);
+      .px2font(16);
     }
   }
   &_time {
     background-color: #fff;
+    display: inline-flex;
+    flex-direction: row;
     .el-date-editor {
-      width: 300px;
-      margin: 0 349px;
-      margin-left: 15px;
+      .px2vw(width, 300);
+      margin: 0 25px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 25);
     }
     ::v-deep .el-input__inner {
-      padding-left: 55px;
-      line-height: 86px;
-      height: 55px;
-      border-radius: 8px;
+      border: 0.1vw solid #D9D9D9;
+      .px2vw(padding-left, 60);
+      .px2vh(height, 57);
+      .px2vh(line-height, 86);
+      .px2vw(border-radius, 8);
       color: #9B9595;
-      font-size: 20px;
+      .px2font(20);
     }
     ::v-deep .el-icon-date {
       scale: 2;
       margin: 0 15px;
-      height: 86px !important;
-      line-height: 82px;
+      .px2vw(margin-left, 15);
+      .px2vw(margin-right, 15);
+      .px2vh(height, 86)!important;
+      .px2vh(line-height, 86);
+      .px2font(16);
     }
-    ::v-deep .el-input__prefix {
-      top: -2px;
+  }
+  &_clear {
+    background-color: #FFF;
+    .px2vh(line-height, 99);
+    .px2vh(height, 99);
+    &_btn {
+      .px2vh(height, 63);
+      .px2vw(margin-left, 25);
+      .px2vw(margin-right, 136);
+      .px2vw(width, 171);
+      .px2vw(border-radius, 10);
+      text-align: center;
+      background: #013480;
+      border: 0.1vw solid #013480;
+      color: #FFF;
+      .px2font(22);
     }
   }
 }
 .mycollection_head {
   width: 100%;
-  height: 100px;
+  .px2vh(height, 113.5);
   &_title {
     float: left;
-    margin-top: 30px;
-    margin-left: 110px;
+    .px2vh(margin-top, 40);
+    .px2vw(margin-left, 115);
     color: #000;
-    font-size: 28px;
+    .px2font(28);
     font-weight: 700;
   }
 }
@@ -256,13 +283,15 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
-  gap: 20px 220px;
-  width: 100%;
-  height: calc(100vh - 266px);
-  padding: 0 110px;
+  gap: 3vh 11.5vw;
+  .px2vh(height, 777);
+  .px2vw(padding-right, 110);
+  .px2vw(padding-left, 115);
   overflow-y: scroll;
   &::-webkit-scrollbar {
 		display: none
 	}
+  .px2vh(padding-top, 20);
+  .px2vh(padding-bottom, 50);
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="collectionCard" v-if="item">
     <div class="card_left">
-      <el-avatar :size="65" :src="avatar"></el-avatar>
+      <el-avatar :src="avatar"></el-avatar>
     </div>
     <div class="card_right">
       <div class="card_right_head">
@@ -44,63 +44,66 @@ export default {
 </script>
 <style scoped lang='less'>
 .collectionCard {
-  width: 570px;
-  height: 155px;
+  .px2vw(width, 572);
+  .px2vh(height, 176);
 }
-
 .card_left {
   float: left;
   height: 100%;
-  width: 65px;
+  .px2vw(width, 65.3);
+  ::v-deep .el-avatar {
+    .px2vw(width, 65.3);
+    .px2vw(height, 65.3);
+  }
 }
 .card_right {
   float: right;
   height: 100%;
-  width: 480px;
+  .px2vw(width, 481);
   &_head {
-    height: 30px;
+    .px2vh(height, 35);
     width: 100%;
-    line-height: 30px;
-    margin-top: 10px;
+    .px2vh(line-height, 35);
+    .px2vh(margin-top, 1);
     &_author {
       float: left;
       height: 100%;
-      width: 400px;
+      .px2vw(width, 401);
       color: #000;
-      font-size: 22px;
+      .px2font(22);
       font-weight: 700;
       cursor: pointer;
     }
     .el-icon-star-on {
       float: right;
-      font-size: 30px;
+      .px2font(30);
       color: yellow;
       cursor: pointer;
     }
     &_colle {
       float: right;
       height: 100%;
-      width: 40px;
+      .px2vw(width, 40);
       color: #BAABAB;
-      font-size: 18px;
+      .px2font(18);
       text-align: right;
       cursor: pointer;
     }
   }
   &_title {
     float: left;
-    height: 30px;
-    line-height: 30px;
+    .px2vh(height, 34);
+    .px2vh(line-height, 34);
     width: 100%;
     color: #000;
-    font-size: 18px;
+    .px2font(18);
   }
   &_desc {
     float: left;
-    height: 97px;
+    .px2vh(height, 99);
     width: 100%;
     color: #9B9595;
-    font-size: 16px;
+    .px2font(16);
   }
 }
 </style>
