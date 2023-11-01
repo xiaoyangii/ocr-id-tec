@@ -2,7 +2,7 @@
   <div class="header">
     <img src="@/assets/images/logo.png" alt="">
     <h1 class="logo">
-      易通<div>文</div>
+      医谷<div>知</div>
     </h1>
     <ul class="navbar">
       <router-link to="/home/homepage" exact v-slot="{ href, navigate, isActive }" custom>
@@ -152,6 +152,7 @@ export default {
   font-family: "zihun";
   font-weight: 400;
   div {
+    .px2vw(margin-right, 2);
     float: left;
     color: #013480;
   }
