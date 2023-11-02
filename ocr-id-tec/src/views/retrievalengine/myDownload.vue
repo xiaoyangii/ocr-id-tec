@@ -14,7 +14,7 @@
           align="right"
           type="date"
           placeholder="选择日期"
-          :picker-options="pickerOptions">
+          @change="pickerdate">
         </el-date-picker>
       </div>
       <div class="bar_clear">
@@ -181,8 +181,23 @@ export default {
     },
   },
   methods: {
-    pickerOptions() {
-
+    pickerdate(val) {
+      // 从articleList1筛选出date与dateValue相等的数据
+      if(val == null) {
+        this.matchList = this.downList
+        return;
+      }
+      let month = val.getMonth() >=9 ? val.getMonth() + 1 : '0' + (val.getMonth() + 1)
+      let day = val.getDate() >= 10 ? val.getDate() : '0' + val.getDate()
+      let date = val.getFullYear() + '-' + month + '-' + day
+      let dataList = []
+      this.downList.forEach((item) => {
+        if(item.date === date) {
+          dataList.push(item)
+        }
+      })
+      this.matchList = []
+      this.matchList = dataList
     },
     // 文字匹配，先清空hisLis，数据暂存downListCopy，通过keyword和dateValue进行匹配，筛选出与keyword匹配的数据，再筛选出在dateValue之前的数据，再将筛选出的数据push到downList中
     getMachlist() {

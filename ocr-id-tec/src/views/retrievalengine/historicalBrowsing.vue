@@ -220,7 +220,9 @@ export default {
         this.matchList = this.hisList
         return;
       }
-      let date = val.getFullYear() + '-' + (val.getMonth() + 1) + '-' + val.getDate()
+      let month = val.getMonth() >=9 ? val.getMonth() + 1 : '0' + (val.getMonth() + 1)
+      let day = val.getDate() >= 10 ? val.getDate() : '0' + val.getDate()
+      let date = val.getFullYear() + '-' + month + '-' + day
       let dataList = []
       this.hisList.forEach((item) => {
         if(item.date === date) {
@@ -561,7 +563,6 @@ export default {
     .px2font(36);
     font-weight: 700;
     div {
-      .px2vh(margin-top, 34);
       color: #74ADFD;
       .px2font(38);
       letter-spacing: 0.2vw;
