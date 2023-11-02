@@ -14,7 +14,7 @@
           align="right"
           type="date"
           placeholder="选择日期"
-          :picker-options="pickerOptions">
+          @change="pickerdate">
         </el-date-picker>
       </div>
       <div class="bar_clear">
@@ -56,50 +56,50 @@ export default {
           isSlected: false,
           articleId: 1,
           title: '某医院血液科24种抗肿瘤药超说明书用药评价',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2020-11-21',
+          time: '10:14',
         },
         {
           isSlected: false,
           articleId: 2,
           title: '新医科背景下的康复医学教育改革思考',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2022-01-15',
+          time: '11:19',
         },
         {
           isSlected: false,
           articleId: 3,
           title: '实验动物智能化综合管理系统开发及应用',
-          date: '2021-01-01',
+          date: '2020-07-24',
           time: '13:14',
         },
         {
           isSlected: false,
           articleId: 4,
           title: '医学人文视域下医学史的学科价值和发展路径探析',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2022-06-12',
+          time: '16:54',
         },
         {
           isSlected: false,
           articleId: 5,
           title: '医学生物化学与分子生物学实验教学的改革与实践',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-02-11',
+          time: '14:23',
         },
         {
           isSlected: false,
           articleId: 6,
           title: 'SWOT视角下医学出版的数字化转型研究',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2021-03-17',
+          time: '17:24',
         },
         {
           isSlected: false,
           articleId: 7,
           title: '临床医学专业新发传染病防控课程设置的思考 ',
-          date: '2021-01-01',
-          time: '13:14',
+          date: '2022-10-21',
+          time: '08:35',
         },
       ],
       recycleListCopy: [],
@@ -163,8 +163,23 @@ export default {
     },
   },
   methods: {
-    pickerOptions() {
-
+    pickerdate(val) {
+      // 从hisListCopy筛选出date与dateValue相等的数据
+      if(val == null) {
+        this.matchList = this.recycleList
+        return;
+      }
+      let month = val.getMonth() >=9 ? val.getMonth() + 1 : '0' + (val.getMonth() + 1)
+      let day = val.getDate() >= 10 ? val.getDate() : '0' + val.getDate()
+      let date = val.getFullYear() + '-' + month + '-' + day
+      let dataList = []
+      this.recycleList.forEach((item) => {
+        if(item.date === date) {
+          dataList.push(item)
+        }
+      })
+      this.matchList = []
+      this.matchList = dataList
     },
     // 文字匹配，先清空recycleList，数据暂存Copy，通过keyword和dateValue进行匹配，筛选出与keyword匹配的数据，再筛选出在dateValue之前的数据，再将筛选出的数据push到List中
     getMachlist() {
