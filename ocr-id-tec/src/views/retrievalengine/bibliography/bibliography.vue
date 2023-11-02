@@ -12,9 +12,9 @@
         <el-date-picker
           v-model="dateValue"
           align="right"
-          type="date"
-          placeholder="选择日期"
-          :picker-options="pickerOptions">
+          type="year"
+          placeholder="选择年份"
+          @change="pickerdate">
         </el-date-picker>
       </div>
       <div class="bar_button">
@@ -124,7 +124,7 @@ export default {
           title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄在肾脏病中的应用研究进展",
           author: "作者： " + "叶晓滨",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
-          date: "2021",
+          date: "2020",
           name: "刊名： " + "实用临床医药杂志"
         },
         {
@@ -140,7 +140,7 @@ export default {
           title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄类药对组成规律的基础研究—麻黄石膏药对血药动力学",
           author: "作者： " + "叶晓滨",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
-          date: "2021",
+          date: "2023",
           name: "刊名： " + "中医研究"
         }
       ],
@@ -158,7 +158,7 @@ export default {
           title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄在肾脏病中的应用研究进展",
           author: "作者： " + "叶晓滨",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
-          date: "2021",
+          date: "2020",
           name: "刊名： " + "实用临床医药杂志"
         },
         {
@@ -174,7 +174,7 @@ export default {
           title: "【期刊】<i class='el-icon-document' style='color:#1559DD;'></i>" + "麻黄类药对组成规律的基础研究—麻黄石膏药对血药动力学",
           author: "作者： " + "叶晓滨",
           details: "麻黄源自麻黄科草麻黄、中麻黄或木贼麻黄的干燥草质茎,常用药对可以总结为同类相须（如麻黄-桂枝）、异类相使（如麻黄-附子）、升降相宜（如麻黄-苦杏仁）、寒热相制（如麻黄-生石膏）和散补兼施（如麻黄-甘草）5个方面。药对配伍后,化学成分发生了改变,如麻黄-桂枝配伍后,有效成分含量下降,并且产生...",
-          date: "2021",
+          date: "2023",
           name: "刊名： " + "中医研究"
         }
       ],
@@ -463,8 +463,21 @@ export default {
     changeTeamList() {
 
     },
-    pickerOptions() {
-      
+    pickerdate(val) {
+      // 从articleList1筛选出date与dateValue相等的数据
+      if(val == null) {
+        this.articleList = this.articleList1
+        return;
+      }
+      let year = val.getFullYear()+''
+      let dataList = []
+      this.articleList1.forEach((item) => {
+        if(item.date === year) {
+          dataList.push(item)
+        }
+      })
+      this.articleList = []
+      this.articleList = dataList
     },
     // 模糊查询 高亮匹配imgList中的title
     getImgMatch() {
