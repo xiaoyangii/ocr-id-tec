@@ -193,9 +193,11 @@ export default {
   flex-direction: row;
   &_search {
     background-color: #fff;
+    display: inline-flex;
+    flex-direction: row;
     ::v-deep .el-input {
       .px2vh(height, 99);
-      .px2vh(line-height, 103);
+      .px2vh(line-height, 98);
       .px2vw(margin-left, 114);
       .px2vw(margin-right, 20);
     }

@@ -14,8 +14,8 @@
         v-model="dateValue"
         align="right"
         type="date"
-        placeholder="按时间筛选"
-        :picker-options="pickerOptions">
+        placeholder="选择日期"
+        @change="pickerdate">
       </el-date-picker>
     </div>
     <div class="bar_button">
@@ -182,7 +182,7 @@ export default {
     },
     // 监视hisList是否为空，如果为空，isempty为false
     isempty() {
-      if(this.hisList.length == 0) {
+      if(this.matchList.length == 0) {
         return false;
       }
       return true;
@@ -214,8 +214,21 @@ export default {
     },
   },
   methods: {
-    pickerOptions() {
-      
+    pickerdate(val) {
+      // 从hisListCopy筛选出date与dateValue相等的数据
+      if(val == null) {
+        this.matchList = this.hisList
+        return;
+      }
+      let date = val.getFullYear() + '-' + (val.getMonth() + 1) + '-' + val.getDate()
+      let dataList = []
+      this.hisList.forEach((item) => {
+        if(item.date === date) {
+          dataList.push(item)
+        }
+      })
+      this.matchList = []
+      this.matchList = dataList
     },
     // 文字匹配，先清空hisLis，数据暂存hisListCopy，通过keyword和dateValue进行匹配，筛选出与keyword匹配的数据，再筛选出在dateValue之前的数据，再将筛选出的数据push到hisList中
     getMachlist() {
@@ -235,6 +248,7 @@ export default {
         //   item.isSlected = false;
         // })
         this.$store.commit('myhistory/setHistory', this.hisList)
+        this.hisListCopy = this.hisList
         this.$message({
           message: '获取历史记录成功',
           type: "success"
@@ -396,9 +410,11 @@ export default {
   flex-direction: row;
   &_search {
     background-color: #fff;
+    display: inline-flex;
+    flex-direction: row;
     ::v-deep .el-input {
       .px2vh(height, 99);
-      .px2vh(line-height, 103);
+      .px2vh(line-height, 98);
       .px2vw(margin-left, 114);
       .px2vw(margin-right, 20);
     }
