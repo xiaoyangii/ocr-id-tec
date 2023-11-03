@@ -43,6 +43,7 @@
 
 <script>
 import { uploadPdfFile } from '@/api/file.js'
+import axios from 'axios'
 export default {
   name: 'bulkImport',
   components: {},
@@ -67,8 +68,8 @@ export default {
         message: "上传中",
         type: "success"
       })
-      await request({
-        url: 'http://120.77.149.32:8999/Picture/InsertPicture',
+      await axios({
+        url: 'http://120.77.149.32:8999/Picture/InsertArticle',
         method: "post",
         data: this.formDate,
         headers: {
