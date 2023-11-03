@@ -57,7 +57,7 @@ export const searchImg = (keyWord) => {
 // 7.插入文章
 export const insertArticle = (data) => {
   return request({
-    url: 'http://orcsystem.v2.idcfengye.com/Article/InsertArticle',
+    url: 'http://120.77.149.32:8999/Article/InsertArticle',
     method: "post",
     data,
     headers: {
@@ -69,7 +69,7 @@ export const insertArticle = (data) => {
 // 8. 仓库插入文章
 export const insertRepoArticle = (data) => {
   return request({
-    url: 'http://orcsystem.v2.idcfengye.com/Article/InsertArticle',
+    url: 'http://120.77.149.32:8999/Article/InsertArticle',
     method: "post",
     data,
     headers: {

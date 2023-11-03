@@ -68,7 +68,7 @@ export default {
         type: "success"
       })
       await request({
-        url: 'http://orcsystem.v2.idcfengye.com/Picture/InsertPicture',
+        url: 'http://120.77.149.32:8999/Picture/InsertPicture',
         method: "post",
         data: this.formDate,
         headers: {

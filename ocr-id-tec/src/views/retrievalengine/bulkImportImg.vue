@@ -34,7 +34,7 @@
           </div>
           <div class="process_card_right">
             <div class="process_card_right_title">{{ item.name }}</div>
-            <el-progress :percentage="uploadprogressPercentage" :stroke-width="8" :show-text="false"></el-progress>
+            <el-progress :percentage="uploadprogressPercentage" :show-text="false"></el-progress>
             <div class="process_card_right_size">{{ (item.size/1024/1024).toFixed(2) }}MB</div>
           </div>
         </div>
@@ -85,7 +85,7 @@ export default {
         type: "success"
       })
       await request({
-        url: 'http://orcsystem.v2.idcfengye.com/Picture/InsertPicture',
+        url: 'http://120.77.149.32:8999/Picture/InsertPicture',
         method: "post",
         data: this.formDate,
         headers: {
@@ -143,7 +143,7 @@ export default {
 .bulkimport {
   height: 91.7vh;
   width: 85.1vw;
-  padding-left: 85px;
+  .px2vw(padding-left, 85);
   background-color: #fff;
 }
 .bulkimport_right {
@@ -151,34 +151,37 @@ export default {
   height: 91.7vh;
   width: 36vw;
   padding: 42px 40px;
-  padding-bottom: 30px;
-  border-left: 1px solid #D9D9D9;
+  .px2vw(padding-left, 40);
+  .px2vw(padding-right, 40);
+  .px2vh(padding-top, 45);
+  .px2vh(padding-bottom, 35);
+  border-left: 0.1vw solid #D9D9D9;
   &_title {
     color: #000;
-    font-size: 36px;
+    .px2font(37);
     font-weight: 700;
   }
   &_text {
-    margin-top: 20px;
-    width: 609px;
-    height: 660px;
-    border-radius: 20px;
+    .px2vh(margin-top, 22);
+    .px2vw(width, 609);
+    .px2vh(height, 770);
+    .px2vw(border-radius, 20);
     background: #e0ecf8;
     color: #514D4D;
-    font-size: 32px;
-    letter-spacing: 3.52px;
+    .px2font(32);
+    .px2vw(letter-spacing, 3.52);
     overflow-y: scroll;
-    Text-indent: 55px;
+    .px2vw(Text-indent, 55);
     &::-webkit-scrollbar {
       display: none
     }
   }
   &_link {
     float: right;
-    margin-top: 10px;
+    .px2vh(margin-top, 11);
     color: #000;
-    font-size: 24px;
-    letter-spacing: 2.64px;
+    .px2font(24);
+    .px2vw(letter-spacing, 2.64);
     cursor: pointer;
   }
 }
@@ -190,51 +193,51 @@ export default {
 .bulkimport_head {
   float: left;
   height: 15vh;
-  width: 40vw; //67.4
+  width: 40vw;
   &_title {
     text-align: center;
-    margin-top: 50px;
+    .px2vh(margin-top, 57);
     color: #000;
-    font-size: 36px;
+    .px2font(36);
     font-weight: 700;
   }
   &_confirm {
     float: left;
-    margin-left: 30px;
-    margin-top: 15px;
+    .px2vw(margin-left, 30);
+    .px2vh(margin-top, 17);
     color: #000;
-    font-size: 22px;
+    .px2font(22);
     font-weight: 700;
-    letter-spacing: 2.42px;
+    .px2vw(letter-spacing, 2.42);
     cursor: pointer;
   }
   &_img {
     float: left;
-    margin-top: 15px;
+    .px2vh(margin-top, 17);
     color: #1559DD;
-    font-size: 22px;
+    .px2font(22);
     font-weight: 700;
-    letter-spacing: 2.42px;
+    letter-spacing: 0.12vw;
     cursor: pointer;
   }
   &_doc {
     float: right;
-    margin-top: 15px;
+    .px2vh(margin-top, 17);
     color: #1559DD;
-    font-size: 22px;
+    .px2font(22);
     font-weight: 700;
-    letter-spacing: 2.42px;
+    letter-spacing: 0.12vw;
     cursor: pointer;
   }
 }
 .bulkimport_body {
-  padding-top: 15px;
+  .px2vh(padding-top, 17);
   float: left;
   height: 40.7vh;
   width: 40vw;
 }
 .bulkimport_foot{
-  padding-top: 15px;
+  .px2vh(padding-top, 17);
   float: left;
   height: 36vh;
   width: 40vw;
@@ -244,61 +247,65 @@ export default {
 	}
   .process_card {
     float: left;
-    height: 87px;
+    .px2vh(height, 100);
     width: 100%;
-    margin-bottom: 15px;
+    .px2vh(margin-bottom, 17);
     &_left {
       float: left;
       height: 100%;
-      width: 86px;
+      .px2vw(width, 86);
       img {
-        height: 86px;
-        width: 86px;
+        .px2vh(height, 98.5);
+        .px2vw(width, 86);
       }
     }
     &_right {
       float: left;
       height: 100%;
-      width: calc(100% - 86px);
+      .px2vw(width, 670);
       &_title {
-        margin-bottom: 10px;
+        .px2vh(margin-bottom, 15);
         color: #000;
-        font-size: 23px;
+        .px2font(20);
         font-weight: 700;
-        letter-spacing: 1.4px;
+        letter-spacing: 0.1vw;
       }
       &_size {
-        margin-top: 13px;
+        .px2vh(margin-top, 17);
         color: #9B9595;
-        font-size: 16px;
+        .px2font(16);
         font-weight: 700;
-        line-height: 149.482%; /* 17.938px */
       }
     }
   }
 }
 ::v-deep .el-upload-dragger {
   float: left;
-  width: 763px;
-  height: 373px;
-  border: 1px dashed #9B9595;
+  .px2vw(width, 763);
+  .px2vh(height, 425);
+  border: 0.1vw dashed #9B9595;
   background: rgba(235, 245, 255, 0.40)
 }
 ::v-deep .el-icon-upload {
-  font-size: 100px;
-  margin: 115px 0;
-  margin-bottom: 50px;
+  .px2font(100);
+  .px2vh(margin-top, 140);
+  .px2vh(margin-bottom, 50);
 }
 .el-upload__text {
   color: #000;
-  font-size: 26px;
-  line-height: 149.482%; /* 38.865px */
-  letter-spacing: 2.86px;
+  .px2font(26);
+  letter-spacing: 0.15vw;
 }
 .el-progress-bar {
   background-color: #fff;
 }
 ::v-deep .el-upload-list {
   display: none;
+}
+::v-deep .el-upload-dragger .el-icon-upload {
+  .px2vh(line-height, 60);
+}
+::v-deep .el-progress-bar__outer {
+  .px2vh(height, 11) !important;
 }
 </style>

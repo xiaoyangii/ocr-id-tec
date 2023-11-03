@@ -31,6 +31,11 @@ export default {
   background: #F9F9F9;
   cursor: pointer;
   text-align: center;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   &_title {
     color: #9B9595;
     .px2font(18);
