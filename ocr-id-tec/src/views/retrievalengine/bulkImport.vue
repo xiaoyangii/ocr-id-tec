@@ -69,7 +69,7 @@ export default {
         type: "success"
       })
       await axios({
-        url: 'http://120.77.149.32:8999/Picture/InsertArticle',
+        url: 'http://120.77.149.32:8999/Article/InsertArticle',
         method: "post",
         data: this.formDate,
         headers: {

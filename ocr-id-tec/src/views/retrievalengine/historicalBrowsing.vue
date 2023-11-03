@@ -557,12 +557,20 @@ export default {
     }
   }
   &_empty {
-    .px2vh(margin-top, 120);
+    width: 100%;
+    height: 70vh;
+    .px2vh(padding-top, 120);
     text-align: center;
     color: #000;
     .px2font(36);
     font-weight: 700;
+    img {
+      margin: 0 20vw;
+      .px2vw(width, 605);
+      .px2vh(height, 425);
+    }
     div {
+      .px2vh(margin-top, 34);
       color: #74ADFD;
       .px2font(38);
       letter-spacing: 0.2vw;
