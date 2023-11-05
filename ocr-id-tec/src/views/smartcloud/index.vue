@@ -414,10 +414,10 @@ export default {
         font-weight: 500;
       }
       &_time {
-        .px2vw(margin-left, 198);
+        .px2vw(margin-left, 630);
       }
       &_size {
-        .px2vw(margin-left, 200);
+        .px2vw(margin-left, 174);
       }
     }
     &_body {

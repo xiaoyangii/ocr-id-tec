@@ -2,7 +2,7 @@
   <div>
     <div class="left">
       <img src="@/assets/images/logo.png" alt="" class="logoimg">
-      <div class="logo">文<div>易通</div></div>
+      <div class="logo">知<div>医谷</div></div>
       <img src="@/assets/images/login.png" alt="">
     </div>
     <div class="right">
@@ -47,6 +47,7 @@ export default {
     color: #013480;
     div {
       position: absolute;
+      .px2vw(margin-left, 4);
       .px2vw(width, 68);
       .px2vw(left, 31);
       top: 0px;
