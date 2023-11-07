@@ -32,7 +32,7 @@ export default {
   .px2vh(height, 66);
   .px2vh(line-height, 66);
   width: 100%;
-  border: 2px solid #F4F4F4;
+  border: 0.15vh solid #F4F4F4;
   .px2vw(padding-left, 95);
   .px2vw(padding-right, 95);
   &_select {
@@ -71,7 +71,7 @@ export default {
     height: 100%;
     color: #3C3C3C;
     .px2font(20);
-    letter-spacing: 1.1px;
+    letter-spacing: 0.1vw;
   }
   &_date {
     float: left;
