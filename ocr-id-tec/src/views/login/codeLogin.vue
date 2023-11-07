@@ -259,6 +259,14 @@ export default {
   .px2vh(height, 16);
   .px2vw(border-radius, 2);
   border: 0.1vw solid #000;
+  &::after {
+    border-right: 0.1vw solid #FFF;
+    border-bottom: 0.1vw solid #FFF;
+    .px2vh(height, 8.5);
+    .px2vh(top, 1.5);
+    .px2vw(left, 5);
+    .px2vw(width, 3);
+  }
 }
 ::v-deep .el-form-item {
   .px2vh(margin-top, 50);

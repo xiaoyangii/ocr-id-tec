@@ -42,6 +42,7 @@ export default {
     ::v-deep .el-checkbox {
       .px2vw(margin-left, 16);
       .px2vh(line-height, 66);
+      .px2font(14);
       &__input {
         .px2vh(line-height, 19);
       }

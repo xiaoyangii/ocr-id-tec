@@ -386,6 +386,10 @@ export default {
         color: #fff;
         margin-right: 0;
       }
+      .upload-demo {
+        .px2vh(height, 44);
+        .px2vh(line-height, 44);
+      }
     }
     &_index {
       float: left;
