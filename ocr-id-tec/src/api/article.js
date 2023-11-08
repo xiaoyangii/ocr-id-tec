@@ -30,7 +30,7 @@ export const downloadArticle = (articleId) => {
   return request.get('/Article/Download', {
     params: {
       // articleId
-      articleId: "17850966557" + "#" + 25
+      articleId: "15392287939" + "#" + 0
     },
     responseType: 'blob'
   })
