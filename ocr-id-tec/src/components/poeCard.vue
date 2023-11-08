@@ -99,7 +99,7 @@ export default {
       .px2vw(padding-right, 6);
       .px2vw(padding-left, 6);
       .px2vw(width, 60);
-      .px2vh(height, 40);
+      .px2vh(height, 35);
       text-align: center;
       .px2vw(border-radius, 12);
       background: #EBF5FF;

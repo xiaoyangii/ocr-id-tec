@@ -21,8 +21,12 @@
     <div class="mycollection_head">
       <div class="mycollection_head_title">我的收藏</div>
     </div>
-    <div class="mycollection_content">
+    <div class="mycollection_content" v-if="isempty">
       <collection v-for="(item, index) in matchList" :key="index" :item="item"></collection>
+    </div>
+    <div class="mycollection_content_empty" v-else>
+      <img src="@/assets/images/recycle.png" alt="">
+      <div>当前收藏记录为空😃</div>
     </div>
   </div>
 </template>
@@ -110,6 +114,14 @@ export default {
       } else {
         this.getMachlist()
       }
+    },
+  },
+  computed: {
+    isempty() {
+      if(this.matchList.length == 0) {
+        return false;
+      }
+      return true;
     },
   },
   methods: {
@@ -295,5 +307,25 @@ export default {
 	}
   .px2vh(padding-top, 20);
   .px2vh(padding-bottom, 50);
+  &_empty {
+    width: 100%;
+    height: 70vh;
+    .px2vh(padding-top, 35);
+    text-align: center;
+    color: #000;
+    .px2font(36);
+    font-weight: 700;
+    img {
+      margin: 0 20vw;
+      .px2vw(width, 605);
+      .px2vh(height, 425);
+    }
+    div {
+      .px2vh(margin-top, 34);
+      color: #74ADFD;
+      .px2font(38);
+      letter-spacing: 0.2vw;
+    }
+  }
 }
 </style>

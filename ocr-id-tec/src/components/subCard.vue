@@ -69,8 +69,8 @@ export default {
   }
   &_subs {
     float: right;
-    .px2vw(width, 64);
-    .px2vh(height, 29);
+    .px2vw(width, 70);
+    .px2vh(height, 35);
     .px2vw(border-radius, 11);
     .px2vw(padding-right, 6);
     .px2vw(padding-left, 6);
@@ -79,7 +79,7 @@ export default {
     background: #EBF5FF;
     border: none;
     color: #013480;
-    .px2font(11);
+    .px2font(12);
     cursor: pointer;
   }
 }
