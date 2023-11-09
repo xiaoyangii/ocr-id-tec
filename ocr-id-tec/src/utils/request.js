@@ -43,7 +43,7 @@ instance.interceptors.response.use(function (response) {
       type: 'warning'
     })
     // 抛出一个错误的promise
-    return Promise.reject(res.message)
+    return Promise.reject(res.msg)
   } else {
     // tryHideFullScreenLoading()
   }

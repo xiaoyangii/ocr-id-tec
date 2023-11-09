@@ -245,4 +245,8 @@ export default {
 .el-row {
   .px2vh(margin-top, 10);
 }
+::v-deep .el-form-item__error {
+  .px2font(14);
+  .px2vh(padding-top, 20);
+}
 </style>

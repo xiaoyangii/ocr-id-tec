@@ -27,12 +27,12 @@ export const deleteArticle = (telephone, articleId) => {
 
 // 4. 下载文章
 export const downloadArticle = (articleId) => {
-  return request.get('/Article/Download', {
+  return request.get('http://120.77.149.32:8999/Article/Download', {
     params: {
       // articleId
       articleId: "15392287939" + "#" + 0
     },
-    responseType: 'blob'
+    responseType: 'blob',
   })
 }
 

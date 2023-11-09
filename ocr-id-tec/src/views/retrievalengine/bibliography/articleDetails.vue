@@ -225,17 +225,19 @@ export default {
       })
       await downloadArticle(this.articleId)
       .then(res => {
-        const link=document.createElement('a')
-        let blob =  res
+        let blob = new Blob([res.data], {
+          type: res.data.type,
+        })
+        let downloadElement = document.createElement('a')
+        let href = window.URL.createObjectURL(blob) //创建下载链接
         let _fileName = res.headers['content-disposition'].split(';')[1].split('=')[1]
-	      link.style.display='none';
-        const url = window.URL || window.webkitURL || window.moxURL
-        let binaryData = []
-        binaryData.push(blob)
-        link.href = window.URL.createObjectURL(new Blob(binaryData))
-        link.download = _fileName   //下载的文件名称
-        link.click()
-        window.URL.revokeObjectURL(url)
+	      downloadElement.style.display='none';
+        downloadElement.href = href
+        downloadElement.download = decodeURIComponent(_fileName)
+        document.body.appendChild(downloadElement)
+        downloadElement.click()
+        document.body.removeChild(downloadElement)
+        window.URL.revokeObjectURL(href)
         this.$message({
           type: 'success',
           message: '下载中'
