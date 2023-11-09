@@ -27,7 +27,9 @@ export const deleteArticle = (telephone, articleId) => {
 
 // 4. 下载文章
 export const downloadArticle = (articleId) => {
-  return request.get('http://120.77.149.32:8999/Article/Download', {
+  return request({
+    url: 'http://120.77.149.32:8999/Article/Download', 
+    method: 'post',
     params: {
       // articleId
       articleId: "15392287939" + "#" + 0
