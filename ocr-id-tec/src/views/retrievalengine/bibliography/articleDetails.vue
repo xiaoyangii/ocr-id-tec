@@ -225,8 +225,8 @@ export default {
       })
       await downloadArticle(this.articleId)
       .then(res => {
-        let blob = new Blob([res.data], {
-          type: res.data.type,
+        let blob = new Blob([atob(res.data)], {
+          type: 'application/pdf',
         })
         let downloadElement = document.createElement('a')
         let href = window.URL.createObjectURL(blob) //创建下载链接
