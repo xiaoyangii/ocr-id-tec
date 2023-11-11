@@ -36,7 +36,7 @@
         </div>
         <div class="content_boxx" v-show="hasSlected">
           <button class="content_boxx_button2" @click="cancel()">取消</button>
-          <button class="content_boxx_button1" @click="deleteRecord()">还原</button>
+          <button class="content_boxx_button1" @click="deleteRecord()">删除</button>
           <div class="content_boxx_num">已选 <span>{{ total }}</span> 项</div>
         </div>
         <div class="right_head_index">文献库 > 默认仓库</div>
