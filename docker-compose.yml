@@ -1,0 +1,37 @@
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.9.0
+    container_name: elasticsearch
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+      # - xpack.security.enrollment.enabled=true  # 启用注册令牌功能
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.9.0
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+      - ELASTICSEARCH_SERVICEACCOUNTTOKEN=AAEAAWVsYXN0aWMva2liYW5hL2tpYmFuYV90b2tlbjpwcFBnSWw0d1JFT1NwVzE5cUNCZHBB
+      - xpack.encryptedSavedObjects.encryptionKey=7f24c1c71194a03820d62c4fe909d157
+      - xpack.reporting.encryptionKey=2d052da6efab25fb37ed7515dc99f7e8
+      - xpack.security.encryptionKey=4bdaf17dbcb2103ade874a260535ef80
+    depends_on:
+      - elasticsearch
+
+volumes:
+  esdata:
+    driver: local
